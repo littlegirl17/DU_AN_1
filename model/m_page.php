@@ -33,28 +33,28 @@
                 $GiamGia = "";
             }
 
-            echo '<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                <div class="featured__item">
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/'.$item['HinhAnh'].'">
                             '.$GiamGia.'
-                            
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
                             '.$price.'
                         </div>
-                    <form action="index.php?mod=product&act=addtocart" method="post">
-                        <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
-                        <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                        <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
-                        <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
-                        <input type="hidden" name="SoLuong" value="1">
-                        <div class="intro">
-                            <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
-                        </div>
-                    </form> 
-                </div>
-            </div>';
+                        <form action="index.php?mod=product&act=addtocart" method="post">
+                            <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                            <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                            <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                            <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                            <input type="hidden" name="SoLuong" value="1">
+                            <div class="intro">
+                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                            </div>
+                        </form> 
+                    </div>
+                </div>';
             
         }
 
@@ -168,5 +168,17 @@
         }
 
         return $page_home;
+    }
+
+    function page_blog(){
+        return pdo_query("SELECT * FROM baiviet ORDER BY MaBV DESC LIMIT 3");
+    }
+
+    function page_blogId($MaBV){
+        return pdo_query_one("SELECT * FROM baiviet WHERE MaBV = ?",$MaBV);
+    }
+
+    function page_blogRelate($MaDM){
+        return pdo_query("SELECT * FROM baiviet WHERE MaDM = ? ORDER BY rand() ",$MaDM);
     }
 ?>

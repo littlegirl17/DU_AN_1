@@ -51,26 +51,7 @@
     </section>
     <!-- Hero Section End -->
 
-        <!-- Breadcrumb Section Begin -->
-        <section class="breadcrumb-section set-bg" data-setbg="view/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-        
-    <form action="" method="post">
+    <form action="index.php?mod=user&act=login" method="post">
         <div class="boxcenter">
                 <h1><a href="index.html">Đăng Nhập</a></h1>
                 <div class="form-dn-1">
@@ -79,22 +60,25 @@
                 <div class="form-dn-2">
                     <img class="google" src="view/img/logo/google.png" alt=""><a href="">Đăng nhập bằng google</a>
                 </div>
-                <div class="form-dn-3">
-                    <a href="">Hoặc dùng email , số điện thoại</a>
-                </div>
                 <form action="">
                     <div class="form-input">
-                    <input type="text" name="Email" id="" placeholder="Nhập số điện thoại hoặc email">
+                    <input type="text" name="Email" id="" placeholder="Nhập email của bạn!">
                     <input type="password" name="MatKhau" id="" placeholder="Nhập mật khẩu">
                     <input type="submit" name="Submit_login" value="Đăng nhập" class="submit">
                     </div>
                 </form>
-
+                
                 <div class="form-bot-1">
-                    <a href="">Khôi phục mật khẩu</a>
+                    <a href="">Quên mật khẩu</a>
                 </div>
                 <div class="form-bot-2">
-                    <a href="" class="chtk">Chưa có tài khoản?</a><a href="">Đăng kí tại khoản</a>
+                    <a href="index.php?mod=user&act=register" class="chtk">Chưa có tài khoản?</a><a href="index.php?mod=user&act=register">Đăng kí tại khoản</a>
                 </div>
+                <?php if(isset($_SESSION['loi'])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?=$_SESSION['loi']?>
+                    </div>
+                <?php endif; unset($_SESSION['loi']); ?>
         </div>
     </form>
+    

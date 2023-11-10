@@ -9,14 +9,42 @@
                     $kq = user_getLogin($_POST['Email'],$_POST['MatKhau']);
                     if($kq){
                         $_SESSION['user'] = $kq;
-                        header("location: index.php?mod=page&act=home");
+                        if($_SESSION['user']['Quyen'] >=1 ){
+                            header("location: index.php?mod=admin&act=dashboard");
+                        }else{
+                            header("location: index.php?mod=page&act=home");
+                        }
+                        
                     }else{
-                        $_SESSION['loi'] = "Vui long dawng nhap";
+                        $_SESSION['loi'] = "Email hoặc Password đã sai!";
                     }
                 }
                 $view_name = "user_login";
                 break;
+            case 'logout':
+                if(isset($_SESSION['user'])){
+                    unset($_SESSION['user']);
+                }
+                header("location: index.php?mod=page&act=home");
+                break;
+
             case 'register':
+                if(isset($_POST['submit_register'])){
+                    $checkEmail = user_checkRegister($_POST['Email']);
+                    $checkSDT = user_checksdtRegister($_POST['SoDienThoai']);
+                    if($checkEmail == TRUE || $checkSDT  == TRUE){
+                        if($checkEmail){
+                            $_SESSION['canhbaoEmail'] = "Email đã tồn tại, vui lòng nhập email khác";
+                        }
+                        if($checkSDT){
+                            $_SESSION['canhbaoSDT'] = "Số điện thoại đã tồn tại, vui lòng nhập Số điện thoại khác";
+                        }
+                        
+                    }else{
+                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
+                        $_SESSION['thongbao'] = "Đăng ký tài khoản thành công!";
+                    }
+                }
                 $view_name = "user_register";
                 break;
             

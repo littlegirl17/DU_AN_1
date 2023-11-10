@@ -51,43 +51,51 @@
     </section>
     <!-- Hero Section End -->
 
-        <!-- Breadcrumb Section Begin -->
-        <section class="breadcrumb-section set-bg" data-setbg="view/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
     <div class="boxcenter">
-        <h1><a href="index.html">Đăng Ký</a></h1>
-        <div class="form-dn-1">
-            <i class="fa-brands fa-facebook" style="color: #0561ff;"></i><a href="">Đăng ký bằng facebook</a>
-        </div>
-        <div class="form-dn-2">
-            <img class="google" src="view/img/logo/google.png" alt=""><a href="">Đăng ký bằng google</a>
-        </div>
-        <div class="form-dn-3">
-            <a href="">Hoặc đăng ký bằng số điện thoại</a>
-        </div>
-        <form action="">
+        <h1>Đăng Ký</h1>
+        <form action="index.php?mod=user&act=register" method="post">
             <div class="form-input">
-            <input type="number" name="" id="" placeholder="Ví dụ:032569842">
-            <input type="submit" value="Đăng ký" class="submit">
+            <input type="text" name="HoTen" id="" placeholder="Hãy nhập họ tên">
+
+            <input type="text" name="UserName" id="" placeholder="Hãy nhập UserName">
+
+            <input type="text" name="Email" id="" placeholder="Hãy nhập Email">
+
+            <input type="text" name="MatKhau" id="" placeholder="Hãy nhập mật khẩu">
+
+            <input type="text" name="DiaChi" id="" placeholder="Hãy nhập Địa chỉ">
+
+            <select name="GioiTinh" id="" >
+                <option  >Giới tính</option>
+                <option value="0">Nam</option>
+                <option value="1">Nữ</option>
+            </select>
+
+            <input type="text" name="SoDienThoai" id="" placeholder="Hãy nhập số điện thoại">
+            <input type="submit" name="submit_register" value="Đăng ký" class="submit">
             </div>
         </form>
 
         <div class="form-bot-2">
-            <a href="login.html" class="chtk">Bạn đã có tài khoản?</a><a href="">Đăng kí tại khoản</a>
+            <a href="index.php?mod=user&act=login" class="chtk">Bạn đã có tài khoản?</a><a href="index.php?mod=user&act=login">Đăng nhập tại khoản</a>
         </div>
+
+        <?php if(isset($_SESSION['thongbao'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?=$_SESSION['thongbao']?>
+            </div>
+        <?php endif; unset($_SESSION['thongbao']); ?>
+
+        <?php if(isset($_SESSION['canhbaoEmail'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <?=$_SESSION['canhbaoEmail']?>
+            </div>
+        <?php endif; unset($_SESSION['canhbaoEmail']); ?>
+
+        <?php if(isset($_SESSION['canhbaoSDT'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <?=$_SESSION['canhbaoSDT']?>
+            </div>
+        <?php endif; unset($_SESSION['canhbaoSDT']); ?>
+
     </div>

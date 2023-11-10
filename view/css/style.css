@@ -493,10 +493,14 @@ ol {
 }
 
 .header__cart {
-	text-align: right;
+	text-align: right; 
 	padding: 24px 0;
-}
 
+}
+.header_cart_ri {
+	display: flex;
+	justify-content: end;
+}
 .header__cart ul {
 	display: inline-block;
 	margin-right: 25px;
@@ -547,7 +551,9 @@ ol {
 	color: #252525;
 	font-weight: 700;
 }
-
+.header__cart__login{
+	padding: 18px 0;
+}
 .humberger__menu__wrapper {
 	display: none;
 }
@@ -727,13 +733,14 @@ ol {
 }
 
 .hero__item {
+	width: 100%;
 	height: 431px;
 	display: flex;
 	align-items: center;
 	padding-left: 75px;
 }
 
-.hero__text span {
+/* .hero__text span {
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -751,7 +758,7 @@ ol {
 
 .hero__text p {
 	margin-bottom: 35px;
-}
+} */
 
 /*---------------------
   Categories
@@ -2834,7 +2841,7 @@ ol {
 -----------------------*/
 .boxcenter{
 	width: 400px;
-	height: 520px;
+	height: auto;
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -3089,6 +3096,7 @@ h1 a{
 		max-width: 1170px;
 		margin: 0 auto;
 	}
+	
 }
 
 /* Medium Device = 1200px */
@@ -3118,11 +3126,16 @@ h1 a{
 	.shoping__discount form input {
 		width: 240px;
 	}
+	
 }
 
 /* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
 	.hero__categories {
 		margin-bottom: 30px;
 	}
@@ -3346,6 +3359,10 @@ h1 a{
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
 	.hero__categories {
 		margin-bottom: 30px;
 	}
@@ -3516,6 +3533,7 @@ h1 a{
 		color: #252525;
 		font-weight: 700;
 	}
+	
 	.humberger__menu__cart {
 		margin-bottom: 25px;
 	}
@@ -3604,6 +3622,10 @@ h1 a{
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
 	.hero__search__form form .hero__search__categories {
 		display: none;
 	}
@@ -3648,4 +3670,9 @@ h1 a{
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+	.hero__item{
+		height: 130px;
+	}
 }
+
+

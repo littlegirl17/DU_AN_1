@@ -28,27 +28,21 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="">
-        <div class=""></div>
-    </div>
-
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="view/img/logo.png" alt=""></a>
+            <a href="index.php?mod=page&act=home"><img src="view/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -101,14 +95,6 @@
                             </div>
                             <div class="header__top__right__auth">
                                 
-                                <div class="dropdown">
-                                    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-user"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?mod=user&act=login">Đăng nhập</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,13 +105,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
+                        <a href="index.php?mod=page&act=home"><img src="view/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
@@ -141,14 +127,39 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                        <div class="header_cart_ri">
+
+                            
+                            <div class="header__cart">
+                                <ul>
+                                    <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="header__cart__login">
+                                <?php if(isset($_SESSION['user'])): ?>
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" >
+                                            <h6>Hi, <?=$_SESSION['user']['UserName']?></h6>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="index.php?mod=user&act=logout">Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-user"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="index.php?mod=user&act=login">Đăng nhập</a></li>
+                                            <li><a class="dropdown-item" href="index.php?mod=user&act=register">Đăng ký</a></li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                 </div>
+                
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
@@ -198,12 +209,12 @@
                             </div>
                         </div>
                         <div class="hero__item set-bg" data-setbg="view/img/hero/banner.png">
-                            <div class="hero__text">
-                                <!-- <span>FRUIT FRESH</span>
+                            <!--<div class="hero__text">
+                                <span>FRUIT FRESH</span>
                                 <h2>Vegetable <br />100% Organic</h2>
                                 <p>Free Pickup and Delivery Available</p>
-                                <a href="#" class="primary-btn">SHOP NOW</a> -->
-                            </div>
+                                <a href="#" class="primary-btn">SHOP NOW</a> 
+                            </div>-->
                         </div>
                     </div>
                 </div>

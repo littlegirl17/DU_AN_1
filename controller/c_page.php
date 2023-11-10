@@ -11,9 +11,16 @@
                 $getDiscount = page_productDiscount();
                 $getLuotMua = page_productLuotMua();
                 $getLuotXem = page_productLuotXem();
+                $getbaiviet = page_blog();
                 $view_name = "page_home";
                 break;
-            
+            case 'blog':
+                $MaBV = $_GET['MaBV'];
+                $getbaiviet = page_blog();
+                $detailblogid = page_blogId($MaBV);
+                $relateblog = page_blogRelate($detailblogid['MaDM']);
+                $view_name = "page_blog";
+                break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;
