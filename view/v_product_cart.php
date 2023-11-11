@@ -166,7 +166,7 @@
                             }
                         ?>
                         
-                        <a href="#" class="primary-btn">TIẾN HÀNH KIỂM TRA</a>
+                        <a href="index.php?mod=product&act=checkout" class="primary-btn">TIẾN HÀNH KIỂM TRA</a>
                     </div>
                 </div>
             </div>

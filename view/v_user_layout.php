@@ -36,7 +36,7 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
@@ -132,7 +132,7 @@
                             
                             <div class="header__cart">
                                 <ul>
-                                    <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                    <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
                                 </ul>
                             </div>
                             <div class="header__cart__login">

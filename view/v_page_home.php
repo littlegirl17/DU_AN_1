@@ -87,7 +87,50 @@
             </div>
             <div class="row featured__filter">
                 <?php 
-                    $html_product_buy = showsp_home_luotmua($getLuotMua);
+                    foreach($getLuotMua as $item):
+                        if($item['GiaSP'] >=1){
+                            $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                        }else{
+                            $price = "<h5>Đang cập nhật</h5>";
+                        }
+            
+                        if($item['Discount'] >= 1){
+                            $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+                        }else{
+                            $GiamGia = "";
+                        }
+            
+                        if($item['SoLuong']){
+                            $MuaHang = '<h6>Số lượt mua<strong>('.$item['SoLuong'].')</strong></h6>';
+                        }else{
+                            $MuaHang = '';
+                        }
+                ?>
+                <div class="col-lg-3 col-md-4  fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
+                            <?=$GiamGia?>
+                            
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="index.php?mod=product&act=detail&MaSP=<?=$item['MaSP']?>"><?=$item['TenSP']?></a></h6>
+                            <?=$price?>
+                            <div class="featured__item__text_MX"><?=$MuaHang?></div>
+                        </div>
+                        <form action="index.php?mod=product&act=addtocart" method="post">
+                            <input type="hidden" name="MaSP" value="<?=$item['MaSP']?>">
+                            <input type="hidden" name="HinhAnh" value="<?=$item['HinhAnh']?>">
+                            <input type="hidden" name="GiaSP" value="<?=$item['GiaSP']?>">
+                            <input type="hidden" name="TenSP" value="<?=$item['TenSP']?>">
+                            <input type="hidden" name="SoLuong" value="1">
+                            <div class="intro">
+                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+                <?php 
+                    endforeach; 
                 ?>
             </div>
         </div>

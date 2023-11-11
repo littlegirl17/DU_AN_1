@@ -1,6 +1,7 @@
 <?php
     include_once 'config.php';
     include_once 'model/m_product.php';
+    include_once 'model/m_order.php';
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
@@ -17,6 +18,13 @@
                 break;
             
             case 'addtocart':
+
+                if(!isset($_SESSION['user'])){
+                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi thêm vào giỏ hàng";
+                    header("location: index.php?mod=user&act=login");
+                    return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
+                }
+
                 if(isset($_POST['submitaddtocart']) && ($_POST['submitaddtocart']!="")){
                     $MaSP = $_POST['MaSP'];
                     $HinhAnh = $_POST['HinhAnh'];
@@ -33,7 +41,7 @@
                     $i=0; // i để định vị mình đang ở cái sản phẩm nào mà check // i có nghĩa là: ở phần tử thứ i mình cập nhật lại cái số lượng
                     foreach($_SESSION['mygiohang'] as $item){
                         if($item['TenSP'] == $TenSP){
-                            $SoLuongNew = $SoLuong + $item['SoLuong'];
+                            $SoLuongNew =  intval($SoLuong) + intval($item['SoLuong']);
                             $_SESSION['mygiohang'][$i]['SoLuong'] = $SoLuongNew;
                             $flag = 1; // và gán lại biến tạm = 1
                             break; // sau khi check xong thì thoát luôn
@@ -68,6 +76,54 @@
                     $_SESSION['mygiohang'] = [];
                 }
                 header("location: index.php?mod=product&act=viewcart");
+                break;
+
+            case 'checkout':
+                
+                $view_name = "product_checkout";
+                break;
+            case 'order':
+                if(isset($_POST['submit_checkout']) && ($_POST['submit_checkout'])){
+                    // LẤY DỮ LIỆU TỪ FORM
+                        // đoạn mã này là xác định liệu người dùng đã đăng nhập hay chưa
+                        if(isset($_SESSION['user'])){
+                            $MaTK = $_SESSION['user']['MaTK']; //nếu họ đã đăng nhập
+                        }else{
+                            $MaTK = 0; //nếu họ chưa đăng nhập
+                        }
+                        $TongTien = $_POST['TongTien'];
+                        $HoTen = $_POST['HoTen'];
+                        $DiaChi = $_POST['DiaChi'];
+                        $SoDienThoai = $_POST['SoDienThoai'];
+                        $Email = $_POST['Email'];
+                        if(isset($_POST['GhiChu'])){
+                            $GhiChu = $_POST['GhiChu']; //dữ liệu được gửi đi -> True
+                        }else{
+                            $GhiChu = ""; //nếu không có dữ liệu được gửi đi ->False -> rỗng
+                        }
+                        if(isset($_POST['PhuongThucTT'])){
+                            $PhuongThucTT = $_POST['PhuongThucTT']; //dữ liệu được gửi đi -> True
+                        }else{
+                            $PhuongThucTT = ""; //nếu không có dữ liệu được gửi đi ->False -> rỗng
+                        }
+                        $MaDHRandom = "Organic".rand(0,999999);
+                    // XỬ LÝ DỮ LIỆU
+                        // Tạo đơn hàng và trả về một id đơn hàng
+                        $iddh = TaoDonHang($MaTK,$TongTien,$HoTen,$DiaChi,$SoDienThoai,$Email,$GhiChu,$PhuongThucTT,$MaDHRandom);
+                        // LƯU LẠI BẰNG SESSION
+                        $_SESSION['iddh'] = $iddh;
+
+                        if(isset($_SESSION['mygiohang']) && is_array($_SESSION['mygiohang'])){
+                            foreach($_SESSION['mygiohang'] as $item){
+                                //Thêm nó vào chi tiêt đơn hàng 
+                                order_soluong($iddh,$item['MaSP']);
+                                addOrder($iddh,$item['MaSP'],$item['GiaSP'],$item['SoLuong']); //$iddh là để nó biết lấy theo cái mã iddh nào
+                            }
+                            //nghĩa là sau khi sản phẩm đó được đặt, và quay lại trang chủ thì sản phẩm đó phải biến mất trong giỏ hàng
+                            unset($_SESSION['mygiohang']);
+                        }
+                }
+                header("location:index.php?mod=page&act=home");
                 break;
             default:
                 header("location:index.php?mod=page&act=home");

@@ -1,6 +1,7 @@
 <?php
     include_once 'config.php';
     include_once 'model/m_page.php';
+    include_once 'model/m_order.php';
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
@@ -9,7 +10,7 @@
                 $getdanhmuc = danhmuc_getAll(); 
                 $getproNew = page_productNew();
                 $getDiscount = page_productDiscount();
-                $getLuotMua = page_productLuotMua();
+                $getLuotMua = get_luotmuaOrder();
                 $getLuotXem = page_productLuotXem();
                 $getbaiviet = page_blog();
                 $view_name = "page_home";

@@ -50,9 +50,14 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
+   
     <form action="index.php?mod=user&act=login" method="post">
         <div class="boxcenter">
+                <?php if(isset($_SESSION['canhbao'])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?=$_SESSION['canhbao']?>
+                    </div>
+                <?php endif; unset($_SESSION['canhbao']); ?>
                 <h1><a href="index.html">Đăng Nhập</a></h1>
                 <div class="form-dn-1">
                     <i class="fa-brands fa-facebook" style="color: #0561ff;"></i><a href="">Đăng nhập bằng facebook</a>

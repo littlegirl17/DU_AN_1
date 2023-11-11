@@ -32,6 +32,25 @@ function pdo_execute($sql){
     }
 }
 /**
+ * Get the last inserted ID using PDO
+ * @return string The last inserted ID
+ */
+function pdo_last_insert_id($sql) {
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $conn->lastInsertId();
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+/**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql

@@ -2199,6 +2199,17 @@ ol {
 	color: #b2b2b2;
 }
 
+.checkout__radio__1 input{
+	width: 15px;
+	height: 15px;
+	margin-top: 10px;
+}
+
+.checkout__radio__1 input:checked + span {/* + span để chọn phần tử <span> ngay sau khi checkbox được chọn*/
+    font-weight: 600;
+    color: #7fad39; 
+}
+
 .checkout__input__checkbox {
 	margin-bottom: 10px;
 }

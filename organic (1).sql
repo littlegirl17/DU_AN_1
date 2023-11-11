@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th10 10, 2023 lúc 06:30 PM
+-- Thời gian đã tạo: Th10 11, 2023 lúc 05:12 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -71,9 +71,24 @@ CREATE TABLE `chitietdonhang` (
   `MaDH` int NOT NULL,
   `MaSP` int NOT NULL,
   `GiaSP` double(10,0) NOT NULL,
-  `SoLuong` int NOT NULL,
-  `TongTien` int NOT NULL DEFAULT '0'
+  `SoLuong` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietdonhang`
+--
+
+INSERT INTO `chitietdonhang` (`MaDH`, `MaSP`, `GiaSP`, `SoLuong`) VALUES
+(40, 25, 15000, 7),
+(40, 29, 12000, 7),
+(41, 29, 12000, 1),
+(42, 29, 12000, 1),
+(43, 22, 20000, 15),
+(44, 30, 18000, 12),
+(45, 27, 25000, 1),
+(46, 26, 8000, 1),
+(46, 29, 12000, 1),
+(46, 30, 18000, 2);
 
 -- --------------------------------------------------------
 
@@ -113,27 +128,26 @@ CREATE TABLE `donhang` (
   `DiaChi` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
   `Quyen` tinyint(1) NOT NULL DEFAULT '0',
   `GhiChu` text COLLATE utf8mb3_unicode_ci NOT NULL,
-  `TrangThai` int NOT NULL COMMENT '0.Đơn hàng mới 1.Đang xử lý 2.Đang giao hàng 3.Đã giao	',
   `TongTien` int NOT NULL DEFAULT '0',
   `NgayDat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `MaTK` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `giohang`
---
-
-CREATE TABLE `giohang` (
-  `MaGH` int NOT NULL,
   `MaTK` int NOT NULL,
-  `TenSP` varchar(50) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `GiaSP` double(10,0) NOT NULL,
-  `HinhAnh` text COLLATE utf8mb3_unicode_ci NOT NULL,
-  `SoLuong` int NOT NULL,
-  `MaSP` int NOT NULL
+  `PhuongThucTT` tinyint NOT NULL DEFAULT '1' COMMENT '1.Trả tiền mặt khi nhận hàng 2.Chuyển khoản ngân hàng 3.Thanh toan vi momo',
+  `TrangThai` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0.Đơn hàng mới 1.Đang xử lý 2.Đang giao hàng 3.Đã giao	',
+  `MaDHRandom` varchar(20) COLLATE utf8mb3_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`MaDH`, `HoTen`, `Email`, `SoDienThoai`, `DiaChi`, `Quyen`, `GhiChu`, `TongTien`, `NgayDat`, `MaTK`, `PhuongThucTT`, `TrangThai`, `MaDHRandom`) VALUES
+(40, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, 'kha order', 189000, '2023-11-11 23:02:16', 1, 1, 0, 'Organic45472'),
+(41, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, 'hihi', 12000, '2023-11-11 23:02:50', 1, 1, 0, 'Organic693164'),
+(42, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, 'k', 12000, '2023-11-11 23:09:10', 1, 1, 0, 'Organic260389'),
+(43, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, 'kha', 300000, '2023-11-11 23:10:41', 1, 1, 0, 'Organic865808'),
+(44, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, 'kha nho', 216000, '2023-11-11 23:11:30', 1, 1, 0, 'Organic159649'),
+(45, 'Huynh Kha1', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, '30', 25000, '2023-11-11 23:52:14', 1, 1, 0, 'Organic816580'),
+(46, 'Huynh Kha', 'khakha5087@gmail.com', '0353123771', 'Binh Dinh', 0, '', 56000, '2023-11-12 00:10:56', 1, 1, 0, 'Organic791289');
 
 -- --------------------------------------------------------
 
@@ -151,26 +165,25 @@ CREATE TABLE `sanpham` (
   `Discount` int DEFAULT NULL COMMENT '% giảm giá của 1 sản phẩm',
   `New` tinyint(1) DEFAULT '0' COMMENT '0: Bình thường , 1: là sản phẩm mới(Sản Phẩm mới trên 1 session)',
   `MaDM` int DEFAULT NULL,
-  `LuotXem` int NOT NULL,
-  `LuotMua` int DEFAULT '0'
+  `LuotXem` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`MaSP`, `TenSP`, `GiaSP`, `HinhAnh`, `TieuDe`, `MoTa`, `Discount`, `New`, `MaDM`, `LuotXem`, `LuotMua`) VALUES
-(20, 'Ớt đỏ ', 5000, 'ot-do.png', NULL, NULL, NULL, NULL, 11, 3, 1),
-(21, 'Trái bơ', 20000, 'traicay-bo.png', NULL, NULL, NULL, NULL, 12, 1, 1),
-(22, 'Trái cam ', 20000, 'traicay-cam.png', NULL, NULL, NULL, 0, 12, 1, 0),
-(23, 'Trái đào', 25000, 'traicay-dao.png', NULL, NULL, 5, 0, 12, 1, 1),
-(24, 'Dưa hấu', 10000, 'traicay-duahau.png', NULL, NULL, NULL, 0, 12, 6, 1),
-(25, 'Dưa lưới', 15000, 'traicay-dualuoi.png', NULL, NULL, 3, 0, 12, 7, 1),
-(26, 'Trái đu đủ', 8000, 'traicay-dudu.png', NULL, NULL, NULL, 0, 12, 1, 1),
-(27, 'Trái kiwi', 25000, 'traicay-kiwi.png', NULL, NULL, 8, 0, 12, 23, 1),
-(28, 'Trái lê', 5000, 'traicay-le.png', NULL, NULL, NULL, 0, 12, 3, NULL),
-(29, 'Trái mảng cầu', 12000, 'traicay-na.png', NULL, NULL, NULL, 0, 12, 1, NULL),
-(30, 'Nho', 18000, 'traicay-nhotim.png', NULL, NULL, 5, 0, 12, 20, 1);
+INSERT INTO `sanpham` (`MaSP`, `TenSP`, `GiaSP`, `HinhAnh`, `TieuDe`, `MoTa`, `Discount`, `New`, `MaDM`, `LuotXem`) VALUES
+(20, 'Ớt đỏ ', 5000, 'ot-do.png', NULL, NULL, NULL, NULL, 11, 3),
+(21, 'Trái bơ', 20000, 'traicay-bo.png', NULL, NULL, NULL, NULL, 12, 1),
+(22, 'Trái cam ', 20000, 'traicay-cam.png', NULL, NULL, NULL, 0, 12, 16),
+(23, 'Trái đào', 25000, 'traicay-dao.png', NULL, NULL, 5, 0, 12, 1),
+(24, 'Dưa hấu', 10000, 'traicay-duahau.png', NULL, NULL, NULL, 0, 12, 6),
+(25, 'Dưa lưới', 15000, 'traicay-dualuoi.png', NULL, NULL, 3, 0, 12, 7),
+(26, 'Trái đu đủ', 8000, 'traicay-dudu.png', NULL, NULL, NULL, 0, 12, 1),
+(27, 'Trái kiwi', 25000, 'traicay-kiwi.png', NULL, NULL, 8, 0, 12, 23),
+(28, 'Trái lê', 5000, 'traicay-le.png', NULL, NULL, NULL, 0, 12, 3),
+(29, 'Trái mảng cầu', 12000, 'traicay-na.png', NULL, NULL, NULL, 0, 12, 4),
+(30, 'Nho', 18000, 'traicay-nhotim.png', NULL, NULL, 5, 0, 12, 21);
 
 -- --------------------------------------------------------
 
@@ -238,14 +251,6 @@ ALTER TABLE `donhang`
   ADD KEY `MaTK` (`MaTK`);
 
 --
--- Chỉ mục cho bảng `giohang`
---
-ALTER TABLE `giohang`
-  ADD PRIMARY KEY (`MaGH`),
-  ADD KEY `MaTK` (`MaTK`),
-  ADD KEY `MaSP` (`MaSP`);
-
---
 -- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
@@ -284,13 +289,7 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDH` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `giohang`
---
-ALTER TABLE `giohang`
-  MODIFY `MaGH` int NOT NULL AUTO_INCREMENT;
+  MODIFY `MaDH` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
@@ -333,13 +332,6 @@ ALTER TABLE `chitietdonhang`
 --
 ALTER TABLE `donhang`
   ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`MaTK`) REFERENCES `taikhoan` (`MaTK`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Các ràng buộc cho bảng `giohang`
---
-ALTER TABLE `giohang`
-  ADD CONSTRAINT `giohang_ibfk_1` FOREIGN KEY (`MaTK`) REFERENCES `taikhoan` (`MaTK`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `giohang_ibfk_2` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `sanpham`

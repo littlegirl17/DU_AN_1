@@ -121,7 +121,7 @@
                                 <input type="hidden" name="HinhAnh" value="<?=$detail_product['HinhAnh']?>">
                                 <input type="hidden" name="GiaSP" value="<?=$detail_product['GiaSP']?>">
                                 <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
-                                <input type="hidden" name="SoLuong" value="<?=$detail_product['SoLuong']?>">
+                                <input type="hidden" name="SoLuong" min=1 max=20 value="1">
                                 <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
                             </form>
 
