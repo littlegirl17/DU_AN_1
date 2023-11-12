@@ -181,4 +181,28 @@
     function page_blogRelate($MaDM){
         return pdo_query("SELECT * FROM baiviet WHERE MaDM = ? ORDER BY rand() ",$MaDM);
     }
+
+    function show_home_blog($dsbv){
+        $page_home = "";
+        foreach($dsbv as $item){
+            echo '
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic">
+                        <img src="view/img/baiviet/'.$item['HinhAnh'].'" alt="">
+                    </div>
+                    <div class="blog__item__text">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i> '.$item['NgayViet'].'</li>
+                            <li><i class="fa fa-comment-o"></i> 5</li>
+                        </ul>
+                        <h5><a href="index.php?mod=page&act=blog&MaBV='.$item['MaBV'].'">'.$item['TieuDe'].'</a></h5>
+                        <p>'.$item['MoTaNgan'].'</p>
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+        return $page_home;
+    }
 ?>

@@ -1,3 +1,4 @@
+    
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -168,24 +169,7 @@
                 </div>
             </div>
             <div class="row">
-                <?php foreach($getbaiviet as $item): ?>
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="blog__item">
-                            <div class="blog__item__pic">
-                                <img src="view/img/baiviet/<?=$item['HinhAnh']?>" alt="">
-                            </div>
-                            <div class="blog__item__text">
-                                <ul>
-                                    <li><i class="fa fa-calendar-o"></i> <?=$item['NgayViet']?></li>
-                                    <li><i class="fa fa-comment-o"></i> 5</li>
-                                </ul>
-                                <h5><a href="index.php?mod=page&act=blog&MaBV=<?=$item['MaBV']?>"><?=$item['TieuDe']?></a></h5>
-                                <p><?=$item['MoTaNgan']?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                
+                <?php $html_blog = show_home_blog($getbaiviet) ?>
             </div>
         </div>
     </section>

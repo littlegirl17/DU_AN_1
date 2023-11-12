@@ -20,7 +20,7 @@
             case 'addtocart':
 
                 if(!isset($_SESSION['user'])){
-                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi thêm vào giỏ hàng";
+                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
                     header("location: index.php?mod=user&act=login");
                     return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
                 }
@@ -79,10 +79,21 @@
                 break;
 
             case 'checkout':
-                
+                if(!isset($_SESSION['user'])){
+                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
+                    header("location: index.php?mod=user&act=login");
+                    return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
+                }
+
                 $view_name = "product_checkout";
                 break;
             case 'order':
+                if(!isset($_SESSION['user'])){
+                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
+                    header("location: index.php?mod=user&act=login");
+                    return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
+                }
+
                 if(isset($_POST['submit_checkout']) && ($_POST['submit_checkout'])){
                     // LẤY DỮ LIỆU TỪ FORM
                         // đoạn mã này là xác định liệu người dùng đã đăng nhập hay chưa
@@ -123,7 +134,13 @@
                             unset($_SESSION['mygiohang']);
                         }
                 }
-                header("location:index.php?mod=page&act=home");
+                header("location:index.php?mod=product&act=vieworder");
+                break;
+
+            case 'vieworder':
+                $viewdonhang = get_order($_SESSION['iddh']);
+                $viewsanphamorder = get_productOrder($_SESSION['iddh']);
+                $view_name = "product_order";
                 break;
             default:
                 header("location:index.php?mod=page&act=home");

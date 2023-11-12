@@ -16,5 +16,14 @@
     function order_soluong($MaDH,$MaSP){
         pdo_execute("UPDATE chitietdonhang SET SoLuong = SoLuong + 1 WHERE MaDH = ? AND MaSP = ?", $MaDH ,$MaSP);
     }
+
+    function get_order($MaDH){
+        return pdo_query("SELECT * FROM donhang WHERE MaDH = ?",$MaDH);
+    }
+
+    function get_productOrder($MaDH){
+        return pdo_query("SELECT * FROM chitietdonhang ctdh INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP WHERE MaDH = ?",$MaDH);
+
+    }
     
 ?>
