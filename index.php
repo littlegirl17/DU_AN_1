@@ -13,6 +13,9 @@
             case 'user':
                 $controller_name = 'user';
                 break;
+            case 'admin':
+                $controller_name = 'admin';
+                break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;
