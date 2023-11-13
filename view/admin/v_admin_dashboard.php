@@ -79,7 +79,25 @@
                 </section>
                 <section class="row">
                     <div class="col-sm-12 col-md-6 col xl-6">
-                        <!-- <div id="myChart" style="height:400px"></div> -->
+                        <div class="card chart">
+                            <div id="myChart" style="height:400px"></div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-start">Chủ đề</th>
+                                        <th>Số lượng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($thongkeggchart as $item): ?>
+                                    <tr>
+                                        <td class="text-start"><?=$item['TenDM']?></td>
+                                        <td><?=$item['SoLuong']?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-6">
                         <div class="card chart">
@@ -92,7 +110,7 @@
                                     <button type="button" class="btn btn-primary">Xem</button>
                                 </div>
                             </form>
-                            <p>Tổng doanh thu: <span>100.000.000 VND</span></p>
+                            <p>Tổng doanh thu: <span>...</span></p>
                             <table class="revenue table table-hover">
                                 <thead>
                                     <th>#</th>
@@ -101,54 +119,9 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>GIA001</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>GIA002</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>GIA003</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
+                                        <td>...</td>
+                                        <td>....</td>
+                                        <td>......</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -159,7 +132,7 @@
             </div> 
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>
-<!-- <script>
+<script>
     google.charts.load('current',{packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -169,15 +142,16 @@
         // Set Data
         const data = google.visualization.arrayToDataTable([
         ['Danh mục', 'Số lượng sản phẩm'], //Tên, đơn vị số liệu
-        <?php foreach($ as $tkcd){
-            echo "['".$tkcd['TenDM']."',".$tkcd['SoLuong']."],";
-        } ?>
+        <?php foreach($thongkeggchart as $item){
+            echo "['".$item['TenDM']."',".$item['SoLuong']."],";
+        } 
+        ?>
         
         ]);
 
         // Set Options
         const options = {
-        title:'Biểu đồ thống kê sách theo chủ đề',
+        title:'Biểu đồ thống kê sản phẩm theo danh mục',
         is3D: true
         };
 
@@ -185,4 +159,4 @@
         const chart = new google.visualization.PieChart(document.getElementById('myChart'));
         chart.draw(data, options);
     }
-</script> -->
+</script>
