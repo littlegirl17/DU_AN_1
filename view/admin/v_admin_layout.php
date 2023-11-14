@@ -27,10 +27,10 @@
             <nav class="sidebar bg-primary">
                 <ul>
                     <li>
-                        <a href="index.html"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
+                        <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
                     <li>
-                        <a href="order.html"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản kí danh mục</a>
+                        <a href="index.php?mod=admin&act=admin_catagory"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản kí danh mục</a>
                     </li>
                     <li>
                         <a href="caterogies.html"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>

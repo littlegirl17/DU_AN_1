@@ -31,7 +31,7 @@
                         $uploadPath = "view/img/categories/".$_FILES['HinhAnh']['name'];//Dòng này xác định đường dẫn và tên tệp mục tiêu
                         move_uploaded_file($tmpFilePath,$uploadPath);//Dòng này sử dụng hàm move_uploaded_file để di chuyển tệp từ vị trí tạm thời (được lưu trong $tmpfile) vào vị trí mục tiêu (được lưu trong $upload).
                     }
-                    header("locaation: index.php?mod=admin&act=admin_catagory");
+                    header("location: index.php?mod=admin&act=admin_catagory");
                 }
                 $view_name = "admin_add_catagory";
                 break;

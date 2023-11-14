@@ -42,4 +42,12 @@
         function add_catagory($TenDM,$SoThuTu,$UuTien,$HinhAnh){
             pdo_execute("INSERT INTO danhmuc (`TenDM`,`SoThuTu`,`UuTien`,`HinhAnh`) VALUES (?,?,?,?)",$TenDM,$SoThuTu,$UuTien,$HinhAnh);
         }
+        
+        // Sửa
+
+        
+        // Xóa
+        function delete_catagory($MaDM){
+            pdo_execute("DELETE FROM danhmuc WHERE MaDM = ?",$MaDM);
+        }
 ?>

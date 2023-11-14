@@ -202,23 +202,24 @@
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
-    proQty.prepend('<span class="dec qtybtn">-</span>');
-    proQty.append('<span class="inc qtybtn">+</span>');
-    proQty.on('click', '.qtybtn', function () {
-        var $button = $(this);
-        var oldValue = $button.parent().find('input').val();
-        if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
-            }
-        }
-        $button.parent().find('input').val(newVal);
-    });
 
 })(jQuery);
+
+function tangSL(x){
+    var cha = x.parentElement;
+    var slold = cha.children[1];
+    var slnew = Number(slold.value) + 1; 
+    slold.value = slnew;
+
+}
+
+function giam(x){
+    var cha = x.parentElement;
+    var slold = cha.children[1];
+    if(Number(slold.value)>1){
+        var slnew = parseInt(slold.value) - 1;
+        slold.value = slnew;
+    }else{
+        alert("Đặt hàng tối thiểu là một");
+    }
+}

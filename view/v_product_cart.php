@@ -106,7 +106,9 @@
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value="1">
+                                                    <span class="dec qtybtn" onclick="giam(this)">-</span>
+                                                    <input type="text" value="<?=$cart['SoLuong']?>">
+                                                    <span class="inc qtybtn" onclick="tangSL(this)">+</span>
                                                 </div>
                                             </div>
                                         </td>

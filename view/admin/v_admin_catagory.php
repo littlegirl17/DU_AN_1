@@ -3,7 +3,7 @@
         Danh mục
     </h3>
     <div class="d-flex justify-content-end">
-        <a href="addProduct.html" class="btn btn-primary mb-2">Thêm danh mục mới</a>
+        <a href="index.php?mod=admin&act=admin_add_catagory" class="btn btn-primary mb-2">Thêm danh mục mới</a>
     </div>
     <section class="row">
         <div class="col-sm-12 col-md-12 col xl-12">

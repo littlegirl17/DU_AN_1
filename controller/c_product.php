@@ -17,6 +17,11 @@
                 $view_name = "product_cart";
                 break;
             
+            case 'soluongcart':
+                
+                header("location: index.php?mod=product&act=viewcart");
+                break;
+            
             case 'addtocart':
 
                 if(!isset($_SESSION['user'])){
