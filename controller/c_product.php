@@ -17,11 +17,6 @@
                 $view_name = "product_cart";
                 break;
             
-            case 'soluongcart':
-                
-                header("location: index.php?mod=product&act=viewcart");
-                break;
-            
             case 'addtocart':
 
                 if(!isset($_SESSION['user'])){
@@ -65,7 +60,8 @@
                     }
                 }
                 header("location: index.php?mod=product&act=viewcart");
-                break;   
+                break;
+            
             case 'deleteid':
                 if(isset($_GET['del']) && ($_GET['del']>=0)){
                     array_splice($_SESSION['mygiohang'],$_GET['del'],1); //xoa cai mang nao - Cai dinh vi thu may - xoa bao nhieu phan tu

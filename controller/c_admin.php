@@ -36,10 +36,29 @@
                 $view_name = "admin_add_catagory";
                 break;
             case 'admin_edit_catagory':
+                $MaDM = $_GET['MaDM'];
+                $getcataId = get_catagoryId($MaDM);
+
+                if(isset($_POST['submit']) && ($_POST['submit']>0)){
+                    $SoThuTu = isset($_POST['SoThuTu']) ? intval($_POST['SoThuTu']) : ""; //intval()để chuyển đổi giá trị $_POST['SoThuTu']thành số nguyên. 
+                    $UuTien = isset($_POST['UuTien']) ? intval($_POST['UuTien']) : "";
+                    update_catagory($MaDM,$_POST['TenDM'],$SoThuTu,$UuTien,$_FILES['HinhAnh']['name']);
+                    if(isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error']==0){
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];//Dòng này lấy đường dẫn tạm thời của tệp tải lên
+                        $uploadPath = "view/img/categories/".$_FILES['HinhAnh']['name'];//Dòng này xác định đường dẫn và tên tệp mục tiêu
+                        move_uploaded_file($tmpFilePath,$uploadPath);//Dòng này sử dụng hàm move_uploaded_file để di chuyển tệp từ vị trí tạm thời (được lưu trong $tmpfile) vào vị trí mục tiêu (được lưu trong $upload).
+                    }
+                    header("location: index.php?mod=admin&act=admin_catagory");
+                }
+                
                 $view_name = "admin_edit_catagory";
                 break;
             case 'admin_delete_catagory':
-
+                $MaDM = $_GET['MaDM'];
+                if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)){
+                    delete_catagory($MaDM);
+                }
+                header("location: index.php?mod=admin&act=admin_catagory");
                 break;
             // admin sản phẩm
             case 'admin_product':

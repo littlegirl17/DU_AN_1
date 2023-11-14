@@ -44,8 +44,13 @@
         }
         
         // Sửa
-
+        function get_catagoryId($MaDM){
+            return pdo_query_one("SELECT * FROM danhmuc WHERE MaDM = ?",$MaDM);
+        }
         
+        function update_catagory($MaDM,$TenDM,$SoThuTu,$UuTien,$HinhAnh){
+            pdo_execute("UPDATE danhmuc SET TenDM = ?,SoThuTu = ?,UuTien = ?, HinhAnh = ? WHERE MaDM = ? ",$TenDM,$SoThuTu,$UuTien,$HinhAnh,$MaDM);
+        }
         // Xóa
         function delete_catagory($MaDM){
             pdo_execute("DELETE FROM danhmuc WHERE MaDM = ?",$MaDM);

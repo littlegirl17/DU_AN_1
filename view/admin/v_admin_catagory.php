@@ -33,8 +33,8 @@
                             <td><?=$item['UuTien']?></td>
                             <td><?=$item['SoThuTu']?></td>
                             <td>
-                                <a href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                <a href="index.php?mod=admin&act=admin_edit_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="index.php?mod=admin&act=admin_delete_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
                             </td>
                         </tr>
                         <?php 

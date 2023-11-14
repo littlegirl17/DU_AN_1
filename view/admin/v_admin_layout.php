@@ -24,7 +24,7 @@
     <div class="container-fluid main-page">
 
         <div class="app-main">
-            <nav class="sidebar bg-primary">
+            <nav class="sidebar bg-green">
                 <ul>
                     <li>
                         <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>

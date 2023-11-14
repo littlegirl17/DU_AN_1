@@ -150,8 +150,11 @@
                                     $TongTien += $ThanhTien;
                                 }
                             }
+                            
                         ?>
-                        <input type="hidden" name="TongTien" value="<?=$TongTien?>">
+                        
+                        <input type="hidden" name="TongTien" id="TongTien" value="<?=$TongTien?>">
+                        
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Đơn hàng của bạn</h4>
@@ -161,9 +164,10 @@
                                     <li><?=$item['TenSP']?> <span><?=number_format($item['GiaSP'],"0",",",".")?> VNĐ</span></li>
                                     <?php endforeach; ?>
                                 </ul>
+
                                 <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> VNĐ</span></div>
                                 <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> VNĐ</span></div>
-                                <input type="submit" name="submit_checkout" class="site-btn">
+                                <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng">
                             </div>
                         </div>
                     </div>

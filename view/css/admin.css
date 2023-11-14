@@ -53,6 +53,17 @@ body{
     border-radius: 0px 5px 5px 0px;
     z-index: 20;
 }
+.sidebar ul li:hover{
+    background-color: #fff;
+    color: #000000;
+}
+.sidebar ul li a:hover{
+    background-color: #fff;
+    color: #7fad39;
+}
+.bg-green{
+    background-color: #000000;
+}
 nav ul {
     padding: 0 !important;
     list-style: none;
