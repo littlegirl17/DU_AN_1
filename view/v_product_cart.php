@@ -185,34 +185,34 @@
                         <div class="shoping__continue">
                             <div class="shoping__discount">
                                 <h5>Mã giảm giá</h5>
-                                <form action="#">
-                                    <input type="text" placeholder="Hãy nhập mã code">
-                                    <button type="submit" class="site-btn">ÁP DỤNG</button>
+                                
+                                <form action="" method="post">
+                                    <input type="hidden" name="TongTien" value="<?=$TongTien?>">
+                                    <input type="text" name="mavoucher" placeholder="Hãy nhập mã code">
+                                    <button type="submit" name="" class="site-btn">ÁP DỤNG</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="shoping__checkout">
                             <h5>Tổng tiền giỏ hàng</h5>
-                            
-                            <?php
-                                if(isset($cart) && is_array($cart)){
+                                <?php
+                                    if(isset($cart) && is_array($cart)){
                                     $ThanhTien = 0;
-                                    foreach($cart as $cart){
-                                        $ThanhTien = $cart['SoLuong']*$cart['GiaSP'];
-                                        $TongTien += $ThanhTien;
+                                        foreach($cart as $cart){
+                                            $ThanhTien = $cart['SoLuong']*$cart['GiaSP'];
+                                            $TongTien += $ThanhTien;
 
+                                        }
                                     }
-                                    echo '
+                                ?>
                                     <ul>
-                                        <li>Thành tiền <span>'.number_format($ThanhTien,"0",",",".").'</span></li>
-                                        <li>Tổng tiền <span>'.number_format($TongTien,"0",",",".").'</span></li>
+                                        <li>Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?></span></li>
+                                        <li>Tổng tiền <span><?=number_format($TongTien ,"0",",",".")?></span></li>
                                     </ul>
-                                        ';
-
-                                }
-                            ?>
+                        
                             <a href="index.php?mod=product&act=checkout" class="primary-btn">TIẾN HÀNH KIỂM TRA</a>
                         </div>
                     </div>

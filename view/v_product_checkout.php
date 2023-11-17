@@ -154,7 +154,7 @@
                         ?>
                         
                         <input type="hidden" name="TongTien" value="<?=$TongTien?>">
-                        
+                    
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Đơn hàng của bạn</h4>

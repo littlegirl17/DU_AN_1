@@ -9,6 +9,7 @@
                     $kq = user_getLogin($_POST['Email'],$_POST['MatKhau']);
                     if($kq){
                         $_SESSION['user'] = $kq;
+                        $_SESSION['email'] = $_POST['Email'];
                         if($_SESSION['user']['Quyen'] >=1 ){
                             header("location: index.php?mod=admin&act=dashboard");
                         }else{
@@ -43,6 +44,7 @@
                     }else{
                         user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
                         $_SESSION['thongbao'] = "Đăng ký tài khoản thành công!";
+                        $_SESSION['email'] = $_POST['Email'];
                     }
                 }
                 $view_name = "user_register";

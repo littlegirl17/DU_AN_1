@@ -227,7 +227,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <nav class="sidebar">
+                <nav class="sidebar__myaccount">
                     <ul>
                         <li>
                             <a href="index.php?mod=myaccount&act=myaccount"><i class="fa-solid fa-house ico-side"></i>Tài khoản</a>
@@ -250,7 +250,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <?php
                     include_once 'view/myAccount/v_'.$view_name.'.php';
                 ?>

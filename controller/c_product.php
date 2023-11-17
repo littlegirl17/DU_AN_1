@@ -110,6 +110,8 @@
                 $view_name = "product_checkout";
                 break;
             case 'order':
+                require "mail/sendmail.php";
+
                 if(!isset($_SESSION['user'])){
                     $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
                     header("location: index.php?mod=user&act=login");
@@ -153,17 +155,60 @@
                                 addOrder($iddh,$item['MaSP'],$item['GiaSP'],$item['SoLuong']); //$iddh là để nó biết lấy theo cái mã iddh nào
                             }
                             //nghĩa là sau khi sản phẩm đó được đặt, và quay lại trang chủ thì sản phẩm đó phải biến mất trong giỏ hàng
-                            unset($_SESSION['mygiohang']);
                         }
+
+                    //Gửi Email
+                        $TieuDe = "Đơn hàng bạn đặt đã thành công";
+                        $NoiDung = "<div><p>Cảm ơn quý khách đã đặt hàng của chúng tôi mã đơn hàng của bạn là: ".$MaDHRandom."</p><div>";
+                        $NoiDung .= "Thông tin đơn đặt hàng bao gồm:";
+                        $TongTien=0; $ThanhTien=0;
+                        foreach($_SESSION['mygiohang'] as $emailcart){
+                            $ThanhTien = $emailcart['SoLuong'] * $emailcart['GiaSP'];
+                            $TongTien +=$ThanhTien;
+                            $NoiDung .= '
+                                    <ul>
+                                        <li style="list-style: none;"><strong style="color: #7FAD39;">Mã SP:</strong> '.$emailcart['MaSP'].'</li>
+                                        <li style="list-style: none;"><strong style="color: #7FAD39;">Tên SP:</strong> '.$emailcart['TenSP'].'</li>
+                                        <li style="list-style: none;"><strong style="color: #7FAD39;">Số Lượng:</strong> '.$emailcart['SoLuong'].'</li>
+                                        <li style="list-style: none;"><strong style="color: #7FAD39;">Giá SP:</strong> '.$emailcart['GiaSP'].'</li>
+                                        <li style="list-style: none;"><strong style="color: #7FAD39;">Thành Tiền:</strong> '.$ThanhTien.'</li>
+                                    </ul>
+                                ';
+                        }
+                        $NoiDung .= '
+                                    <hr>
+                                    <ul>
+                                        <li style="list-style: none;"><strong style="color: red;">Tổng tiền:</strong> '.$TongTien.'</li>
+                                    </ul>';
+                                    
+                        $MailDatHang = $_SESSION['email'];
+                        $mail = new Mailer();
+                        $mail->DatHangEmail($TieuDe,$NoiDung,$MailDatHang);
                 }
+                
+                unset($_SESSION['mygiohang']);
                 header("location:index.php?mod=product&act=vieworder");
                 break;
 
             case 'vieworder':
                 $viewdonhang = get_order($_SESSION['iddh']);
                 $viewsanphamorder = get_productOrder($_SESSION['iddh']);
+                
                 $view_name = "product_order";
                 break;
+
+            // case 'voucher':
+            //     if(isset($_POST['submit_voucher']) && isset($_GET['id']) && $_GET['id'] == 1){
+            //         // lấy từ formm về
+            //         $TongTien = isset($_POST['TongTien']) ? $_POST['TongTien'] : 0;
+            //         $mavoucher = isset($_POST['mavoucher']) ? $_POST['mavoucher'] : '';
+            //         // Này là mã cho nên mình nhập bao nhiêu nó vẫn trừ 10
+            //         $GiaTriOfVoucher = 5;
+            //         $_SESSION['mygiohang'] = $GiaTriOfVoucher;
+            //     }
+            //     header("location:index.php?mod=product&act=viewcart");
+            //     exit();
+            //     break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;
