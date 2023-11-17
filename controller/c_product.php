@@ -1,5 +1,6 @@
 <?php
     include_once 'config.php';
+    include_once 'model/m_page.php';
     include_once 'model/m_product.php';
     include_once 'model/m_order.php';
 
@@ -58,6 +59,26 @@
                         ];
                         $_SESSION['mygiohang'][] = $cart;
                     }
+                }
+                header("location: index.php?mod=product&act=viewcart");
+                break;
+            case 'update_quantity':
+                // Cập nhật giỏ hàng trong session đảm bảo rằng thông tin giỏ hàng được lưu trữ và duy trì qua các trang và phiên làm việc của người dùng.
+                $id = $_GET['id'];
+                $type = $_GET['type'];
+
+                //Xử lý giảm hoặc tăng số lượng
+                if($type === 'decre'){ 
+                    //Kiểm tra nếu số lượng của sản phẩm trong giỏ hàng lớn hơn 1.
+                    if($_SESSION['mygiohang'][$id]['SoLuong'] > 1){
+                        // Nếu điều kiện trên đúng, giảm số lượng của sản phẩm đi 1 đơn vị.
+                        $_SESSION['mygiohang'][$id]['SoLuong']--;
+                    }else{
+                        //Nếu số lượng là 1 hoặc dưới 1, loại bỏ sản phẩm khỏi giỏ hàng.
+                        unset($_SESSION['mygiohang'][$id]);
+                    }
+                }else{
+                    $_SESSION['mygiohang'][$id]['SoLuong']++;
                 }
                 header("location: index.php?mod=product&act=viewcart");
                 break;

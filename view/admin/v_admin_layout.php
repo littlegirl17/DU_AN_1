@@ -22,10 +22,20 @@
 
 <body>
     <div class="container-fluid main-page">
-
+        
         <div class="app-main">
+            
             <nav class="sidebar bg-green">
                 <ul>
+                    <div class="box_infor">
+                        <div class="">
+                            <img src="view/img/logo/google.png" alt="">
+                        </div>
+                        <div class="">
+                            <p >Huynh kha</p>
+                        </div>
+                    </div>
+                    
                     <li>
                         <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
@@ -33,7 +43,7 @@
                         <a href="index.php?mod=admin&act=admin_catagory"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản kí danh mục</a>
                     </li>
                     <li>
-                        <a href="caterogies.html"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>
+                        <a href="index.php?mod=admin&act=admin_product"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>
                     </li>
                     <li>
                         <a href="products.html"><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
@@ -46,6 +56,9 @@
                     </li>
                     <li>
                         <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí bình luận</a>
+                    </li>
+                    <li>
+                        <a href="index.php?mod=page&act=home"><i class="fa-solid fa-user ico-side"></i>Thoát</a>
                     </li>
                 </ul>
             </nav>

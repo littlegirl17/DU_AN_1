@@ -1,152 +1,59 @@
 <div class="main-content">
-        <h3 class="title-page">Sản phẩm</h3>
-        <div class="d-flex justify-content-end">
-        <a href="addProduct.html" class="btn btn-primary mb-2"
-            >Thêm sản phẩm</a
-        >
-        </div>
-        <table id="example" class="table table-striped" style="width: 100%">
-        <thead>
-            <tr>
-            <th>Name</th>
-            <th><img src="hinh" alt="ten san pham" width="80px" /></th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011-07-25</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Serge Baldwin</td>
-            <td>Data Coordinator</td>
-            <td>Singapore</td>
-            <td>64</td>
-            <td>2012-04-09</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Zenaida Frank</td>
-            <td>Software Engineer</td>
-            <td>New York</td>
-            <td>63</td>
-            <td>2010-01-04</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Zorita Serrano</td>
-            <td>Software Engineer</td>
-            <td>San Francisco</td>
-            <td>56</td>
-            <td>2012-06-01</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Jennifer Acosta</td>
-            <td>Junior Javascript Developer</td>
-            <td>Edinburgh</td>
-            <td>43</td>
-            <td>2013-02-01</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Cara Stevens</td>
-            <td>Sales Assistant</td>
-            <td>New York</td>
-            <td>46</td>
-            <td>2011-12-06</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-            <tr>
-            <td>Hermione Butler</td>
-            <td>Regional Director</td>
-            <td>London</td>
-            <td>47</td>
-            <td>2011-03-21</td>
-            <td>
-                <a href="#" class="btn btn-warning"
-                ><i class="fa-solid fa-pen-to-square"></i> Sửa</a
-                >
-                <a href="#" class="btn btn-danger"
-                ><i class="fa-solid fa-trash"></i> Xóa</a
-                >
-            </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-            </tr>
-        </tfoot>
-        </table>
+    <h3 class="title-page">
+        Danh mục
+    </h3>
+    <div class="d-flex justify-content-end">
+        <a href="index.php?mod=admin&act=admin_add_product" class="btn btn-primary mb-2">Thêm sản phẩm  mới</a>
     </div>
+    <section class="row">
+        <div class="col-sm-12 col-md-12 col xl-12">
+            <div class="card chart">
+            <table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã Sản phẩm</th>
+            <th>Tên Sản phẩm</th>
+            <th>Giá Sản phẩm</th>
+            <th>Tiêu đề</th>
+            <th>Mô tả</th>
+            <th>Discount</th>
+            <th>Hình ảnh</th>
+            <th>Mã danh mục</th>
+            <th>Lượt xem</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+            $stt = 1; 
+            foreach($sanphamall as $product):
+        ?>
+        <tr>
+            <td><?=$stt?></td>
+            <td><?=$product['MaSP']?></td>
+            <td><?=$product['TenSP']?></td>
+            <td><?=$product['GiaSP']?></td>
+            <td><?=$product['TieuDe']?></td>
+            <td><?=$product['MoTa']?></td>
+            <td><?=$product['Discount']?></td>
+            <td><img src="view/img/traicay/<?=$product['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;"></td>
+            <td><?=$product['MaDM']?></td>
+            <td><?=$product['LuotXem']?></td>
+            <td>
+                <a href="index.php?mod=admin&act=admin_edit_product&MaSP=<?=$product['MaSP']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                <a href="index.php?mod=admin&act=admin_delete_product&MaSP=<?=$product['MaSP']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+            </td>
+        </tr>
+        <?php 
+            $stt++; 
+            endforeach; 
+        ?>
+    </tbody>
+</table>
+
+            </div>
+        </div>
+        
+    </section>
+</div> 

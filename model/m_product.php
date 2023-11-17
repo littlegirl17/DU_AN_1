@@ -13,4 +13,8 @@
         pdo_execute("UPDATE sanpham SET LuotXem = LuotXem + 1 WHERE MaSP = ?",$MaSP);
     }
 
+    // function update_cart($SoLuong,$TongTien){
+    //     pdo_execute("UPDATE SET WHERE MaSP =?")
+    // }
+
 ?>

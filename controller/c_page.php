@@ -5,10 +5,17 @@
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
+            case 'keyword':
+                # code...
+                break;
             case 'home':
-                
+                if(isset($_POST['submit_home'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
                 $getdanhmuc = danhmuc_getAll(); 
-                $getproNew = page_productNew();
+                $getproNew = page_productNew($keyword);
                 $getDiscount = page_productDiscount();
                 $getLuotMua = get_luotmuaOrder();
                 $getLuotXem = page_productLuotXem();

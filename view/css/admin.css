@@ -50,37 +50,48 @@ body{
     width: 220px;
     padding: 10px 0px !important;
     font-weight: 700;
-    border-radius: 0px 5px 5px 0px;
     z-index: 20;
 }
 .sidebar ul li:hover{
     background-color: #fff;
     color: #000000;
 }
-.sidebar ul li a:hover{
+.sidebar ul li:hover a{
     background-color: #fff;
     color: #7fad39;
 }
 .bg-green{
-    background-color: #000000;
+    background-color: #7fad39;
 }
 nav ul {
     padding: 0 !important;
     list-style: none;
 }
-
+.box_infor{
+    display: flex;
+    background-color: #fff;
+}
+nav ul img{
+    width: 50px;
+}
+nav ul p {
+    color: #000000;
+    padding-left: 20px;
+    transition: ease-in-out .2s all;
+}
 nav ul li {
     padding: 15px;
 }
 
-nav ul li a {
+nav ul li a{
     color: #fff;
     text-decoration: none;
-    transition: ease-in-out .2s all;
+    
 }
 
-nav ul li a:hover {
-    color: #d1d1d1;
+nav ul li:hover {
+    color: #7fad39;
+    
 }
 
 .ico-side {

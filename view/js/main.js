@@ -205,22 +205,6 @@
 
 })(jQuery);
 
-function tangSL(x){
-    var cha = x.parentElement;
-    var slold = cha.children[1];
-    var slnew = Number(slold.value) + 1; 
-    slold.value = slnew;
-    updatetotal()
-}
 
-function giam(x){
-    var cha = x.parentElement;
-    var slold = cha.children[1];
-    if(Number(slold.value)>1){
-        var slnew = parseInt(slold.value) - 1;
-        slold.value = slnew;
-    }else{
-        alert("Đặt hàng tối thiểu là một");
-    }
-    updatetotal()
-}
+
+

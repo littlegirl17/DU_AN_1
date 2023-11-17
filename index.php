@@ -4,6 +4,9 @@
     $getdanhmuc = danhmuc_getAll();
     if(isset($_GET['mod']) && ($_GET['mod']!="")){
         switch ($_GET['mod']) {
+            case 'catagory':
+                $controller_name = 'catagory';
+                break;
             case 'page':
                 $controller_name = 'page';
                 break;
@@ -12,6 +15,9 @@
                 break;
             case 'user':
                 $controller_name = 'user';
+                break;
+            case 'myaccount':
+                $controller_name = 'myaccount';
                 break;
             case 'admin':
                 $controller_name = 'admin';

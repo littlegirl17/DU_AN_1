@@ -1,5 +1,47 @@
+<?php 
+    /*
+        ?? -> toán tử hợp nhất null
+        -> Nó kiểm tra nếu giá trị bên trái của nó là null (hoặc không tồn tại), thì nó sẽ trả về giá trị bên PHẢI của nó
+        -> Nếu giá trị bên trái không phải là null, thì giá trị bên trái sẽ được trả về.
+    
+        [] đây là array trống: nếu $_SESSION['mygiohang'] là null thì $cart sẽ được thiết lập bằng 1 mảng mới
+    */
 
- 
+    /*
+        == So sánh giá trị của hai biến mà không xem xét kiểu dữ liệu
+        === So sánh giá trị và kiểu dữ liệu của hai biến
+    */
+
+    //Khởi tạo giỏ hàng
+        $cart = $_SESSION['mygiohang'] ?? [];
+        $TongTien = 0;
+        $SoLuong = 0;
+
+    //Lấy thông tin từ URL 
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $type = $_GET['type'];
+
+            if(isset($cart[$id])){
+
+                if($type === 'incre'){
+                    $cart[$id]['SoLuong']++;// [id] Đây là chỉ số của mảng
+                
+                }elseif ($type === 'decre') {
+                    $cart[$id]['SoLuong']--;
+
+                    if($cart[$id]['SoLuong'] < 1){
+                        unset($cart[$id]); //Loại bỏ sản phẩm trong mảng $cart có khóa là $id // ngụ ý rằng họ không muốn mua nó nữa và muốn loại bỏ nó khỏi giỏ hàng.
+                    }
+
+                }
+            }
+    //Cập nhật giỏ hàng trong session
+        //Lưu lại tăng hoặc giảm vào session mygiohang
+        $_SESSION['mygiohang'] = $cart;
+    }
+?>
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -88,41 +130,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                                        if(isset($_SESSION['mygiohang']) && is_array($_SESSION['mygiohang'])): 
-                                            $i = 0;// dung de dinh vi minh se xoa no tai vi tri nao trong array
+                                    <?php
+                                        if(isset($cart) && is_array($cart)):
+                                            $id = 0;// dung de dinh vi minh se xoa no tai vi tri nao trong array
                                             $ThanhTien = 0;
-                                            foreach($_SESSION['mygiohang'] as $cart): 
-                                                $ThanhTien = $cart['SoLuong']*$cart['GiaSP'];
-                                                $linkdel = "index.php?mod=product&act=deleteid&del=".$i;
+                                            foreach($cart as $item):
+                                                $ThanhTien = $item['SoLuong']*$item['GiaSP'];
+                                                $linkdel = "index.php?mod=product&act=deleteid&del=".$id;
                                     ?>
                                         <tr>
                                             <input type="hidden" name="MaSP">
                                             <td class="shoping__cart__item">
-                                                <img src="view/img/traicay/<?=$cart['HinhAnh']?>" alt="">
-                                                <h5><?=$cart['TenSP']?></h5>
+                                                <img src="view/img/traicay/<?=$item['HinhAnh']?>" alt="">
+                                                <h5><?=$item['TenSP']?></h5>
                                             </td>
                                             <td class="shoping__cart__price" id="GiaSP" >
-                                            <?=number_format($cart['GiaSP'],"0",",",".")?>
+                                            <?=number_format($item['GiaSP'],"0",",",".")?>
                                             </td>
                                             <td class="shoping__cart__quantity">
                                                 <div class="quantity">
                                                     <div class="pro-qty">
-                                                        <span class="dec qtybtn" onclick="giam(this)">-</span>
-                                                        <input type="text" value="<?=$cart['SoLuong']?>" id="SoLuong">
-                                                        <span class="inc qtybtn" onclick="tangSL(this)">+</span>
+                                                        <span class="dec qtybtn"><a href="index.php?mod=product&act=update_quantity&id=<?= $id ?>&type=decre" >-</a></span>
+                                                        <input type="text" value="<?=$item['SoLuong']?>">
+                                                        <span class="inc qtybtn" ><a href="index.php?mod=product&act=update_quantity&id=<?= $id ?>&type=incre" >+</a></span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="shoping__cart__total" id="ThanhTien">
+                                            <td class="shoping__cart__total" >
                                                 <?=number_format($ThanhTien,"0",",",".")?>
                                             </td>
                                             <td class="shoping__cart__item__close">
                                                 <a href="<?=$linkdel?>">x</a>
                                             </td>
                                         </tr>
-                                    <?php 
-                                                $i++;
+                                    <?php
+                                                $id++;
                                             endforeach;
                                         endif;
                                     ?>
@@ -153,16 +195,14 @@
                     <div class="col-lg-6">
                         <div class="shoping__checkout">
                             <h5>Tổng tiền giỏ hàng</h5>
-                            <input type="text" name="TongTien" id="TongTien">
-                            <input type="text" name="SoLuong" id="SoLuonghidden">
-                            <?php 
-                                if(isset($_SESSION['mygiohang']) && is_array($_SESSION['mygiohang'])){
+                            
+                            <?php
+                                if(isset($cart) && is_array($cart)){
                                     $ThanhTien = 0;
-                                    $TongTien =0;
-                                    foreach($_SESSION['mygiohang'] as $cart){
+                                    foreach($cart as $cart){
                                         $ThanhTien = $cart['SoLuong']*$cart['GiaSP'];
                                         $TongTien += $ThanhTien;
-                                        
+
                                     }
                                     echo '
                                     <ul>
@@ -170,44 +210,81 @@
                                         <li>Tổng tiền <span>'.number_format($TongTien,"0",",",".").'</span></li>
                                     </ul>
                                         ';
-                                    
+
                                 }
                             ?>
-                            
                             <a href="index.php?mod=product&act=checkout" class="primary-btn">TIẾN HÀNH KIỂM TRA</a>
                         </div>
                     </div>
                 </div>
         </div>
-    </section>
+    </section> 
     <!-- Shoping Cart Section End -->
 
+
+
     <script>
-        
+    /*
+        function tangSL(x){
+            var cha = x.parentElement;
+            var slold = cha.children[1];
+            var slnew = Number(slold.value) + 1;
+            slold.value = slnew;
+            updatetotal();
+            
+        }
+
+        function giam(x){
+            var cha = x.parentElement;
+            var slold = cha.children[1];
+            if(Number(slold.value)>1){
+                var slnew = parseInt(slold.value) - 1;
+                slold.value = slnew;
+            }else{
+                alert("Đặt hàng tối thiểu là một");
+            }
+            updatetotal();
+        }
+
+
         function updatetotal() {
             var dssp = document.querySelectorAll('table tbody tr');
             var TongTien = 0;
             var SoLuong = 0;
-            dssp.forEach(function (sanpham) {
+            for(const sanpham of dssp) {
                 var GiaSP = parseFloat(sanpham.querySelector('#GiaSP').innerText); //innerTexttruy xuất nội dung văn bản bên trong phần tử đã chọn,  trong trường hợp này là nội dung văn bản bên trong phần tử có ID "GiaSP".
-                SoLuong += parseInt(sanpham.querySelector('.pro-qty input').value);
+                SoLuong = parseInt(sanpham.querySelector('.pro-qty input').value);
                 var ThanhTien = GiaSP * SoLuong;
+                sanpham.querySelector('.shoping__cart__total').innerText = ThanhTien + ' đ';
 
-                sanpham.querySelector('#ThanhTien').innerText = ThanhTien.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
                 TongTien += ThanhTien;
-            });
+            }
 
-        var thanhtienElement = document.querySelector('.shoping__checkout ul li:nth-child(1) span');
-        thanhtienElement.innerText = TongTien.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+            var thanhtienElement = document.querySelector('.shoping__checkout ul li:nth-child(1) span');
+            thanhtienElement.innerText = TongTien + ' đ';
 
-        var tongTienElement = document.querySelector('.shoping__checkout ul li:nth-child(2) span');
-        tongTienElement.innerText = TongTien.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-        
-        document.querySelector('#TongTien').value=TongTien;
-        document.querySelector('#SoLuonghidden').value=SoLuong;
+            var tongTienElement = document.querySelector('.shoping__checkout ul li:nth-child(2) span');
+            tongTienElement.innerText = TongTien + ' đ';
 
-    }
+            document.querySelector('#TongTien').value=TongTien;
+            document.querySelector('#SoLuong').value=SoLuong;
+
+        }
         updatetotal(); // Đảm bảo rằng tổng tiền được cập nhật khi trang được tải
+
+
+        $("#tangSL").click(function(){
+            $.post("updatecart.php",
+            {
+                SoLuong: "",
+                MaSP: ""
+            },
+            function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+    
+        */
     </script>
 
 

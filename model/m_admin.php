@@ -55,4 +55,31 @@
         function delete_catagory($MaDM){
             pdo_execute("DELETE FROM danhmuc WHERE MaDM = ?",$MaDM);
         }
+
+
+    // Sản phẩm
+        
+        function get_productadmin(){
+            return pdo_query("SELECT * FROM sanpham");
+        }
+
+        // Thêm
+        function add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem) {
+            pdo_execute("INSERT INTO sanpham (`TenSP`, `GiaSP`, `TieuDe`, `MoTa`, `Discount`, `HinhAnh`,`MaDM`,`LuotXem`) VALUES (?,?,?,?,?,?,?,?)",$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem);
+        }
+
+        //Lấy về để sửa
+        function get_productById($MaSP){
+            return pdo_query_one("SELECT * FROM sanpham WHERE MaSP = ?",$MaSP);
+        }
+
+        // Cập nhật
+        function update_product($MaSP,$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh, $MaDM){
+            pdo_execute("UPDATE sanpham SET TenSP = ?, GiaSP = ?, TieuDe = ?, MoTa = ?, Discount = ?, HinhAnh = ?, MaDM = ? WHERE MaSP = ?",$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh, $MaDM, $MaSP);
+        }
+
+        // Xóa
+        function delete_product($MaSP){
+            pdo_execute("DELETE FROM sanpham WHERE MaSP = ?",$MaSP);
+        }
 ?>

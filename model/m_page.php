@@ -1,8 +1,8 @@
 <?php
     include_once 'model/m_pdo.php';
 
-    function page_productNew(){
-        return pdo_query("SELECT * FROM sanpham  ORDER BY MaSP DESC LIMIT 8"); //Vì là sanphammoi nên cái sp nào mới thêm thì nó tự xếp lên đầu tiên, or mình muốn cố định thì dùng NEW
+    function page_productNew($keyword){
+        return pdo_query("SELECT * FROM sanpham WHERE TenSP LIKE '%$keyword%'  ORDER BY MaSP DESC LIMIT 8"); //Vì là sanphammoi nên cái sp nào mới thêm thì nó tự xếp lên đầu tiên, or mình muốn cố định thì dùng NEW
     }
 
     function page_productDiscount(){

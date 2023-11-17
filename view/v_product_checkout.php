@@ -153,15 +153,15 @@
                             
                         ?>
                         
-                        <input type="hidden" name="TongTien" id="TongTien" value="<?=$TongTien?>">
+                        <input type="hidden" name="TongTien" value="<?=$TongTien?>">
                         
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Đơn hàng của bạn</h4>
-                                <div class="checkout__order__products">Sản phẩm <span>Tổng tiền</span></div>
+                                <div class="checkout__order__products">Sản phẩm <span>Giá tiền</span></div>
                                 <ul>
                                     <?php foreach($_SESSION['mygiohang'] as $item): ?>
-                                    <li><?=$item['TenSP']?> <span><?=number_format($item['GiaSP'],"0",",",".")?> VNĐ</span></li>
+                                        <li><?=$item['TenSP']?> <span><?=number_format($item['GiaSP'],"0",",",".")?> VNĐ</span></li>
                                     <?php endforeach; ?>
                                 </ul>
 

@@ -62,13 +62,63 @@
                 break;
             // admin sản phẩm
             case 'admin_product':
+                $sanphamall = get_productadmin();
+                $view_name = "admin_product";
+
                 $view_name = "admin_product";
                 break;
             case 'admin_add_product':
+                $danhmucall = get_catagoryadmin();
+                if (isset($_POST['submit'])) {
+                    $TenSP = isset($_POST['TenSP']) ? $_POST['TenSP'] : "";
+                    $GiaSP = isset($_POST['GiaSP']) ? intval($_POST['GiaSP']) : "";
+                    $TieuDe = isset($_POST['TieuDe']) ? $_POST['TieuDe'] : "";
+                    $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
+                    $Discount = isset($_POST['Discount']) ? intval($_POST['Discount']) : "";
+                    $HinhAnh = isset($_FILES['HinhAnh']['name']) ? $_FILES['HinhAnh']['name'] : "";
+                    $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
+                    $LuotXem = isset($_POST['LuotXem']) ? intval($_POST['LuotXem']) : "";
+                    add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem);
+                
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                        $uploadPath = "view/img/products/" . $_FILES['HinhAnh']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+                
+                    header("location: index.php?mod=admin&act=admin_product");
+                }
                 $view_name = "admin_add_product";
                 break;
             case 'admin_edit_product':
+                $danhmucall = get_catagoryadmin();
+
+                $MaSP = $_GET['MaSP'];
+                $getproductId = get_productById($MaSP);
+                if (isset($_POST['submit']) && ($_POST['submit'] > 0)) {
+                    $GiaSP = isset($_POST['GiaSP']) ? intval($_POST['GiaSP']) : "";
+                    $TieuDe = isset($_POST['TieuDe']) ? $_POST['TieuDe'] : "";
+                    $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
+                    $Discount = isset($_POST['Discount']) ? intval($_POST['Discount']) : "";
+                    $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
+                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $Discount, $_FILES['HinhAnh']['name'], $MaDM);
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                        $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+
+                    header("location: index.php?mod=admin&act=admin_product");
+                }
                 $view_name = "admin_edit_product";
+                break;
+
+            case 'admin_delete_product':
+                $MaSP = $_GET['MaSP'];
+                if(isset($_GET['MaSP']) && ($_GET['MaSP']>0)){
+                    delete_product($MaSP);
+                }
+                header("location: index.php?mod=admin&act=admin_product");
                 break;
             default:
                 header("location:index.php?mod=page&act=home");
