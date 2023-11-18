@@ -1,7 +1,9 @@
 <?php
     if(isset($_SESSION['user']) && is_array($_SESSION['user']));
 ?>
-
+<div class="title_myacount">
+    <h4>Đổi mật khẩu</h4>
+</div>
 <form action="index.php?mod=myaccount&act=doi_password" method="post">
     <div class="">
         <!-- MaTK phải đặt value để nó nhận được cái giá trị mà nó update -->

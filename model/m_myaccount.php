@@ -17,4 +17,11 @@
     function update_passw_myac($MaTK, $SoDienThoai, $MatKhauNew) {
         pdo_execute("UPDATE taikhoan SET SoDienThoai=?, MatKhau=? WHERE MaTK=?", $SoDienThoai, $MatKhauNew, $MaTK);
     }
+
+    function historyorder_myaccount($MaTK){
+        return pdo_query("SELECT * FROM donhang WHERE MaTK = ? ",$MaTK);
+    }
+    function history_myaccount($MaDH){
+        return pdo_query("SELECT ctdh.*, dh.*, sp.* FROM chitietdonhang ctdh INNER JOIN donhang dh ON ctdh.MaDH = dh.MaDH INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP  WHERE ctdh.MaDH = ? ",$MaDH);
+    }
 ?>

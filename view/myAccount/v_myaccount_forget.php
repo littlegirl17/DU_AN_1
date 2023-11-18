@@ -1,3 +1,7 @@
+<div class="title_myacount">
+    <h4>Quên mật khẩu</h4>
+</div>
+
 <form action="index.php?mod=myaccount&act=forget_pasword" method="post">
     <div class="">    
         <div class="form-group">

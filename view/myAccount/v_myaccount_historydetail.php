@@ -1,24 +1,27 @@
-<div class="title_myacount">
-    <h4>Đơn hàng đang đặt</h4>
-</div>
 
+<div class="back_myaccount" style="text-align: right;">
+    <a href="index.php?mod=myaccount&act=history_account">Quay lại lịch sử</a>
+</div>
+<div class="title_myacount">
+    <h4>Chi tiết lịch sử</h4>
+</div>
 <table class="table table-borderless ">
     <thead>
         <tr>
         <th scope="col">STT</th>
-        <th scope="col">Tên</th>
-        <th scope="col">SL</th>
-        <th scope="col">Giá</th>
-        <th scope="col">Thành Tiền</th>
+        <th scope="col">sản phẩm</th>
+        <th scope="col">Giá tiền </th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Tổng tiền</th>
         </tr>
     </thead>
     <tbody>
-        <?php
-        if(isset($_SESSION['iddh']) && ($_SESSION['iddh'])>0):
+        <?php 
             $stt = 1;
             $TongTien = 0;
-            foreach($viewsanphamorder as $item):
+            foreach($viewhistorymyacc as $item):
                 $TongTien = $item['SoLuong']*$item['GiaSP'];
+
         ?>
         <tr>
             <th ><?=$stt?></th>
@@ -29,8 +32,7 @@
         </tr>
         <?php
                 $stt++;
-            endforeach;
-        endif;
+            endforeach; 
         ?>
     </tbody>
 </table>

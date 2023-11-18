@@ -63,6 +63,17 @@
                 $viewsanphamorder = get_productOrder($_SESSION['iddh']);
                 $view_name = "myaccount_order";
                 break;
+
+            case 'history_account':
+                $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+                $view_name = "myaccount_history";
+                break;
+            
+            case 'detail_account':
+                $MaDH = $_GET['MaDH'];
+                $viewhistorymyacc = history_myaccount($MaDH);
+                $view_name = "myaccount_historydetail";
+                break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;

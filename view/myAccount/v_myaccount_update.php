@@ -1,7 +1,9 @@
 <?php
     if(isset($_SESSION['user']) && is_array($_SESSION['user']));
 ?>
-
+<div class="title_myacount">
+    <h4>Cập nhật thông tin tài khoản</h4>
+</div>
 <form action="" method="post">
     <div class="">    
         <input type="hidden" name="MaTK" value="<?=$_SESSION['user']['MaTK']?>">   

@@ -3194,6 +3194,7 @@ h1 a{
 .sidebar__myaccount{
 	background-color: #7FAD39;
 	color: #fffefe;
+	
 }
 .sidebar__myaccount ul li{
 	list-style: none;
@@ -3211,7 +3212,19 @@ h1 a{
 	color: #fffefe;
 	font-size: 1.2em;
 }
-
+.title_myacount{
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgb(179, 179, 179);
+}
+.back_myaccount a{
+	padding: 5px 5px;
+	
+	text-decoration: none;
+}
+.back_myaccount a:hover{
+	text-decoration: underline;
+	color: #7FAD39;
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

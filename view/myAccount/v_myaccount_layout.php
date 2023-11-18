@@ -245,6 +245,9 @@
                             <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-user ico-side"></i>Đơn hàng của tôi</a>
                         </li>
                         <li>
+                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-user ico-side"></i>Lịch sự đặt hàng</a>
+                        </li>
+                        <li>
                             <a href=""><i class="fa-solid fa-user ico-side"></i>Logout</a>
                         </li>
                     </ul>
