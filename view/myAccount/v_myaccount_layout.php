@@ -233,19 +233,19 @@
                             <a href="index.php?mod=myaccount&act=myaccount"><i class="fa-solid fa-house ico-side"></i>Tài khoản</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act="><i class="fa-solid fa-cart-shopping ico-side"></i>Cập nhật tài khoản</a>
+                            <a href="index.php?mod=myaccount&act=update_myaccount"><i class="fa-solid fa-cart-shopping ico-side"></i>Cập nhật tài khoản</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act="><i class="fa-solid fa-folder-open ico-side"></i>Quên mật khẩu</a>
+                            <a href="index.php?mod=myaccount&act=forget_pasword"><i class="fa-solid fa-folder-open ico-side"></i>Quên mật khẩu</a>
                         </li>
                         <li>
-                            <a href="products.html"><i class="fa-solid fa-mug-hot ico-side"></i> Đổi mật khẩu</a>
+                            <a href="index.php?mod=myaccount&act=doi_password"><i class="fa-solid fa-mug-hot ico-side"></i> Đổi mật khẩu</a>
                         </li>
                         <li>
-                            <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Đơn hàng của tôi</a>
+                            <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-user ico-side"></i>Đơn hàng của tôi</a>
                         </li>
                         <li>
-                            <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Logout</a>
+                            <a href=""><i class="fa-solid fa-user ico-side"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>
