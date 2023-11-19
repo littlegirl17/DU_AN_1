@@ -6,9 +6,20 @@
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
             case 'myaccount':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
+                
                 $view_name = "myaccount_user";
                 break;
             case 'update_myaccount':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 if(isset($_POST['submit'])){
                     update_myaccountid($_POST['MaTK'],$_POST['HoTen'],$_POST['UserName'],$_POST['Email'],$_POST['MatKhau'],$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
                     $_SESSION['user']['HoTen'] = $_POST['HoTen'];
@@ -22,6 +33,11 @@
                 $view_name = "myaccount_update";
                 break;
             case 'forget_pasword':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 $ThongBao = "";
                 if(isset($_POST['submit'])){
                     $kq = forget_myaccount($_POST['SoDienThoai']);
@@ -36,6 +52,11 @@
                 break;
 
             case 'doi_password':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 $ThongBao = "";$ThongBao2 = "";
                 if(isset($_POST['submit'])){
                     $MaTK = $_POST['MaTK'];
@@ -60,16 +81,31 @@
                 break;
             
             case 'order_account':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 $viewsanphamorder = get_productOrder($_SESSION['iddh']);
                 $view_name = "myaccount_order";
                 break;
 
             case 'history_account':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
                 $view_name = "myaccount_history";
                 break;
             
             case 'detail_account':
+                if(isset($_SESSION['user']) == false){
+                    header("location: index.php?mod=user&act=login");
+                    $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
+                    exit();//thoát liền trang web
+                }
                 $MaDH = $_GET['MaDH'];
                 $viewhistorymyacc = history_myaccount($MaDH);
                 $view_name = "myaccount_historydetail";

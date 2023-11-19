@@ -7,8 +7,8 @@
     }
 
     //Register
-    function user_register($HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai){
-        pdo_execute("INSERT INTO taikhoan (`HoTen`,`UserName`,`Email`,`MatKhau`,`DiaChi`,`GioiTinh`,`SoDienThoai`) VALUES(?,?,?,?,?,?,?)",$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai);
+    function user_register($HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai,$HinhAnh){
+        pdo_execute("INSERT INTO taikhoan (`HoTen`,`UserName`,`Email`,`MatKhau`,`DiaChi`,`GioiTinh`,`SoDienThoai`,`HinhAnh`) VALUES(?,?,?,?,?,?,?,?)",$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai,$HinhAnh);
     }
 
     //check trùng email

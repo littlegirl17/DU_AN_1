@@ -42,7 +42,8 @@
                         }
                         
                     }else{
-                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
+                        $HinhAnh = 'ava_user.jpeg';
+                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai'],$HinhAnh);
                         $_SESSION['thongbao'] = "Đăng ký tài khoản thành công!";
                         $_SESSION['email'] = $_POST['Email'];
                     }

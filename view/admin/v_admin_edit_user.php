@@ -48,6 +48,14 @@
                                 <option value="1" <?=($getuserById['GioiTinh'] == 1) ? 'selected' : ''?>>Admin</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">Ảnh Sản phẩm</label>
+                            <div class="custom-file">
+                                <input type="file" name="HinhAnh">
+                                <img src="view/img/avatar/<?=$getuserById['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;">
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>

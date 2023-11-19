@@ -27,15 +27,16 @@
             
             <nav class="sidebar bg-green">
                 <ul>
-                    <div class="box_infor">
-                        <div class="">
-                            <img src="view/img/logo/google.png" alt="">
+                    <?php if(isset($_SESSION['user'])): ?>
+                        <div class="box_infor">
+                            <div class="">
+                                <img src="view/img/avatar/<?=$_SESSION['user']['HinhAnh']?>" alt="">
+                            </div>
+                            <div class="">
+                                <p ><?=$_SESSION['user']['HoTen']?></p>
+                            </div>
                         </div>
-                        <div class="">
-                            <p >Huynh kha</p>
-                        </div>
-                    </div>
-                    
+                    <?php endif; ?>
                     <li>
                         <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
@@ -52,7 +53,7 @@
                         <a href="index.php?mod=admin&act=admin_user"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
                     </li>
                     <li>
-                        <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí đơn hàng</a>
+                        <a href="index.php?mod=admin&act=admin_donhang"><i class="fa-solid fa-user ico-side"></i>Quản lí đơn hàng</a>
                     </li>
                     <li>
                         <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-user ico-side"></i>Quản lí bình luận</a>

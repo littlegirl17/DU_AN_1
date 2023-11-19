@@ -89,9 +89,9 @@
         }
 
         // Thêm
-        function add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
-            pdo_execute("INSERT INTO TaiKhoan (`HoTen`, `UserName`, `Email`, `MatKhau`, `DiaChi`, `GioiTinh`, `SoDienThoai`, `Quyen`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);
+        function add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh) {
+            pdo_execute("INSERT INTO TaiKhoan (`HoTen`, `UserName`, `Email`, `MatKhau`, `DiaChi`, `GioiTinh`, `SoDienThoai`, `Quyen`, `HinhAnh`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh);
         }
         
         //Lấy về để sửa
@@ -100,8 +100,8 @@
         }
 
         // Cập nhật
-        function update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
-            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $MaTK);
+        function update_user($MaTK,$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh) {
+            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ?, HinhAnh = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh, $MaTK);
         }
             
         // Xóa
@@ -119,4 +119,26 @@
         function delete_cmt($MaBL) {
             pdo_execute("DELETE FROM binhluan WHERE MaBL = ?", $MaBL);
         }
+    
+    // Đơn hang
+                            
+        function get_donhangadmin(){
+            return pdo_query("SELECT * FROM donhang");
+        }
+
+        //Lấy về để sửa
+        function get_donhangById($MaDH){
+            return pdo_query_one("SELECT * FROM donhang WHERE MaDH = ?",$MaDH);
+        }
+
+        // cap nhat
+        function update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $Quyen, $GhiChu, $TongTien, $NgayDat, $MaTK, $PhuongThucTT, $TrangThai) {
+            pdo_execute("UPDATE DonHang SET HoTen = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, Quyen = ?, GhiChu = ?, TongTien = ?, NgayDat = ?, MaTK = ?, PhuongThucTT = ?, TrangThai = ? WHERE MaDH = ?",
+            $HoTen, $Email, $SoDienThoai, $DiaChi, $Quyen, $GhiChu, $TongTien, $NgayDat, $MaTK, $PhuongThucTT, $TrangThai, $MaDH);
+        }
+
+        // xoa 
+        /*function delete_donhang($MaDH){
+            pdo_execute("DELETE FROM donhang WHERE MaDH = ?",$MaDH);
+        }*/
 ?>

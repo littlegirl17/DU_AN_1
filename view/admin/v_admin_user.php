@@ -21,6 +21,7 @@
             <th>Giới tính </th>
             <th>SĐT </th>
             <th>Quyền</th>
+            <th>Avatar</th>
             <th>Ngày tạo</th>
             <th>Hành động</th>
             
@@ -42,6 +43,7 @@
             <td><?=$user['GioiTinh']?></td>
             <td><?=$user['SoDienThoai']?></td>
             <td><?=$user['Quyen']?></td>
+            <td><img src="view/img/avatar/<?=$user['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;"></td>
             <td><?=$user['NgayTao']?></td>
          
             <td>
