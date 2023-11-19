@@ -6,14 +6,23 @@
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
+            case 'binhluan':
+                $MaTK = $_SESSION['user']['MaTK'];
+                if(isset($_POST['submitbinhluan'])){
+                    $MaSP = $_POST['MaSP'];
+                    $NoiDung = $_POST['NoiDung'];
+                    binhuan_add($MaSP,$MaTK,$NoiDung);
+                }
+                header("location: index.php?mod=product&act=detail&MaSP=$MaSP");
+                break;
             case 'detail':
-                $MaSP = $_GET['MaSP'];
-                $update_view = product_updateLuotXem($MaSP);
-                $detail_product = product_detailbyid($MaSP);
+                $update_view = product_updateLuotXem($_GET['MaSP']);
+                $detail_product = product_detailbyid($_GET['MaSP']);
+                $loadcomment = get_byproductcomment($_GET['MaSP']);
                 $lienquan_product = product_lienquanRanDom($detail_product['MaDM']);
                 $view_name = "product_detail";
                 break;
-
+            
             case 'viewcart':
                 $view_name = "product_cart";
                 break;

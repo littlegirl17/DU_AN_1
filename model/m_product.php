@@ -13,8 +13,12 @@
         pdo_execute("UPDATE sanpham SET LuotXem = LuotXem + 1 WHERE MaSP = ?",$MaSP);
     }
 
-    // function update_cart($SoLuong,$TongTien){
-    //     pdo_execute("UPDATE SET WHERE MaSP =?")
-    // }
+    function binhuan_add($MaSP,$MaTK,$NoiDung){
+        pdo_execute("INSERT INTO binhluan (`MaSP`,`MaTK`,`NoiDung`) VALUES(?,?,?)",$MaSP,$MaTK,$NoiDung);
+    }
+
+    function get_byproductcomment($MaSP){
+        return pdo_query("SELECT * FROM binhluan bl INNER JOIN taikhoan tk ON bl.MaTK = tk.MaTK WHERE bl.MaSP=?",$MaSP);
+    }
 
 ?>

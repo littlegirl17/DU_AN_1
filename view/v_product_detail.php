@@ -1,4 +1,5 @@
-    <!-- Hero Section Begin -->
+
+<!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
@@ -106,20 +107,21 @@
                         <div class="product__details__price"><?=number_format($detail_product['GiaSP'],"0",",",".")?></div>
                         <p><?=$detail_product['TieuDe']?></p>
                         <div class="product_detail_three">
+
+                            <form action="index.php?mod=product&act=addtocart" method="post">
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="1" min="1" max="50">
+                                        <span class="dec qtybtn" onclick="decrementQuantity()">-</span>
+                                        <input type="text" name="SoLuong" id="quantityInput" value="1" readonly>
+                                        <span class="inc qtybtn" onclick="incrementQuantity()">+</span>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <form action="index.php?mod=product&act=addtocart" method="post">
                                 <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
                                 <input type="hidden" name="HinhAnh" value="<?=$detail_product['HinhAnh']?>">
                                 <input type="hidden" name="GiaSP" value="<?=$detail_product['GiaSP']?>">
                                 <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
-                                <input type="hidden" name="SoLuong" min=1 max=20 value="1">
                                 <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
                             </form>
 
@@ -147,14 +149,8 @@
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
                                     aria-selected="true">Mô tả</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Thông tin thêm</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
+                            
+                            
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -163,19 +159,7 @@
                                     <p><?= $detail_product['MoTa']?></p>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p><?= $detail_product['MoTa']?></p>
-                                    <p><?= $detail_product['MoTa']?></p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p><?= $detail_product['MoTa']?></p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -183,7 +167,60 @@
         </div>
     </section>
     <!-- Product Details Section End -->
-
+ <section class="related-product"> 
+        <div class="container">
+        <div class="section-title related__product__title">
+            <h2>Cảm nghĩ bạn về sản phẩm:</h2>
+        </div>
+            <?php foreach($loadcomment as $dsbl): ?>
+            <div class="row"><!--  mỗi bình luận sẽ là một row -->
+                <div class="col-md-6">
+                    <table >
+                        <tr>
+                            <th >Người bình luận</th>
+                            <th style="padding-left: 100px;">Thời gian</th>
+                        </tr>
+                        <tbody >
+                            <tr>
+                                <td><?=$dsbl['HoTen']?></td>
+                                <td style="padding-left: 100px;"><?=$dsbl['NgayBL']?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="tablebinhluan">
+                        <tr>
+                            <th>Nội dung bình luận</th>
+                        </tr>
+                        <tbody class="binhluandetail">
+                            <tr>
+                                <td>
+                                    <p><?= $dsbl['NoiDung']?></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <?php endforeach; ?>
+            <!-- Nếu nó tồn tại session['user'] thì mình mới cho nó quyền ĐƯỢC BÌNH LUẬN -->
+            <?php if(isset($_SESSION['user'])):?>
+                <form action="index.php?mod=product&act=binhluan" method="POST"> <!-- vi minh lam doc loc -->
+                    <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
+                    <div class="form-detail">
+                        <label for="">Nhận xét của bạn</label><br>
+                        <input type="text" name="NoiDung" class="Noidungcmt">
+                    </div>
+                    <div class="form-detail">
+                        <button type="submit" class="btn btn-success" name="submitbinhluan">Gửi bình luận</button>
+                    </div>
+                </form>
+            <?php endif;?>
+            <!-- END -->
+ </div>
+    </section>
     <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
@@ -215,4 +252,19 @@
             </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
+
+    <script>
+        function incrementQuantity() {
+            var quantityInput = document.getElementById('quantityInput');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decrementQuantity() {
+            var quantityInput = document.getElementById('quantityInput');
+            //Nếu giá trị hiện tại của trường nhập liệu lớn hơn 1
+            if (parseInt(quantityInput.value) > 1) {
+                //thì giá trị đó sẽ được giảm đi 1 -> làm cho sản phẩm không bao giờ nhỏ hơn 1 đucợ
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+    </script>

@@ -3187,7 +3187,23 @@ h1 a{
 	width: 1170px;
 	margin: 0 auto;
 }
-
+/*---------------------
+    Binh luan
+-----------------------*/
+.form-detail input {
+    margin-top: 5px;
+    width: 50%;
+    height: 70px; /* Đặt chiều cao mong muốn */
+    padding-left: 10px;
+    padding-top: 5px; /* Điều chỉnh để canh chỉnh văn bản */
+    padding-bottom: 35px;
+    outline: none;
+    border: 1px solid rgb(220, 216, 216);
+    border-radius: 10px;
+}
+.form-detail button{
+	margin-top: 10px;
+}
 /*---------------------
     My account
 -----------------------*/
@@ -3203,7 +3219,7 @@ h1 a{
 .sidebar__myaccount ul li:hover {
 	background-color: #ffffff;
 	color: #7FAD39;
-	border: 1px solid #7FAD39;
+	border: 1px solid #7FAD39; 
 }
 .sidebar__myaccount ul li:hover a {
 	color: #7FAD39;

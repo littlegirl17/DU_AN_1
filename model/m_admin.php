@@ -82,4 +82,41 @@
         function delete_product($MaSP){
             pdo_execute("DELETE FROM sanpham WHERE MaSP = ?",$MaSP);
         }
+
+    // User
+        function get_useradmin(){
+            return pdo_query("SELECT * FROM TaiKhoan");
+        }
+
+        // Thêm
+        function add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
+            pdo_execute("INSERT INTO TaiKhoan (`HoTen`, `UserName`, `Email`, `MatKhau`, `DiaChi`, `GioiTinh`, `SoDienThoai`, `Quyen`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);
+        }
+        
+        //Lấy về để sửa
+        function get_userById($MaTK){
+            return pdo_query_one("SELECT * FROM TaiKhoan WHERE MaTK = ?",$MaTK);
+        }
+
+        // Cập nhật
+        function update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
+            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $MaTK);
+        }
+            
+        // Xóa
+        function delete_user($MaTK) {
+            pdo_execute("DELETE FROM TaiKhoan WHERE MaTK = ?", $MaTK);
+        }
+    
+    // Bình luận
+
+        // Cmt 
+        function get_cmtadmin(){
+            return pdo_query("SELECT * FROM binhluan");
+        }
+        // Xóa
+        function delete_cmt($MaBL) {
+            pdo_execute("DELETE FROM binhluan WHERE MaBL = ?", $MaBL);
+        }
 ?>

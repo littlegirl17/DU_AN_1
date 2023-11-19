@@ -46,16 +46,16 @@
                         <a href="index.php?mod=admin&act=admin_product"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>
                     </li>
                     <li>
-                        <a href="products.html"><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
+                        <a href=""><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
                     </li>
                     <li>
-                        <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
+                        <a href="index.php?mod=admin&act=admin_user"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
                     </li>
                     <li>
                         <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí đơn hàng</a>
                     </li>
                     <li>
-                        <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí bình luận</a>
+                        <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-user ico-side"></i>Quản lí bình luận</a>
                     </li>
                     <li>
                         <a href="index.php?mod=page&act=home"><i class="fa-solid fa-user ico-side"></i>Thoát</a>

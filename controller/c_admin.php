@@ -120,6 +120,78 @@
                 }
                 header("location: index.php?mod=admin&act=admin_product");
                 break;
+
+        // user
+            case 'admin_user':
+                $userall = get_useradmin();
+                $view_name = "admin_user";
+                break;
+            
+            // add user
+            case 'admin_add_user':
+                $userall = get_useradmin();
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
+                    $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
+                    $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
+                    $MatKhau = isset($_POST['MatKhau']) ? password_hash($_POST['MatKhau'], PASSWORD_DEFAULT) : ""; 
+                    $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
+                    $GioiTinh = isset($_POST['GioiTinh']) ? intval($_POST['GioiTinh']) : 0;                    
+                    $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
+                    $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
+                    add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);                   
+                    header("location: index.php?mod=admin&act=admin_user");
+                }
+                $view_name = "admin_add_user";
+                break;
+
+            // edit user 
+            case 'admin_edit_user':
+                $MaTK = $_GET['MaTK'];
+                $getuserById = get_userById($MaTK);
+                if (isset($_POST['submit']) && ($_POST['submit'] > 0)) {
+                    $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
+                    $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
+                    $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
+                    $MatKhau = isset($_POST['MatKhau']) ? md5($_POST['MatKhau']) : "";
+                    $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
+                    $GioiTinh = isset($_POST['GioiTinh']) ? $_POST['GioiTinh'] : "";
+                    $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
+                    $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
+                    update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);
+                    header("location: index.php?mod=admin&act=admin_user");
+                }
+            
+                $view_name = "admin_edit_user";
+                break;
+                
+            //xoa user
+            case 'admin_delete_user':
+                $MaTK = $_GET['MaTK'];
+                
+                if(isset($MaTK) && ($MaTK > 0)){
+                    delete_user($MaTK);
+                }
+                
+                header("location: index.php?mod=admin&act=admin_user");
+                break;
+        // Bình luận
+                // quản lý cmt user dành cho admin -- Show truy váan sql show lên : 
+                case 'admin_cmt':
+                    
+                    $cmtall = get_cmtadmin();
+                    $view_name = "admin_cmt";
+                    break;
+                // xóa cmt 
+                case 'admin_delete_cmt':
+                    $MaBL = $_GET['MaBL'];
+                    
+                    if(isset($MaBL) && ($MaBL > 0)){
+                        delete_cmt($MaBL);
+                    }
+                    
+                    header("location: index.php?mod=admin&act=admin_cmt");
+                    break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;
