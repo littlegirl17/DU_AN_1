@@ -44,16 +44,15 @@
             <ul>
                 <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
+                <li><a href="#">Danh mục</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <?php foreach($getdanhmuc as $dm):?>
+                            <li><a href="#"><?=$dm['TenDM']?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Bài viết</a></li>
-                <li><a href="./contact.html">Liên hệ</a></li>
+                <li><a href="index.php?mod=page&act=bloghome">Bài viết</a></li>
+                <li><a href="index.php?mod=page&act=contact">Liên hệ</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -113,16 +112,15 @@
                         <ul>
                             <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="#">Danh mục</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <?php foreach($getdanhmuc as $dm):?>
+                                        <li><a href="#"><?=$dm['TenDM']?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="index.php?mod=page&act=bloghome">Blog</a></li>
+                            <li><a href="index.php?mod=page&act=contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

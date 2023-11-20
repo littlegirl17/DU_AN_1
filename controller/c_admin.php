@@ -349,6 +349,78 @@
                 }
                 header("location: index.php?mod=admin&act=admin_donhang");
                 break;*/
+        // Bài viết
+            case 'admin_post':
+                $baivietall = get_postadmin();
+                $view_name = "admin_post";
+                break;   
+            case 'admin_add_post':
+                $danhmucall = get_catagoryadmin();
+                if (isset($_POST['submitblog']) && $_POST['submitblog']) {
+                    // Kiểm tra sự tồn tại của các biến và xử lý dữ liệu nếu cần
+                    $TieuDe = isset($_POST['TieuDe']) ? ($_POST['TieuDe']) : "";
+                    $MoTa = isset($_POST['MoTa']) ? ($_POST['MoTa']) : "";
+                    $MoTaNgan = isset($_POST['MoTaNgan']) ? ($_POST['MoTaNgan']) : "";
+                    //$NgayViet = isset($_POST['NgayViet']) ? intval($_POST['NgayViet']) : "";
+                    $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
+    
+                    add_post($TieuDe,$_FILES['HinhAnh']['name'], $_FILES['HinhAnhDetail']['name'], $MoTaNgan, $MoTa,$MaDM);
+    
+                    // Kiểm tra và di chuyển tệp đính kèm
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                        $uploadPath = "view/img/baiviet/" . $_FILES['HinhAnh']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+
+                    if (isset($_FILES['HinhAnhDetail']) && $_FILES['HinhAnhDetail']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnhDetail']['tmp_name'];
+                        $uploadPath = "view/img/baiviet/" . $_FILES['HinhAnhDetail']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+    
+                    header("location: index.php?mod=admin&act=admin_post");
+                    exit();
+                }
+                $view_name = "admin_add_post";
+                break;
+
+            case 'admin_edit_post':
+                $danhmucall = get_catagoryadmin();
+                $MaBV = $_GET['MaBV'];
+                $getpostId = get_postId($MaBV);
+                if (isset($_POST['submitupdateblog']) ) {
+    
+                    $TieuDe = isset($_POST['TieuDe']) ? ($_POST['TieuDe']) : "";
+                    $MoTa = isset($_POST['MoTa']) ? ($_POST['MoTa']) : "";
+                    $MoTaNgan = isset($_POST['MoTaNgan']) ? ($_POST['MoTaNgan']) : "";
+                    //$NgayViet = isset($_POST['NgayViet']) ? intval($_POST['NgayViet']) : "";
+                    $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
+                    update_post($MaBV, $TieuDe, $_FILES['HinhAnh']['name'], $_FILES['HinhAnhDetail']['name'], $MoTaNgan, $MoTa,  $MaDM);
+    
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                        $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+                    if (isset($_FILES['HinhAnhDetail']) && $_FILES['HinhAnhDetail']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnhDetail']['tmp_name'];
+                        $uploadPath = "view/img/baiviet/" . $_FILES['HinhAnhDetail']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }
+    
+                    header("location: index.php?mod=admin&act=admin_post");
+                }
+                $view_name = "admin_edit_post";
+                break;
+        
+            case 'admin_delete_post':
+                $MaBV = $_GET['MaBV'];
+                if (isset($_GET['MaBV']) && ($_GET['MaBV'] > 0)) {
+                    delete_post($MaBV);
+                }
+                header("location: index.php?mod=admin&act=admin_post");
+                break;
             default:
                 header("location:index.php?mod=page&act=home");
                 break;

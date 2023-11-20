@@ -141,4 +141,26 @@
         /*function delete_donhang($MaDH){
             pdo_execute("DELETE FROM donhang WHERE MaDH = ?",$MaDH);
         }*/
+
+    // Bài viết
+        function get_postadmin(){
+            return pdo_query("SELECT * FROM baiviet");
+        }
+        // Thêm
+        function add_post($TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM){
+            pdo_execute("INSERT INTO baiviet (`TieuDe`, `HinhAnh`, `HinhAnhDetail`, `MoTaNgan`, `MoTa`, `MaDM`) VALUES (?, ?, ?, ?, ?, ?) ", $TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM);
+        }
+        // Sửa
+        function get_postId($MaBV){
+            return pdo_query_one("SELECT * FROM baiviet WHERE MaBV = ?", $MaBV);
+        }
+
+        function update_post($MaBV, $TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM){
+            pdo_execute("UPDATE baiviet SET TieuDe = ?, HinhAnh = ?, HinhAnhDetail = ?, MoTaNgan = ?, MoTa = ?, MaDM = ? WHERE MaBV = ?",$TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM,$MaBV);
+        }
+
+        // Xóa
+        function delete_post($MaBV){
+            pdo_execute("DELETE FROM baiviet WHERE MaBV = ?", $MaBV);
+        }
 ?>

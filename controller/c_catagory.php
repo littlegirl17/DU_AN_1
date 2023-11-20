@@ -6,14 +6,16 @@
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
             case 'catagory_detail':
-                if(isset($_GET['id']) && ($_GET['id']>0)){
-                    $id = $_GET['id'];
-                }else{
-                    $id = "";
-                }
                 
+                if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)){
+                    $MaDM = $_GET['MaDM'];
+                }else{
+                    $MaDM = "";
+                    $getdanhmucproduct = danhmucproduct_getAll(); 
+                }
                 $getdanhmuc = danhmuc_getAll(); 
-                $danhmuc_getbyid = danhmuc_getbyiddetail($id);
+                $getdanhmucproduct = danhmucproduct_getAll(); 
+                $danhmuc_getbyid = danhmuc_getbyiddetail($MaDM);
                 $view_name = "product_catagory";
                 break;
             

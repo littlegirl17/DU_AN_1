@@ -6,7 +6,10 @@
     }
 
     function danhmuc_getbyiddetail($MaDM){
-        return pdo_query_one("SELECT * FROM danhmuc WHERE MaDM = ?",$MaDM);
+        return pdo_query("SELECT * FROM sanpham WHERE MaDM = ?",$MaDM);
+    }
+    function danhmucproduct_getAll(){
+        return pdo_query("SELECT * FROM sanpham ORDER BY MaSP DESC");
     }
     //SELECT sp.* FROM danhmuc dm INNER JOIN sanpham sp ON dm.MaDM = sp.MaDM WHERE MaDM = 14;
 

@@ -22,12 +22,19 @@
                 $getbaiviet = page_blog();
                 $view_name = "page_home";
                 break;
+            case 'bloghome':
+                $getbaiviet = page_blog();
+                $view_name = "page_homeblog";
+                break;
             case 'blog':
                 $MaBV = $_GET['MaBV'];
                 $getbaiviet = page_blog();
                 $detailblogid = page_blogId($MaBV);
                 $relateblog = page_blogRelate($detailblogid['MaDM']);
                 $view_name = "page_blog";
+                break;
+            case 'contact':
+                $view_name = "page_contact";
                 break;
             default:
                 header("location:index.php?mod=page&act=home");

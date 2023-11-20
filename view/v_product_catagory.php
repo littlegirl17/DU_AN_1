@@ -71,30 +71,67 @@
                             <h4>Danh mục Organic</h4>
                             <ul>
                             <?php foreach($getdanhmuc as $dm): ?>
-                                <li> <a href="index.php?mod=catagory&act=catagory_detail&id=<?=$dm['MaDM']?>"><?=$dm['TenDM']?></a></li>
+                                <li> <a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?></a></li>
                             <?php endforeach; ?>
                             </ul>
                         </div>
-                       
                         
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
-                    <div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Danh muc</h2>
-                        </div>
                     <div class="row">
-                        <?php print_r($danhmuc_getbyid) ?>
-                    </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                        <?php if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)): ?>
+                            <?php foreach($danhmuc_getbyid as $item): ?>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
+                                            <ul class="product__item__pic__hover">
+                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <h6><a href="#"><?=$item['TenSP']?></a></h6>
+                                            <h5><?=$item['GiaSP']?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php foreach($getdanhmucproduct as $itempro): ?>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="view/img/traicay/<?=$itempro['HinhAnh']?>">
+                                            <ul class="product__item__pic__hover">
+                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <h6><a href="#"><?=$itempro['TenSP']?></a></h6>
+                                            <h5><?=$itempro['GiaSP']?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif;?>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Product Section End -->
+
+
+
+
+
+
+
+
+
+
+
+   

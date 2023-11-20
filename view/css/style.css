@@ -3188,6 +3188,32 @@ h1 a{
 	margin: 0 auto;
 }
 /*---------------------
+    Bài viết
+-----------------------*/
+
+.post_admiin {
+	width: 200px; /* Đặt chiều rộng của post_admiin theo ý muốn */
+	white-space: nowrap; /* Ngăn văn bản xuống dòng */
+	overflow: hidden; /* Ẩn phần vượt quá kích thước của post_admiin */
+	text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi văn bản bị cắt ngắn */
+}
+
+  /* Hiển thị chỉ 100 từ đầu tiên */
+.post_admiin::before {
+	content: attr(data-content);
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: initial;
+}
+
+  /* Ẩn phần còn lại */
+.post_admiin::after {
+	content: '...';
+	display: block;
+	white-space: nowrap;
+}
+/*---------------------
     Binh luan
 -----------------------*/
 .form-detail input {

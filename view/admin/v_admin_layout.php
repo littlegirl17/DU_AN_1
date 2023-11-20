@@ -47,7 +47,7 @@
                         <a href="index.php?mod=admin&act=admin_product"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
+                        <a href="index.php?mod=admin&act=admin_post"><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
                     </li>
                     <li>
                         <a href="index.php?mod=admin&act=admin_user"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
