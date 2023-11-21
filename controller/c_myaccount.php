@@ -86,7 +86,12 @@
                     $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
                     exit();//thoát liền trang web
                 }
-                $viewsanphamorder = get_productOrder($_SESSION['iddh']);
+                if(isset($_SESSION['iddh']) && ($_SESSION['iddh']>0)){
+                    $viewsanphamorder = get_productOrder($_SESSION['iddh']);
+                }else{
+                    $viewsanphamorder = "";
+                }
+                
                 $view_name = "myaccount_order";
                 break;
 
@@ -96,7 +101,12 @@
                     $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
                     exit();//thoát liền trang web
                 }
-                $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+
+                if(isset($_SESSION['user']['MaTK']) && ($_SESSION['user']['MaTK']>0)){
+                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+                }else{
+                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+                }
                 $view_name = "myaccount_history";
                 break;
             

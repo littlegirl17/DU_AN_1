@@ -158,7 +158,76 @@
     </section>
     <!-- Sản phẩm nhiều lượt xem Section End -->
 
-    <!-- Blog Section Begin -->
+    
+
+    <!--Sản phẩm danh mục Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row featured__filter">
+                <?php 
+                    $TenDanhMuc = null;
+                    foreach($danhmuchomeUuTien as $item):
+                        if ($TenDanhMuc !== $item['TenDM']) {
+                            if ($TenDanhMuc !== null) {
+                                echo '</div>'; 
+                            }
+                            //Cập nhật lại danh mục để chứa tên của danh mục hiện tại.
+                            $TenDanhMuc = $item['TenDM'];
+
+                            echo '
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="section-title">
+                                        <h2>'.$TenDanhMuc.'</h2>
+                                    </div>
+                                </div>
+                            </div>'
+                            ;
+                            // Mở 1 hộp box để chứa danh sách sản phẩm của danh mục hiện tại
+                            echo '<div class="row featured__filter">';
+                        }
+                        if($item['GiaSP'] >=1){
+                            $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                        }else{
+                            $price = "<h5>Đang cập nhật</h5>";
+                        }
+            
+                        if($item['Discount'] >= 1){
+                            $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+                        }else{
+                            $GiamGia = "";
+                        }
+                ?>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
+                            <?=$GiamGia?>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="index.php?mod=product&act=detail&MaSP=<?=$item['MaSP']?>"><?=$item['TenSP']?></a></h6>
+                            <?=$price?>
+                        </div>
+                        <form action="index.php?mod=product&act=addtocart" method="post">
+                            <input type="hidden" name="MaSP" value="<?=$item['MaSP']?>">
+                            <input type="hidden" name="HinhAnh" value="<?=$item['HinhAnh']?>">
+                            <input type="hidden" name="GiaSP" value="<?=$item['GiaSP']?>">
+                            <input type="hidden" name="TenSP" value="<?=$item['TenSP']?>">
+                            <input type="hidden" name="SoLuong" value="1">
+                            <div class="intro">
+                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+                <?php 
+                    endforeach; 
+                ?>
+            </div>
+        </div>
+    </section>
+    <!-- Sản phẩm danh mục Section End -->
+    
+<!-- Blog Section Begin -->
     <section class="from-blog spad">
         <div class="container">
             <div class="row">

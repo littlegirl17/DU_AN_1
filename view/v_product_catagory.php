@@ -10,7 +10,7 @@
                         </div>
                         <ul>
                             <?php foreach($getdanhmuc as $dm): ?>
-                                <li> <a href="#"><?=$dm['TenDM']?></a></li>
+                                <li> <a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?>(<?=get_count_sp($dm['MaDM'])?>)</a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                             <h4>Danh mục Organic</h4>
                             <ul>
                             <?php foreach($getdanhmuc as $dm): ?>
-                                <li> <a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?></a></li>
+                                <li> <a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?> (<?=get_count_sp($dm['MaDM'])?>)</a></li>
                             <?php endforeach; ?>
                             </ul>
                         </div>
@@ -81,38 +81,74 @@
                 <div class="col-lg-9 col-md-7">
                     <div class="row">
                         <?php if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)): ?>
-                            <?php foreach($danhmuc_getbyid as $item): ?>
+                            <?php foreach($danhmuc_getbyid as $item): 
+                                if($item['GiaSP'] >=1){
+                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                                }else{
+                                    $price = "<h5>Đang cập nhật</h5>";
+                                }
+
+                                if($item['Discount'] >= 1){
+                                    $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+                                }else{
+                                    $GiamGia = "";
+                                }
+                            ?>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
+                                    <div class="featured__item">
+                                        <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
+                                            <?=$GiamGia?>
                                         </div>
-                                        <div class="product__item__text">
-                                            <h6><a href="#"><?=$item['TenSP']?></a></h6>
-                                            <h5><?=$item['GiaSP']?></h5>
+                                        <div class="featured__item__text">
+                                            <h6><a href="index.php?mod=product&act=detail&MaSP=<?=$item['MaSP']?>"><?=$item['TenSP']?></a></h6>
+                                            <?=$price?>
                                         </div>
+                                        <form action="index.php?mod=product&act=addtocart" method="post">
+                                            <input type="hidden" name="MaSP" value="<?=$item['MaSP']?>">
+                                            <input type="hidden" name="HinhAnh" value="<?=$item['HinhAnh']?>">
+                                            <input type="hidden" name="GiaSP" value="<?=$item['GiaSP']?>">
+                                            <input type="hidden" name="TenSP" value="<?=$item['TenSP']?>">
+                                            <input type="hidden" name="SoLuong" value="1">
+                                            <div class="intro">
+                                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                            </div>
+                                        </form> 
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <?php foreach($getdanhmucproduct as $itempro): ?>
+                            <?php foreach($getdanhmucproduct as $itempro): 
+                                if($item['GiaSP'] >=1){
+                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                                }else{
+                                    $price = "<h5>Đang cập nhật</h5>";
+                                }
+
+                                if($item['Discount'] >= 1){
+                                    $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+                                }else{
+                                    $GiamGia = "";
+                                }
+                            ?>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="view/img/traicay/<?=$itempro['HinhAnh']?>">
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
+                                    <div class="featured__item">
+                                        <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
+                                            <?=$GiamGia?>
                                         </div>
-                                        <div class="product__item__text">
-                                            <h6><a href="#"><?=$itempro['TenSP']?></a></h6>
-                                            <h5><?=$itempro['GiaSP']?></h5>
+                                        <div class="featured__item__text">
+                                            <h6><a href="index.php?mod=product&act=detail&MaSP=<?=$item['MaSP']?>"><?=$item['TenSP']?></a></h6>
+                                            <?=$price?>
                                         </div>
+                                        <form action="index.php?mod=product&act=addtocart" method="post">
+                                            <input type="hidden" name="MaSP" value="<?=$item['MaSP']?>">
+                                            <input type="hidden" name="HinhAnh" value="<?=$item['HinhAnh']?>">
+                                            <input type="hidden" name="GiaSP" value="<?=$item['GiaSP']?>">
+                                            <input type="hidden" name="TenSP" value="<?=$item['TenSP']?>">
+                                            <input type="hidden" name="SoLuong" value="1">
+                                            <div class="intro">
+                                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                            </div>
+                                        </form> 
                                     </div>
                                 </div>
                             <?php endforeach; ?>

@@ -205,4 +205,8 @@
         }
         return $page_home;
     }
+
+    function danhmuc_getUuTien(){
+        return pdo_query("SELECT sp.*, dm.TenDM FROM danhmuc dm INNER JOIN sanpham sp ON dm.MaDM=sp.MaDM WHERE UuTien = 1 ORDER BY SoThuTu ASC");
+    }
 ?>

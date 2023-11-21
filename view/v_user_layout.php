@@ -47,7 +47,7 @@
                 <li><a href="#">Danh mục</a>
                     <ul class="header__menu__dropdown">
                         <?php foreach($getdanhmuc as $dm):?>
-                            <li><a href="#"><?=$dm['TenDM']?></a></li>
+                            <li><a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?>(<?=get_count_sp($dm['MaDM'])?>)</a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -115,7 +115,7 @@
                             <li><a href="#">Danh mục</a>
                                 <ul class="header__menu__dropdown">
                                     <?php foreach($getdanhmuc as $dm):?>
-                                        <li><a href="#"><?=$dm['TenDM']?></a></li>
+                                        <li><a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?>(<?=get_count_sp($dm['MaDM'])?>)</a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </li>
@@ -180,7 +180,7 @@
                             </div>
                             <ul>
                                 <?php foreach($getdanhmuc as $dm):?>
-                                    <li><a href="#"><?=$dm['TenDM']?></a></li>
+                                    <li><a href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$dm['MaDM']?>"><?=$dm['TenDM']?>(<?=get_count_sp($dm['MaDM'])?>)</a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -236,40 +236,40 @@
                             <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Địa chỉ: Công viên phần mềm Quang QTSC Building 1, Trung, P Q.12, Thành phố Hồ Chí Minh</li>
+                            <li>SĐT: 0353123771</li>
+                            <li>Email: Organic@gamil.com</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                     <div class="footer__widget">
-                        <h6>Useful Links</h6>
+                        <h6>Liên kết hữu ích</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="#">Giới thiệu về chúng tôi</a></li>
+                            <li><a href="#">Giới thiệu về Organic</a></li>
+                            <li><a href="#">Mua sắm an toàn</a></li>
+                            <li><a href="#">Thông tin giao hàng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Sơ đồ website</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Chúng tôi là ai</a></li>
+                            <li><a href="#">Dịch vụ của chúng tôi</a></li>
+                            <li><a href="#">Dự án</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Đổi mới sáng tạo</a></li>
+                            <li><a href="#">Khách hàng chứng thực</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <h6>Đăng ký nhận tin</h6>
+                        <p>Nhận thông tin sản phẩm mới nhất, tin khuyến mãi và nhiều hơn nữa.</p>
                         <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
+                            <input type="text" placeholder="Email của bạn">
+                            <button type="submit" class="site-btn">Đăng ký</button>
                         </form>
                         <div class="footer__widget__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>

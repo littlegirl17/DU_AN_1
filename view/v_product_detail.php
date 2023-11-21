@@ -231,23 +231,46 @@
                 </div>
             </div>
             <div class="row">
-                <?php foreach($lienquan_product as $SPLQ): ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="view/img/traicay/<?=$SPLQ['HinhAnh']?>">
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#"><?=$SPLQ['TenSP']?></a></h6>
-                                <h5><?=$SPLQ['GiaSP']?></h5>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                <?php
+                    foreach($lienquan_product as $item){
+
+                        if($item['GiaSP'] >=1){
+                            $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                        }else{
+                            $price = "<h5>Đang cập nhật</h5>";
+                        }
+
+                        if($item['Discount'] >= 1){
+                            $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+                        }else{
+                            $GiamGia = "";
+                        }
+
+                        echo '
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="featured__item">
+                                    <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/'.$item['HinhAnh'].'">
+                                        '.$GiamGia.'
+                                    </div>
+                                    <div class="featured__item__text">
+                                        <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
+                                        '.$price.'
+                                    </div>
+                                    <form action="index.php?mod=product&act=addtocart" method="post">
+                                        <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                                        <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                                        <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                                        <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                                        <input type="hidden" name="SoLuong" value="1">
+                                        <div class="intro">
+                                            <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                        </div>
+                                    </form> 
+                                </div>
+                            </div>';
+
+                        }
+                    ?>
             </div>
         </div>
     </section>

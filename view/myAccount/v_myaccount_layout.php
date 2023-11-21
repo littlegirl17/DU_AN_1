@@ -63,44 +63,13 @@
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
         </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> Organic@gamil.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
+        
     </div>
     <!-- Humberger End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__auth">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <header class="header" style="background-color: #7FAD39;">
+        
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -108,54 +77,21 @@
                         <a href="index.php?mod=page&act=home"><img src="view/img/logo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
+                
+                <div class="col-lg-9">
                         <div class="header_cart_ri">
-
                             
-                            <div class="header__cart">
-                                <ul>
-                                    <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="header__cart__login">
+                            <div class="header__cart__login_myacc">
                                 <?php if(isset($_SESSION['user'])): ?>
                                     <div class="dropdown">
-                                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" >
-                                            <h6>Hi, <?=$_SESSION['user']['UserName']?></h6>
+                                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" style="color: #fff;">
+                                        Xin chào, <?= isset($_SESSION['user']['UserName']) ? $_SESSION['user']['UserName'] : 'User' ?>
                                         </button>
                                         <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?mod=user&act=myaccount">Tài khoản của tôi</a></li>
                                             <li><a class="dropdown-item" href="index.php?mod=user&act=logout">Đăng xuất</a></li>
                                         </ul>
                                     </div>
-                                <?php else: ?>
-                                    <div class="dropdown">
-                                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-user"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="index.php?mod=user&act=login">Đăng nhập</a></li>
-                                            <li><a class="dropdown-item" href="index.php?mod=user&act=register">Đăng ký</a></li>
-                                        </ul>
-                                    </div>
+                                
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -169,62 +105,8 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <?php if($view_name=='page_home'): ?>
-        <section class="hero">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="hero__categories">
-                            <div class="hero__categories__all">
-                                <i class="fa fa-bars"></i>
-                                <span>Danh mục Organic</span>
-                            </div>
-                            <ul>
-                                <?php foreach($getdanhmuc as $dm):?>
-                                    <li><a href="#"><?=$dm['TenDM']?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="hero__search">
-                            <div class="hero__search__form">
-                                <form action="" method="post">
-                                    <div class="hero__search__categories">
-                                        All Categories
-                                        <span class="arrow_carrot-down"></span>
-                                    </div>
-                                    <input type="text" name="keyword" placeholder="What do yo u need?">
-                                    <button type="submit" name="submit_home" class="site-btn">SEARCH</button>
-                                </form>
-                            </div>
-                            <div class="hero__search__phone">
-                                <div class="hero__search__phone__icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="hero__search__phone__text">
-                                    <h5>+65 11.188.888</h5>
-                                    <span>support 24/7 time</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hero__item set-bg" data-setbg="view/img/hero/banner.png">
-                            <!--<div class="hero__text">
-                                <span>FRUIT FRESH</span>
-                                <h2>Vegetable <br />100% Organic</h2>
-                                <p>Free Pickup and Delivery Available</p>
-                                <a href="#" class="primary-btn">SHOP NOW</a> 
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <?php endif; ?>
-    <!-- Hero Section End -->
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-3">
                 <nav class="sidebar__myaccount">

@@ -19,6 +19,7 @@
                 $getDiscount = page_productDiscount();
                 $getLuotMua = get_luotmuaOrder();
                 $getLuotXem = page_productLuotXem();
+                $danhmuchomeUuTien = danhmuc_getUuTien();
                 $getbaiviet = page_blog();
                 $view_name = "page_home";
                 break;
