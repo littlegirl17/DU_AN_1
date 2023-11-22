@@ -40,12 +40,42 @@
             <td><?=$user['Email']?></td>
             <td><?=$user['MatKhau']?></td>
             <td><?=$user['DiaChi']?></td>
-            <td><?=$user['GioiTinh']?></td>
+            <td>
+                <?php
+                    switch ($user['GioiTinh']) {
+                        case '0':
+                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Nam</p>';
+                            break;
+                        case '1':
+                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Nữ</p>';
+                            break;
+                        
+                        default:
+
+                            break;
+                    }
+                ?>
+            </td>
             <td><?=$user['SoDienThoai']?></td>
-            <td><?=$user['Quyen']?></td>
+            <td>
+                <?php
+                    switch ($user['Quyen']) {
+                        case '0':
+                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">User</p>';
+                            break;
+                        case '1':
+                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Admin</p>';
+                            break;
+                        
+                        default:
+
+                            break;
+                    }
+                ?>
+            </td>
             <td><img src="view/img/avatar/<?=$user['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;"></td>
             <td><?=$user['NgayTao']?></td>
-         
+        
             <td>
                 <a href="index.php?mod=admin&act=admin_edit_user&MaTK=<?=$user['MaTK']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
                 <a href="index.php?mod=admin&act=admin_delete_user&MaTK=<?=$user['MaTK']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>

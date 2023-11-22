@@ -55,23 +55,30 @@
         <h1>Đăng Ký</h1>
         <form action="index.php?mod=user&act=register" method="post">
             <div class="form-input">
-            <input type="text" name="HoTen" id="" placeholder="Hãy nhập họ tên">
-
-            <input type="text" name="UserName" id="" placeholder="Hãy nhập UserName">
-
-            <input type="text" name="Email" id="" placeholder="Hãy nhập Email">
-
-            <input type="text" name="MatKhau" id="" placeholder="Hãy nhập mật khẩu">
-
-            <input type="text" name="DiaChi" id="" placeholder="Hãy nhập Địa chỉ">
-
-            <select name="GioiTinh" id="" >
-                <option  >Giới tính</option>
-                <option value="0">Nam</option>
-                <option value="1">Nữ</option>
-            </select>
-
-            <input type="text" name="SoDienThoai" id="" placeholder="Hãy nhập số điện thoại">
+                <div class="form__login">
+                    <input type="text" name="HoTen" id="" placeholder="Hãy nhập họ tên"><i class="fa-regular fa-user" style="color: #7FAD39;"></i>
+                </div>
+                <div class="form__login">
+                    <input type="text" name="UserName" id="" placeholder="Hãy nhập UserName"><i class="fa-solid fa-signature" style="color: #7FAD39;"></i>
+                </div>
+                <div class="form__login">
+                    <input type="text" name="Email" id="" placeholder="Hãy nhập Email"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
+                </div>
+                <div class="form__login">
+                    <input type="text" name="MatKhau" id="" placeholder="Hãy nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
+                </div>
+                <div class="form__login">
+                    <input type="text" name="DiaChi" id="" placeholder="Hãy nhập Địa chỉ"><i class="fa-sharp fa-regular fa-location-dot" style="color: #7FAD39;"></i>
+                </div>
+                <div class="form__login">
+                    <input type="text" name="SoDienThoai" id="" placeholder="Hãy nhập số điện thoại"><i class="fa-solid fa-phone-flip" style="color: #7FAD39;"></i>
+                </div>
+                <select name="GioiTinh" id="" >
+                    <option  >Giới tính</option>
+                    <option value="0">Nam</option>
+                    <option value="1">Nữ</option>
+                </select>
+                
             <input type="submit" name="submit_register" value="Đăng ký" class="submit">
             </div>
         </form>

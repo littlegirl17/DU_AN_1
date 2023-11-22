@@ -68,8 +68,9 @@
                         ];
                         $_SESSION['mygiohang'][] = $cart;
                     }
+                    header("location: index.php?mod=product&act=viewcart");
                 }
-                header("location: index.php?mod=product&act=viewcart");
+                
                 break;
             case 'update_quantity':
                 // Cập nhật giỏ hàng trong session đảm bảo rằng thông tin giỏ hàng được lưu trữ và duy trì qua các trang và phiên làm việc của người dùng.
@@ -110,12 +111,18 @@
                 break;
 
             case 'checkout':
-                if(!isset($_SESSION['user'])){
-                    $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
-                    header("location: index.php?mod=user&act=login");
-                    return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
+                //Nếu không có sản phẩm thì không cho nó chuyển đến trang thanh toán
+                if (empty($_SESSION['mygiohang'])) {
+                    header("location: index.php?mod=product&act=viewcart");
+                } else {
+                    // Nếu có sản phẩm trong giỏ hàng, tiếp tục xử lý đơn hàng
+                    if (!isset($_SESSION['user'])) {
+                        $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
+                        header("location: index.php?mod=user&act=login");
+                        return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
+                    }
                 }
-
+                // Tiếp tục xử lý thông tin đơn hàng và chuyển hướng đến trang thanh toán
                 $view_name = "product_checkout";
                 break;
             case 'order':
@@ -126,6 +133,7 @@
                     header("location: index.php?mod=user&act=login");
                     return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
                 }
+
 
                 if(isset($_POST['submit_checkout']) && ($_POST['submit_checkout'])){
                     // LẤY DỮ LIỆU TỪ FORM

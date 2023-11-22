@@ -23,10 +23,10 @@
                             <input type="text" class="form-control" name="UuTien"  placeholder="0: là ẩn | 1: là hiện">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Ảnh danh mục</label>
+                            <label for="exampleInputFile" class="label_admin">Ảnh danh mục
                             <div class="custom-file">
                                 <input type="file" name="HinhAnh"  >
-                            </div>
+                            </div></label>
                         </div>
                 </div>
             </div>

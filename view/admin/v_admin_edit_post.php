@@ -13,34 +13,34 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleInputFile">Hình ảnh:</label>
+            <label for="exampleInputFile" class="label_admin">Hình ảnh:
             <div class="custom-file">
                 <input type="file" name="HinhAnh">
                 <img src="view/img/baiviet/<?= $getpostId['HinhAnh'] ?>" alt=""
                     style="width:80px; height:80px; object-fit:cover;">
-            </div>
+            </div></label>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputFile">Hỉnh ảnh chi tiết</label>
+            <label for="exampleInputFile" class="label_admin">Hỉnh ảnh chi tiết
             <div class="custom-file">
                 <input type="file" name="HinhAnhDetail">
                 <img src="view/img/baiviet/<?= $getpostId['HinhAnhDetail'] ?>" alt=""
                     style="width:80px; height:80px; object-fit:cover;">
-            </div>
+            </div></label>
         </div>
 
         <div class="form-group">
             <label for="name">Mô tả ngắn:</label>
-            <input type="text" class="form-control" name="MoTaNgan" value="<?= $getpostId['MoTaNgan'] ?>">
+            <textarea class="form-control" name="MoTaNgan"><?= $getpostId['MoTaNgan'] ?></textarea>
         </div>
 
         <div class="form-group">
             <label for="name">Mô tả:</label>
-            <input type="text" class="form-control" name="MoTa" value="<?= $getpostId['MoTa'] ?>">
+            <input type="text" class="form-control mota" name="MoTa" value="<?= $getpostId['MoTa'] ?>">
         </div>
 
-        <select name="MaDM">
+        <select name="MaDM" class="admin__select">
             <?php foreach ($danhmucall as $dm): ?>
                 <option value="<?= $dm['MaDM'] ?>" <?= ($dm['MaDM'] == $getpostId['MaDM']) ? "selected" : "" ?>>
                     <?= $dm['TenDM'] ?>

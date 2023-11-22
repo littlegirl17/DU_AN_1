@@ -29,11 +29,6 @@
         </div>
         
         <div class="form-group">
-            <label for="name">Quyền:</label>
-            <input type="text" class="form-control" name="Quyen" value="<?=$getOrderDetails['Quyen']?>" >
-        </div>
-        
-        <div class="form-group">
             <label for="name">Ghi chú:</label>
             <textarea class="form-control" name="GhiChu"><?=$getOrderDetails['GhiChu']?></textarea>
         </div>
@@ -44,18 +39,8 @@
         </div>
         
         <div class="form-group">
-            <label for="name">Ngày đặt:</label>
-            <input type="text" class="form-control" name="NgayDat" value="<?=$getOrderDetails['NgayDat']?>" >
-        </div>
-        
-        <div class="form-group">
-            <label for="name">Mã Tài Khoản:</label>
-            <input type="text" class="form-control" name="MaTK" value="<?=$getOrderDetails['MaTK']?>" >
-        </div>
-        
-        <div class="form-group">
             <label for="name">Phương thức thanh toán:</label>
-            <select class="form-control" name="PhuongThucTT">
+            <select class="form-control" name="PhuongThucTT" class="admin__select">
                 <option value="1" <?=($getOrderDetails['PhuongThucTT'] == 1) ? "selected" : "" ?>>Trả tiền mặt khi nhận hàng</option>
                 <option value="2" <?=($getOrderDetails['PhuongThucTT'] == 2) ? "selected" : "" ?>>Chuyển khoản ngân hàng</option>
                 <option value="3" <?=($getOrderDetails['PhuongThucTT'] == 3) ? "selected" : "" ?>>Thanh toan vi momo</option>
@@ -64,13 +49,14 @@
         
         <div class="form-group">
             <label for="name">Trạng thái:</label>
-            <select class="form-control" name="TrangThai" id="">
+            <select class="form-control" name="TrangThai" id="" class="admin__select">
                 <option value="0" <?=($getOrderDetails['TrangThai'] == 0) ? "selected" : "" ?>>Đơn hàng mới</option>
                 <option value="1" <?=($getOrderDetails['TrangThai'] == 1) ? "selected" : "" ?> >Đang xử lý</option>
                 <option value="2" <?=($getOrderDetails['TrangThai'] == 2) ? "selected" : "" ?> >Đang giao hàng</option>
                 <option value="3" <?=($getOrderDetails['TrangThai'] == 3) ? "selected" : "" ?> >Đã giao</option>
             </select>
         </div>
+        
         
     </form>
 </div>

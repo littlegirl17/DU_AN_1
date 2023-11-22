@@ -59,16 +59,20 @@
                     </div>
                 <?php endif; unset($_SESSION['canhbao']); ?>
                 <h1><a href="index.html">Đăng Nhập</a></h1>
-                <div class="form-dn-1">
+                <!-- <div class="form-dn-1">
                     <i class="fa-brands fa-facebook" style="color: #0561ff;"></i><a href="">Đăng nhập bằng facebook</a>
                 </div>
                 <div class="form-dn-2">
                     <img class="google" src="view/img/logo/google.png" alt=""><a href="">Đăng nhập bằng google</a>
-                </div>
+                </div> -->
                 <form action="">
                     <div class="form-input">
-                    <input type="text" name="Email" id="" placeholder="Nhập email của bạn!">
-                    <input type="password" name="MatKhau" id="" placeholder="Nhập mật khẩu">
+                        <div class="form__login">
+                            <input type="text" name="Email" id="" placeholder="Nhập email của bạn!"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
+                        </div>
+                        <div class="form__login">
+                            <input type="password" name="MatKhau" id="" placeholder="Nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
+                        </div>
                     <input type="submit" name="Submit_login" value="Đăng nhập" class="submit">
                     </div>
                 </form>

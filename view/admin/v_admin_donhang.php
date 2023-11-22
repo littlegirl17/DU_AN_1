@@ -11,17 +11,14 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã Đơn Hàng</th>
+                            <th>Mã ĐH</th>
                             <th>Họ tên</th>
                             <th>Email</th>
-                            <th>Số điện thoại</th>
+                            <th>SĐT</th>
                             <th>Địa chỉ</th>
-                            <th>Quyền</th>
-                            <th>Ghi chú</th>
                             <th>Tổng tiền</th>
                             <th>Ngày đặt</th>
-                            <th>Mã Tài Khoản</th>
-                            <th>Phương thức thanh toán</th>
+                            <th>PTTT</th>
                             <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
@@ -37,14 +34,48 @@
                             <td><?=$order['HoTen']?></td>
                             <td><?=$order['Email']?></td>
                             <td><?=$order['SoDienThoai']?></td>
-                            <td><?=$order['DiaChi']?></td>
-                            <td><?=$order['Quyen']?></td>
-                            <td><?=$order['GhiChu']?></td>
+                            <td style="width:100px"><?=$order['DiaChi']?></td>
                             <td><?=$order['TongTien']?></td>
                             <td><?=$order['NgayDat']?></td>
-                            <td><?=$order['MaTK']?></td>
-                            <td><?=$order['PhuongThucTT']?></td>
-                            <td><?=$order['TrangThai']?></td>
+                            <td>
+                                <?php
+                                    switch ($order['PhuongThucTT']) {
+                                        case '1':
+                                            echo '<p style="color:#;">Trả tiền mặt khi nhận hàng</p>';
+                                            break;
+                                        case '2':
+                                            echo '<p style="color:#;">Chuyển khoản ngân hàng</p>';
+                                            break;
+                                        case '3':
+                                            echo '<p style="color:#;">Thanh toan vi momo</p>';
+                                            break;
+                                        default:
+
+                                            break;
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    switch ($order['TrangThai']) {
+                                        case '0':
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Đơn hàng mới</p>';
+                                            break;
+                                        case '1':
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e5dc30;">Đang xử lý</p>';
+                                            break;
+                                        case '2':
+                                            echo '<p  style="text-align: center; color:#fff; padding:5px 5px; background-color: #21d2e2;">Đang giao hàng</p>';
+                                            break;
+                                        case '3':
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Đã giao</p>';
+                                            break;
+                                        default:
+
+                                            break;
+                                    }
+                                ?>
+                            </td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_donhang&MaDH=<?=$order['MaDH']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
                             </td>

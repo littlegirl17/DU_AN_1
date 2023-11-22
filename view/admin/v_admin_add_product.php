@@ -41,13 +41,14 @@
                 <input type="text" class="form-control" name="LuotXem" placeholder="Nhập giảm giá sản phẩm">
             </div>
             <div class="form-group">
-                <label for="HinhAnh">Hình ảnh:</label>
+                <label for="HinhAnh" class="label_admin">Hình ảnh:
                 <div class="custom-file">
                     <input type="file" name="HinhAnh">
                 </div>
+            </label>
             </div>
 
-            <select name="MaDM" >
+            <select name="MaDM" class="admin__select">
                 <?php foreach($danhmucall as $dm): ?>
                     <option value="<?=$dm['MaDM']?>"><?=$dm['TenDM']?></option>
                 <?php endforeach; ?>

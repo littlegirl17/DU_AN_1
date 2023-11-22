@@ -23,11 +23,11 @@
                             <input type="text" class="form-control" name="UuTien" value="<?=$getcataId['UuTien']?>" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Ảnh danh mục</label>
+                            <label for="exampleInputFile" class="label_admin">Ảnh danh mục
                             <div class="custom-file">
                                 <input type="file" name="HinhAnh" >
                                 <img  src="view/img/categories/<?=$getcataId['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;">
-                            </div>
+                            </div></label>
                         </div>
                     </form>
                 </div>

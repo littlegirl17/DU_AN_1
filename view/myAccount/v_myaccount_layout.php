@@ -115,22 +115,22 @@
                             <a href="index.php?mod=myaccount&act=myaccount"><i class="fa-solid fa-house ico-side"></i>Tài khoản</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=update_myaccount"><i class="fa-solid fa-cart-shopping ico-side"></i>Cập nhật tài khoản</a>
+                            <a href="index.php?mod=myaccount&act=update_myaccount"><i class="fa-solid fa-pen-to-square ico-side" style="color: #ffffff;"></i>Cập nhật tài khoản</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=forget_pasword"><i class="fa-solid fa-folder-open ico-side"></i>Quên mật khẩu</a>
+                            <a href="index.php?mod=myaccount&act=forget_pasword"><i class="fa-solid fa-unlock ico-side" style="color: #ffffff;"></i>Quên mật khẩu</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=doi_password"><i class="fa-solid fa-mug-hot ico-side"></i> Đổi mật khẩu</a>
+                            <a href="index.php?mod=myaccount&act=doi_password"><i class="fa-solid fa-key ico-side" style="color: #ffffff;"></i> Đổi mật khẩu</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-user ico-side"></i>Đơn hàng của tôi</a>
+                            <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-cart-shopping ico-side" style="color: #f5f5f5;"></i>Đơn hàng của tôi</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-user ico-side"></i>Lịch sự đặt hàng</a>
+                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>   Lịch sự đặt hàng</a>
                         </li>
                         <li>
-                            <a href="index.php"><i class="fa-solid fa-user ico-side"></i>Thoát</a>
+                            <a href="index.php"><i class="fa-solid fa-right-from-bracket ico-side"></i>  Thoát</a>
                         </li>
                     </ul>
                 </nav>

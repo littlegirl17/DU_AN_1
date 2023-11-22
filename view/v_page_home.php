@@ -69,7 +69,7 @@
             </div>
             <div class="row featured__filter">
                 <?php 
-                    $html_product_giamgia = showsp_home($getDiscount);
+                    $html_product_giamgia = showsp_home_sale($getDiscount);
                 ?>
             </div>
         </div>

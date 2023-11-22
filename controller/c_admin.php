@@ -328,15 +328,12 @@
                         $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
                         $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
                         $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
-                        $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
                         $GhiChu = isset($_POST['GhiChu']) ? $_POST['GhiChu'] : "";
                         $TongTien = isset($_POST['TongTien']) ? $_POST['TongTien'] : "";
-                        $NgayDat = isset($_POST['NgayDat']) ? $_POST['NgayDat'] : "";
-                        $MaTK = isset($_POST['MaTK']) ? $_POST['MaTK'] : "";
                         $PhuongThucTT = isset($_POST['PhuongThucTT']) ? $_POST['PhuongThucTT'] : "";
                         $TrangThai = isset($_POST['TrangThai']) ? $_POST['TrangThai'] : "";
                 
-                        update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $Quyen, $GhiChu, $TongTien, $NgayDat, $MaTK, $PhuongThucTT, $TrangThai);
+                        update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $GhiChu, $TongTien, $PhuongThucTT, $TrangThai);
                         header("location: index.php?mod=admin&act=admin_donhang");
                     }
             

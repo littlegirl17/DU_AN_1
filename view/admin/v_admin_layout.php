@@ -31,6 +31,7 @@
                         <div class="box_infor">
                             <div class="">
                                 <img src="view/img/avatar/<?=$_SESSION['user']['HinhAnh']?>" alt="">
+                                <img src="" alt="">
                             </div>
                             <div class="">
                                 <p ><?=$_SESSION['user']['HoTen']?></p>
@@ -41,25 +42,25 @@
                         <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_catagory"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản kí danh mục</a>
+                        <a href="index.php?mod=admin&act=admin_catagory"><i class="fa-solid fa-list ico-side" style="color: #ffff;"></i></i>Quản kí danh mục</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_product"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí sản phẩm</a>
+                        <a href="index.php?mod=admin&act=admin_product"><i class="fa-brands fa-product-hunt ico-side" style="color: #ffffff;"></i>Quản lí sản phẩm</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_post"><i class="fa-solid fa-mug-hot ico-side"></i>Quản lí bài viết</a>
+                        <a href="index.php?mod=admin&act=admin_post"><i class="fa-solid fa-blog ico-side" style="color: #f7f7f7;"></i>Quản lí bài viết</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_user"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
+                        <a href="index.php?mod=admin&act=admin_user"><i class="fa-solid fa-users ico-side" style="color: #ffffff;"></i>Quản lí thành viên</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_donhang"><i class="fa-solid fa-user ico-side"></i>Quản lí đơn hàng</a>
+                        <a href="index.php?mod=admin&act=admin_donhang"><i class="fa-solid fa-cart-shopping ico-side" style="color: #f2f2f2;"></i>Quản lí đơn hàng</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-user ico-side"></i>Quản lí bình luận</a>
+                        <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-comments ico-side" style="color: #ffffff;"></i>Quản lí bình luận</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=page&act=home"><i class="fa-solid fa-user ico-side"></i>Thoát</a>
+                        <a href="index.php?mod=page&act=home"><i class="fa-solid fa-right-from-bracket ico-side" style="color: #ffffff;"></i>Thoát</a>
                     </li>
                 </ul>
             </nav>

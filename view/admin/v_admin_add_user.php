@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="GioiTinh">Giới tính:</label>
-                        <select class="form-control" name="GioiTinh">
+                        <select class="form-control" name="GioiTinh" class="admin__select">
                                 <option value="0" <?= (isset($_POST['GioiTinh']) == 0) ? 'selected' : '' ?>>Nam</option>
                                 <option value="1" <?= (isset($_POST['GioiTinh']) == 1) ? 'selected' : '' ?>>Nữ</option>
                             </select>
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <label for="Quyen">Quyền:</label>
-                        <select class="form-control" name="Quyen" >
+                        <select class="form-control" name="Quyen" class="admin__select">
                             <option value="0"  <?= (isset($_POST['Quyen']) == 0) ? 'selected' : ''?>>User</option>
                             <option value="1" <?= (isset($_POST['Quyen']) == 1) ? 'selected' : ''?>>Admin</option>
                         </select>

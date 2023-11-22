@@ -132,9 +132,9 @@
         }
 
         // cap nhat
-        function update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $Quyen, $GhiChu, $TongTien, $NgayDat, $MaTK, $PhuongThucTT, $TrangThai) {
-            pdo_execute("UPDATE DonHang SET HoTen = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, Quyen = ?, GhiChu = ?, TongTien = ?, NgayDat = ?, MaTK = ?, PhuongThucTT = ?, TrangThai = ? WHERE MaDH = ?",
-            $HoTen, $Email, $SoDienThoai, $DiaChi, $Quyen, $GhiChu, $TongTien, $NgayDat, $MaTK, $PhuongThucTT, $TrangThai, $MaDH);
+        function update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $GhiChu, $TongTien, $PhuongThucTT, $TrangThai) {
+            pdo_execute("UPDATE DonHang SET HoTen = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, GhiChu = ?, TongTien = ?, PhuongThucTT = ?, TrangThai = ? WHERE MaDH = ?",
+            $HoTen, $Email, $SoDienThoai, $DiaChi, $GhiChu, $TongTien, $PhuongThucTT, $TrangThai, $MaDH);
         }
 
         // xoa 

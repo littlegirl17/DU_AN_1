@@ -17,17 +17,17 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="exampleInputFile">Hình ảnh:</label>
+                        <label for="exampleInputFile" class="label_admin">Hình ảnh:
                         <div class="custom-file">
                             <input type="file" name="HinhAnh">
-                        </div>
+                        </div></label>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputFile">Hỉnh ảnh chi tiết</label>
+                        <label for="exampleInputFile" class="label_admin">Hỉnh ảnh chi tiết
                         <div class="custom-file">
                             <input type="file" name="HinhAnhDetail">
-                        </div>
+                        </div></label>
                     </div>
 
                     <div class="form-group">
@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="name">Mô tả:</label>
-                        <input type="text" class="form-control" name="MoTa" placeholder="Nhập mô tả">
+                        <input type="text" class="form-control mota" name="MoTa" placeholder="Nhập mô tả">
                     </div>
 
                     <!-- <div class="form-group">
@@ -45,7 +45,7 @@
                         <input type="date" class="form-control" name="NgayViet" placeholder="Chọn ngày viết">
                     </div> -->
 
-                    <select name="MaDM">
+                    <select name="MaDM" class="admin__select">
                         <?php foreach ($danhmucall as $dm): ?>
                             <option value="<?= $dm['MaDM'] ?>"><?= $dm['TenDM'] ?></option>
                         <?php endforeach; ?>
