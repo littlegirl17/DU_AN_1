@@ -3254,6 +3254,11 @@ select {
 /*---------------------
     My account
 -----------------------*/
+.admin__pagein{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
 .header__cart__login_myacc{
 	padding: 40px 0;
 	color: #fff;

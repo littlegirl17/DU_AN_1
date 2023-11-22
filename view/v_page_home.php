@@ -95,12 +95,6 @@
                             $price = "<h5>Đang cập nhật</h5>";
                         }
             
-                        if($item['Discount'] >= 1){
-                            $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
-                        }else{
-                            $GiamGia = "";
-                        }
-            
                         if($item['SoLuong']){
                             $MuaHang = '<h6>Số lượt mua<strong>('.$item['SoLuong'].')</strong></h6>';
                         }else{
@@ -110,7 +104,6 @@
                 <div class="col-lg-3 col-md-4  fresh-meat">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/<?=$item['HinhAnh']?>">
-                            <?=$GiamGia?>
                             
                         </div>
                         <div class="featured__item__text">

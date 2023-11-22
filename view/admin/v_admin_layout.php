@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="view/css/admin.css">
     <script src="https://kit.fontawesome.com/8c204d0fdf.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <link rel="stylesheet" href="view/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -31,7 +32,6 @@
                         <div class="box_infor">
                             <div class="">
                                 <img src="view/img/avatar/<?=$_SESSION['user']['HinhAnh']?>" alt="">
-                                <img src="" alt="">
                             </div>
                             <div class="">
                                 <p ><?=$_SESSION['user']['HoTen']?></p>
@@ -74,5 +74,6 @@
 
     
 </body>
+<script src="view/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

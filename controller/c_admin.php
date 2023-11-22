@@ -22,7 +22,7 @@
                 $thongkeggchart = dashboard_googlechart();
                 $view_name = "admin_dashboard";
                 break;
-            // admin danh mục
+    // admin danh mục
             case 'admin_catagory':
                 if(isset($_SESSION['user']) == false){
                     header("location: index.php?mod=user&act=login");
@@ -100,8 +100,13 @@
                 }
                 header("location: index.php?mod=admin&act=admin_catagory");
                 break;
-            // admin sản phẩm
+    // admin sản phẩm
             case 'admin_product':
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
                 if(isset($_SESSION['user']) == false){
                     header("location: index.php?mod=user&act=login");
                     $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
@@ -110,7 +115,8 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $sanphamall = get_productadmin();
+                $sanphamall = get_productadmin($page);
+                $SoTrang = ceil(product_adminPage()/6);
                 $view_name = "admin_product";
 
                 $view_name = "admin_product";
@@ -130,11 +136,11 @@
                     $GiaSP = isset($_POST['GiaSP']) ? intval($_POST['GiaSP']) : "";
                     $TieuDe = isset($_POST['TieuDe']) ? $_POST['TieuDe'] : "";
                     $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
-                    $Discount = isset($_POST['Discount']) ? intval($_POST['Discount']) : "";
                     $HinhAnh = isset($_FILES['HinhAnh']['name']) ? $_FILES['HinhAnh']['name'] : "";
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
                     $LuotXem = isset($_POST['LuotXem']) ? intval($_POST['LuotXem']) : "";
-                    add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem);
+                    $GiaGiam = isset($_POST['GiaGiam']) ? intval($_POST['GiaGiam']) : "";
+                    add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh,$MaDM,$LuotXem, $GiaGiam);
                 
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
@@ -163,9 +169,9 @@
                     $GiaSP = isset($_POST['GiaSP']) ? intval($_POST['GiaSP']) : "";
                     $TieuDe = isset($_POST['TieuDe']) ? $_POST['TieuDe'] : "";
                     $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
-                    $Discount = isset($_POST['Discount']) ? intval($_POST['Discount']) : "";
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
-                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $Discount, $_FILES['HinhAnh']['name'], $MaDM);
+                    $GiaGiam = isset($_POST['GiaGiam']) ? intval($_POST['GiaGiam']) : 0;
+                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $_FILES['HinhAnh']['name'], $MaDM, $GiaGiam);
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
                         $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];
@@ -301,15 +307,24 @@
                     break;
         // Đơn hàng 
                 case 'admin_donhang':
+                    
                     if(isset($_SESSION['user']) == false){
                         header("location: index.php?mod=user&act=login");
                         $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
                         exit();//thoát liền trang web
                     }
+
+                    if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                        $page = $_GET['page'];
+                    }else{
+                        $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                    }
+
                     if(!($_SESSION['user']['Quyen'] >=1)){
                         header("location: index.php?mod=page&act=home");
                     }
-                    $donghangall = get_donhangadmin();
+                    $donghangall = get_donhangadmin($page);
+                    $SoTrang = ceil(order_adminPage()/6);
                     $view_name = "admin_donhang";
                     break;
 
@@ -339,6 +354,12 @@
             
                 $view_name = "admin_edit_donhang";
                 break;
+                
+                case 'donhang_detail':
+                    $MaDH = $_GET['MaDH'];
+                    $detaildonhangadmin = history_adminorder($MaDH);
+                    $view_name = "donhang_detail";
+                    break;
             /*case 'delete_order':
                 $MaDH = $_GET['MaDH'];
                 if(isset($_GET['MaDH']) && ($_GET['MaDH']>0)){

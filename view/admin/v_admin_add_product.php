@@ -22,6 +22,11 @@
             </div>
 
             <div class="form-group">
+                <label for="Discount">Giảm giá:</label>
+                <input type="text" class="form-control" name="GiaGiam" placeholder="Nhập giảm giá sản phẩm">
+            </div>
+
+            <div class="form-group">
                 <label for="TieuDe">Tiêu đề:</label>
                 <input type="text" class="form-control" name="TieuDe" placeholder="Nhập tiêu đề sản phẩm">
             </div>
@@ -32,13 +37,8 @@
             </div>
 
             <div class="form-group">
-                <label for="Discount">Giảm giá:</label>
-                <input type="text" class="form-control" name="Discount" placeholder="Nhập giảm giá sản phẩm">
-            </div>
-
-            <div class="form-group">
-                <label for="Discount">v</label>
-                <input type="text" class="form-control" name="LuotXem" placeholder="Nhập giảm giá sản phẩm">
+                <label for="Discount">view</label>
+                <input type="text" class="form-control" name="LuotXem" placeholder="">
             </div>
             <div class="form-group">
                 <label for="HinhAnh" class="label_admin">Hình ảnh:

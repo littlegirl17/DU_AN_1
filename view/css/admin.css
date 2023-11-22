@@ -213,3 +213,13 @@ nav ul li:hover {
     cursor: pointer;
     margin-top: 1rem;
 }
+
+
+/*
+    ADMIN
+*/
+.admin__pagein{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}

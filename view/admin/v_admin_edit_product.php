@@ -16,6 +16,10 @@
         <input type="text" class="form-control" name="GiaSP" value="<?=$getproductId['GiaSP']?>" >
     </div>
     <div class="form-group">
+        <label for="name">Giá Giảm:</label>
+        <input type="text" class="form-control" name="Discount" value="<?=$getproductId['GiaGiam']?>" >
+    </div>
+    <div class="form-group">
         <label for="name">Tiêu đề:</label>
         <input type="text" class="form-control tieude" name="TieuDe" value="<?=$getproductId['TieuDe']?>" >
     </div>
@@ -23,10 +27,7 @@
         <label for="name">Mô tả:</label>
         <textarea class="form-control mota" name="MoTa"><?=$getproductId['MoTa']?></textarea>
     </div>
-    <div class="form-group">
-        <label for="name">Discount:</label>
-        <input type="text" class="form-control" name="Discount" value="<?=$getproductId['Discount']?>" >
-    </div>
+    
     <div class="form-group">
         <label for="exampleInputFile" class="label_admin">Ảnh Sản phẩm
         <div class="custom-file">

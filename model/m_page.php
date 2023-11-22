@@ -6,7 +6,7 @@
     }
 
     function page_productDiscount(){
-        return pdo_query("SELECT * FROM sanpham WHERE Discount > 0 ORDER BY Discount DESC LIMIT 4");
+        return pdo_query("SELECT * FROM sanpham WHERE GiaGiam > 0 ORDER BY GiaGiam DESC LIMIT 4");
     }
 
     function page_productLuotMua(){
@@ -71,14 +71,16 @@
                 $GiaGiamSP = "";
             }
 
-            if($item['Discount'] >= 1){
-                $GiamGia = ceil((($item['GiaSP'] - $item['GiaGiam'])/$item['GiaSP'])*100);
-                $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
-            }else{
-                $GiamGia = "";
-            }
-
-
+            // if($item['Discount'] >= 1){
+            //     $GiamGia = ceil((($item['GiaSP'] - $item['GiaGiam'])/$item['GiaSP'])*100);
+            //     $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
+            // }else{
+            //     $GiamGia = "";
+            // }
+            
+            $GiamGia = ceil((($item['GiaSP'] - $item['GiaGiam'])/$item['GiaSP'])*100);
+            $GiamGia = '<div class="product__discount__percent_home">'.$GiamGia.'%</div>';
+            
             echo '
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="featured__item">

@@ -59,13 +59,20 @@
 
     // Sản phẩm
         
-        function get_productadmin(){
-            return pdo_query("SELECT * FROM sanpham");
+        function get_productadmin($page=1){//Mặc định nó sẽ gọi trang 1
+            
+            $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
+            return pdo_query("SELECT sp.*,dm.TenDM FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM=dm.MaDM LIMIT $BatDau,6");
+            //Limit 0,4 nghĩa là bắt đầu từ 0 lấy 4 quyển sách , và trong DB thì LIMIT lấy từ số 0 đầu tiên
         }
 
+        //phân trang
+        function product_adminPage(){
+            return pdo_query_value("SELECT COUNT(*) FROM sanpham");
+        }
         // Thêm
-        function add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem) {
-            pdo_execute("INSERT INTO sanpham (`TenSP`, `GiaSP`, `TieuDe`, `MoTa`, `Discount`, `HinhAnh`,`MaDM`,`LuotXem`) VALUES (?,?,?,?,?,?,?,?)",$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh,$MaDM,$LuotXem);
+        function add_product($TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh,$MaDM,$LuotXem, $GiaGiam) {
+            pdo_execute("INSERT INTO sanpham (`TenSP`, `GiaSP`, `TieuDe`, `MoTa`, `HinhAnh`,`MaDM`,`LuotXem`, `GiaGiam`) VALUES (?,?,?,?,?,?,?,?)",$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh,$MaDM,$LuotXem, $GiaGiam);
         }
 
         //Lấy về để sửa
@@ -74,8 +81,8 @@
         }
 
         // Cập nhật
-        function update_product($MaSP,$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh, $MaDM){
-            pdo_execute("UPDATE sanpham SET TenSP = ?, GiaSP = ?, TieuDe = ?, MoTa = ?, Discount = ?, HinhAnh = ?, MaDM = ? WHERE MaSP = ?",$TenSP, $GiaSP, $TieuDe, $MoTa, $Discount, $HinhAnh, $MaDM, $MaSP);
+        function update_product($MaSP,$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam){
+            pdo_execute("UPDATE sanpham SET TenSP = ?, GiaSP = ?, TieuDe = ?, MoTa = ?, HinhAnh = ?, MaDM = ?, GiaGiam = ? WHERE MaSP = ?",$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam, $MaSP);
         }
 
         // Xóa
@@ -122,10 +129,15 @@
     
     // Đơn hang
                             
-        function get_donhangadmin(){
-            return pdo_query("SELECT * FROM donhang");
+        function get_donhangadmin($page=1){
+            $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
+            return pdo_query("SELECT * FROM donhang LIMIT $BatDau,6");
         }
-
+        
+        //phân trang
+        function order_adminPage(){
+            return pdo_query_value("SELECT COUNT(*) FROM donhang");
+        }
         //Lấy về để sửa
         function get_donhangById($MaDH){
             return pdo_query_one("SELECT * FROM donhang WHERE MaDH = ?",$MaDH);
@@ -135,6 +147,11 @@
         function update_donhang($MaDH, $HoTen, $Email, $SoDienThoai, $DiaChi, $GhiChu, $TongTien, $PhuongThucTT, $TrangThai) {
             pdo_execute("UPDATE DonHang SET HoTen = ?, Email = ?, SoDienThoai = ?, DiaChi = ?, GhiChu = ?, TongTien = ?, PhuongThucTT = ?, TrangThai = ? WHERE MaDH = ?",
             $HoTen, $Email, $SoDienThoai, $DiaChi, $GhiChu, $TongTien, $PhuongThucTT, $TrangThai, $MaDH);
+        }
+
+        // chi tiết đơn hàng
+        function history_adminorder($MaDH){
+            return pdo_query("SELECT ctdh.*, dh.*, sp.* FROM chitietdonhang ctdh INNER JOIN donhang dh ON ctdh.MaDH = dh.MaDH INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP  WHERE ctdh.MaDH = ? ",$MaDH);
         }
 
         // xoa 

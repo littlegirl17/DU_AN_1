@@ -240,17 +240,11 @@
                             $price = "<h5>Đang cập nhật</h5>";
                         }
 
-                        if($item['Discount'] >= 1){
-                            $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
-                        }else{
-                            $GiamGia = "";
-                        }
-
                         echo '
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="featured__item">
                                     <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/'.$item['HinhAnh'].'">
-                                        '.$GiamGia.'
+                                    
                                     </div>
                                     <div class="featured__item__text">
                                         <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>

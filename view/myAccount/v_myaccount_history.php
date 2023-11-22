@@ -32,3 +32,22 @@
         ?>
     </tbody>
 </table>
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=myaccount&act=history_account&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                    <a class="page-link" href="index.php?mod=myaccount&act=history_account&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=myaccount&act=history_account&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>

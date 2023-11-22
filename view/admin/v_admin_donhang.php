@@ -19,6 +19,7 @@
                             <th>Tổng tiền</th>
                             <th>Ngày đặt</th>
                             <th>PTTT</th>
+                            <th>Xem</th>
                             <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
@@ -35,19 +36,19 @@
                             <td><?=$order['Email']?></td>
                             <td><?=$order['SoDienThoai']?></td>
                             <td style="width:100px"><?=$order['DiaChi']?></td>
-                            <td><?=$order['TongTien']?></td>
+                            <td><?=number_format($order['TongTien'],"0",",",".")?></td>
                             <td><?=$order['NgayDat']?></td>
                             <td>
                                 <?php
                                     switch ($order['PhuongThucTT']) {
                                         case '1':
-                                            echo '<p style="color:#;">Trả tiền mặt khi nhận hàng</p>';
+                                            echo '<p style="font-weight: 500;">Trả tiền mặt khi nhận hàng</p>';
                                             break;
                                         case '2':
-                                            echo '<p style="color:#;">Chuyển khoản ngân hàng</p>';
+                                            echo '<p style="font-weight: 500;">Chuyển khoản ngân hàng</p>';
                                             break;
                                         case '3':
-                                            echo '<p style="color:#;">Thanh toan vi momo</p>';
+                                            echo '<p style="font-weight: 500;">Thanh toan vi momo</p>';
                                             break;
                                         default:
 
@@ -55,6 +56,7 @@
                                     }
                                 ?>
                             </td>
+                            <td><a href="index.php?mod=admin&act=donhang_detail&MaDH=<?=$order['MaDH']?>">Xem chi tiết</a></td>
                             <td>
                                 <?php
                                     switch ($order['TrangThai']) {
@@ -89,4 +91,23 @@
             </div>
         </div>
     </section>
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_donhang&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                    <a class="page-link" href="index.php?mod=admin&act=admin_donhang&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_donhang&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

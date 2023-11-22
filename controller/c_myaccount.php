@@ -102,10 +102,18 @@
                     exit();//thoát liền trang web
                 }
 
-                if(isset($_SESSION['user']['MaTK']) && ($_SESSION['user']['MaTK']>0)){
-                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
                 }else{
-                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK']);
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_SESSION['user']['MaTK']) && ($_SESSION['user']['MaTK']>0)){
+                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK'],$page);
+                    $SoTrang = ceil(ordermyacc_adminPage()/6);
+                }else{
+                    $viewhistoryorder = historyorder_myaccount($_SESSION['user']['MaTK'],$page);
+                    $SoTrang = ceil(ordermyacc_adminPage()/6);
                 }
                 $view_name = "myaccount_history";
                 break;
@@ -116,8 +124,12 @@
                     $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
                     exit();//thoát liền trang web
                 }
+
+                
+
                 $MaDH = $_GET['MaDH'];
                 $viewhistorymyacc = history_myaccount($MaDH);
+                
                 $view_name = "myaccount_historydetail";
                 break;
             default:
