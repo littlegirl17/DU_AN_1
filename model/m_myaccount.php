@@ -2,8 +2,8 @@
     include_once 'model/m_pdo.php';
 
     // cập nhật
-    function update_myaccountid($MaTK,$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai){
-        pdo_execute("UPDATE taikhoan SET HoTen=?, UserName=?, Email=?, MatKhau=?, DiaChi=?, GioiTinh=?, SoDienThoai=? WHERE MaTK=?",$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai,$MaTK);
+    function update_myaccountid($MaTK,$HinhAnh,$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai){
+        pdo_execute("UPDATE taikhoan SET HinhAnh=?,HoTen=?, UserName=?, Email=?, MatKhau=?, DiaChi=?, GioiTinh=?, SoDienThoai=? WHERE MaTK=?",$HinhAnh,$HoTen,$UserName,$Email,$MatKhau,$DiaChi,$GioiTinh,$SoDienThoai,$MaTK);
     }
 
     function forget_myaccount($SoDienThoai){

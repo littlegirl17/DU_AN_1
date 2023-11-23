@@ -4,9 +4,14 @@
 <div class="title_myacount">
     <h4>Cập nhật thông tin tài khoản</h4>
 </div>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     <div class="">    
         <input type="hidden" name="MaTK" value="<?=$_SESSION['user']['MaTK']?>">   
+
+        <div class="form-group myaccount_image update__user_myac">
+            <img src="view/img/avatar/<?=$_SESSION['user']['HinhAnh']?>" alt="">
+            <input type="file" class="form-control" name="HinhAnh" value="" >
+        </div>
         <div class="form-group">
             <label for="TenSP">Họ tên:</label>
             <input type="text" class="form-control" name="HoTen" value="<?=$_SESSION['user']['HoTen']?>" >

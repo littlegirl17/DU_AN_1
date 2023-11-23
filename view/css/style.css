@@ -3254,6 +3254,30 @@ select {
 /*---------------------
     My account
 -----------------------*/
+.myaccout{
+	
+	padding-top: 10px;
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;}
+.information__myaccount h5{
+	padding: 10px 0;
+}
+.update__user_myac{
+	display: flex;
+}
+.update__user_myac input{
+	margin-top: 110px;
+	margin-left: 20px;
+}
+.update__user_myac img{
+	margin-top: 20px;
+	
+}
+.myaccount_image img{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+}
 .admin__pagein{
     display: flex;
     justify-content: center;

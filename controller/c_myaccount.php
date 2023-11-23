@@ -21,7 +21,13 @@
                     exit();//thoát liền trang web
                 }
                 if(isset($_POST['submit'])){
-                    update_myaccountid($_POST['MaTK'],$_POST['HoTen'],$_POST['UserName'],$_POST['Email'],$_POST['MatKhau'],$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
+                    update_myaccountid($_POST['MaTK'], $_FILES['HinhAnh']['name'],$_POST['HoTen'],$_POST['UserName'],$_POST['Email'],$_POST['MatKhau'],$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai']);
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                        $uploadPath = "view/img/avatar/" . $_FILES['HinhAnh']['name'];
+                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    }                    
+                    $_SESSION['user']['HinhAnh'] = $_FILES['HinhAnh']['name'];
                     $_SESSION['user']['HoTen'] = $_POST['HoTen'];
                     $_SESSION['user']['UserName'] = $_POST['UserName'];
                     $_SESSION['user']['Email'] = $_POST['Email'];
