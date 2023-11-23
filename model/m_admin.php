@@ -95,8 +95,18 @@
         }
 
     // User
-        function get_useradmin(){
-            return pdo_query("SELECT * FROM TaiKhoan");
+        function get_useradmin($keyword,$page=1){
+            $BatDau = ($page - 1) * 6;
+            return pdo_query("SELECT * FROM TaiKhoan WHERE 
+                CASE
+                WHEN Quyen = 0 THEN 'user'
+                WHEN Quyen = 1 THEN 'admin'
+                END
+                LIKE '%$keyword%' OR HoTen LIKE '%$keyword%' LIMIT $BatDau,6");
+        }
+
+        function user_adminPhanTrang(){
+            return pdo_query_value("SELECT COUNT(*) FROM taikhoan");
         }
 
         // Thêm
@@ -123,8 +133,13 @@
     // Bình luận
 
         // Cmt 
-        function get_cmtadmin(){
-            return pdo_query("SELECT * FROM binhluan");
+        function get_cmtadmin($page=1){
+            $BatDau = ($page - 1) * 6;
+            return pdo_query("SELECT * FROM binhluan LIMIT $BatDau,6");
+        }
+        //phân trang
+        function binhluan_adminPage(){
+            return pdo_query_value("SELECT COUNT(*) FROM binhluan");
         }
         // Xóa
         function delete_cmt($MaBL) {
@@ -133,10 +148,17 @@
     
     // Đơn hang
                             
-        function get_donhangadmin($page=1){
+        function get_donhangadmin($keyword,$page=1){
             $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
-            return pdo_query("SELECT * FROM donhang LIMIT $BatDau,6");
-        }
+            return pdo_query("SELECT * FROM donhang WHERE 
+                CASE 
+                    WHEN TrangThai = 0 THEN 'Đơn hàng mới'
+                    WHEN TrangThai = 1 THEN 'Đang xử lý'
+                    WHEN TrangThai = 2 THEN 'Đang giao hàng'
+                    WHEN TrangThai = 3 THEN 'Đã giao'
+                END
+                LIKE '%$keyword%' OR HoTen LIKE '%$keyword%' LIMIT $BatDau,6");
+        } // CASE WHEN THEN END dùng trong tìm kiếm về trang thái đơn hàng
         
         //phân trang
         function order_adminPage(){
@@ -191,8 +213,13 @@
 
 
     // Phản hồi
-        function phanhoi_getAll(){
-            return pdo_query("SELECT * FROM phanhoi");
+        function phanhoi_getAll($page=1){
+            $BatDau = ($page - 1) * 6;
+            return pdo_query("SELECT * FROM phanhoi LIMIT $BatDau,6");
+        }
+
+        function phanhoi_adminPhanTrang(){
+            return pdo_query_value("SELECT COUNT(*) FROM phanhoi");
         }
 
         function phanhoi_delete($MaPH){

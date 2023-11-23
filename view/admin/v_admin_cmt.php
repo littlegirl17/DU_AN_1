@@ -29,11 +29,9 @@
                             <td><?=$comment['NoiDung']?></td>
                             <td><?=$comment['NgayBL']?></td>
                             <td>
-                          
                             <td>
-               
-                <a href="index.php?mod=admin&act=admin_delete_cmt&MaBL=<?=$comment['MaBL']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
-            </td>
+                                <a href="index.php?mod=admin&act=admin_delete_cmt&MaBL=<?=$comment['MaBL']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                             </td>
                         </tr>
                         <?php 
@@ -45,4 +43,24 @@
             </div>
         </div>
     </section>
+
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_cmt&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                    <a class="page-link" href="index.php?mod=admin&act=admin_cmt&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_cmt&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div> 

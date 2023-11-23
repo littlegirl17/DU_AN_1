@@ -22,7 +22,7 @@
                 $thongkeggchart = dashboard_googlechart();
                 $view_name = "admin_dashboard";
                 break;
-    // admin danh mục
+        // admin danh mục
             case 'admin_catagory':
                 if(isset($_SESSION['user']) == false){
                     header("location: index.php?mod=user&act=login");
@@ -114,7 +114,7 @@
                 }
                 header("location: index.php?mod=admin&act=admin_catagory");
                 break;
-    // admin sản phẩm
+        // admin sản phẩm
             case 'admin_product':
                 if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
                     $page = $_GET['page'];
@@ -255,7 +255,19 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $userall = get_useradmin();
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+                $SoTrang = ceil(user_adminPhanTrang()/6);
+                $userall = get_useradmin($keyword,$page);
                 $view_name = "admin_user";
                 break;
             
@@ -337,8 +349,14 @@
                         $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
                         exit();//thoát liền trang web
                     }
-                    
-                    $cmtall = get_cmtadmin();
+
+                    if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                        $page = $_GET['page'];
+                    }else{
+                        $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                    }
+                    $SoTrang = ceil(binhluan_adminPage()/6);
+                    $cmtall = get_cmtadmin($page);
                     $view_name = "admin_cmt";
                     break;
                 // xóa cmt 
@@ -366,10 +384,16 @@
                         $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
                     }
 
+                    if(isset($_POST['search_product'])){
+                        $keyword = $_POST['keyword'];
+                    }else{
+                        $keyword = "";
+                    }
+
                     if(!($_SESSION['user']['Quyen'] >=1)){
                         header("location: index.php?mod=page&act=home");
                     }
-                    $donghangall = get_donhangadmin($page);
+                    $donghangall = get_donhangadmin($keyword,$page);
                     $SoTrang = ceil(order_adminPage()/6);
                     $view_name = "admin_donhang";
                     break;
@@ -524,8 +548,13 @@
             
         // Phản hồi
             case 'phanhoi':
-                
-                $phanhoiAll = phanhoi_getAll();
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+                $SoTrang = ceil(phanhoi_adminPhanTrang()/6);
+                $phanhoiAll = phanhoi_getAll($page);
                 $view_name = "admin_phanhoi";
                 break;
 
