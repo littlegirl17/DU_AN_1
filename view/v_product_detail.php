@@ -235,7 +235,7 @@
                     foreach($lienquan_product as $item){
 
                         if($item['GiaSP'] >=1){
-                            $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                            $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
                         }else{
                             $price = "<h5>Đang cập nhật</h5>";
                         }

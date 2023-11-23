@@ -5,11 +5,12 @@
         return pdo_query("SELECT * FROM danhmuc ORDER BY MaDM DESC");
     }
 
-    function danhmuc_getbyiddetail($MaDM){
-        return pdo_query("SELECT * FROM sanpham WHERE MaDM = ? LIMIT 9",$MaDM);
+    function danhmuc_getbyiddetail($MaDM,$page=1){
+        $BatDau = ($page - 1) * 9;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
+        return pdo_query("SELECT * FROM sanpham WHERE MaDM = ? LIMIT $BatDau,9",$MaDM);
     }
     function danhmucproduct_getAll(){
-        return pdo_query("SELECT * FROM sanpham ORDER BY MaSP DESC LIMIT 9");
+        return pdo_query("SELECT * FROM sanpham ORDER BY MaSP DESC ");
     }
 
      //dem so luong san pham theo danh muc
@@ -17,6 +18,8 @@
         $returnsp = pdo_query("SELECT * FROM sanpham WHERE MaDM = ? ",$MaDM);
         return count($returnsp);
     }
-    //SELECT sp.* FROM danhmuc dm INNER JOIN sanpham sp ON dm.MaDM = sp.MaDM WHERE MaDM = 14;
+    function catagory_phantrang($MaDM){
+        return pdo_query_value("SELECT COUNT(*) FROM sanpham WHERE MaDM = ?", $MaDM);
+    }
 
 ?>

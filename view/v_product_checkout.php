@@ -161,12 +161,12 @@
                                 <div class="checkout__order__products">Sản phẩm <span>Giá tiền</span></div>
                                 <ul>
                                     <?php foreach($_SESSION['mygiohang'] as $item): ?>
-                                        <li><?=$item['TenSP']?> <span><?=number_format($item['GiaSP'],"0",",",".")?> VNĐ</span></li>
+                                        <li><?=$item['TenSP']?> <span><?=number_format($item['GiaSP'],"0",",",".")?> đ</span></li>
                                     <?php endforeach; ?>
                                 </ul>
 
-                                <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> VNĐ</span></div>
-                                <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> VNĐ</span></div>
+                                <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></div>
+                                <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></div>
                                 <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng">
                             </div>
                         </div>

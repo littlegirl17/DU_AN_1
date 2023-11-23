@@ -22,7 +22,7 @@
         foreach($dssp as $item){
 
             if($item['GiaSP'] >=1){
-                $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
             }else{
                 $price = "<h5>Đang cập nhật</h5>";
             }
@@ -60,13 +60,13 @@
         foreach($dssp as $item){
 
             if($item['GiaSP'] >=1){
-                $price = '<h5 style="text-decoration:line-through;color: #919191;font-weight: 400;">'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                $price = '<h5 style="text-decoration:line-through;color: #919191;font-weight: 400;">'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
             }else{
                 $price = "<h5>Đang cập nhật</h5>";
             }
 
             if($item['GiaGiam'] >=1){
-                $GiaGiamSP = '<h5>'.number_format($item['GiaGiam'],"0",",",".").' VNĐ</h5>';
+                $GiaGiamSP = '<h5>'.number_format($item['GiaGiam'],"0",",",".").' đ</h5>';
             }else{
                 $GiaGiamSP = "";
             }
@@ -114,7 +114,7 @@
         foreach($dssp as $sp){
 
             if($sp['GiaSP'] >=1){
-                $price = '<h5>'.number_format($sp['GiaSP'],"0",",",".").' VNĐ</h5>';
+                $price = '<h5>'.number_format($sp['GiaSP'],"0",",",".").' đ</h5>';
             }else{
                 $price = "<h5>Đang cập nhật</h5>";
             }
@@ -163,7 +163,7 @@
         foreach($dssp as $item){
 
             if($item['GiaSP'] >=1){
-                $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
             }else{
                 $price = "<h5>Đang cập nhật</h5>";
             }

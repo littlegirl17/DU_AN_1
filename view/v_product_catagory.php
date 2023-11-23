@@ -83,7 +83,7 @@
                         <?php if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)): ?>
                             <?php foreach($danhmuc_getbyid as $item): 
                                 if($item['GiaSP'] >=1){
-                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
                                 }else{
                                     $price = "<h5>Đang cập nhật</h5>";
                                 }
@@ -112,9 +112,9 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <?php foreach($getdanhmucproduct as $itempro): 
+                            <?php foreach($getdanhmucproduct as $item): 
                                 if($item['GiaSP'] >=1){
-                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' VNĐ</h5>';
+                                    $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
                                 }else{
                                     $price = "<h5>Đang cập nhật</h5>";
                                 }
@@ -150,7 +150,38 @@
             </div>
         </div>
     </section>
+    <?php
+        if(isset($_GET['MaDM']) && ($_GET['MaDM']>0)):
+    ?>
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+            <a class="page-link" href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$MaDM?>&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                <a class="page-link" href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$MaDM?>&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=catagory&act=catagory_detail&MaDM=<?=$MaDM?>&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <?php
+       
+    ?>
 
+
+    <?php
+        endif;
+    ?>
+
+    
 
 
 
