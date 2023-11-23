@@ -189,10 +189,6 @@
                         <div class="hero__search">
                             <div class="hero__search__form">
                                 <form action="" method="post">
-                                    <div class="hero__search__categories">
-                                        All Categories
-                                        <span class="arrow_carrot-down"></span>
-                                    </div>
                                     <input type="text" name="keyword" placeholder="What do yo u need?">
                                     <button type="submit" name="submit_home" class="site-btn">SEARCH</button>
                                 </form>

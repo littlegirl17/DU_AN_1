@@ -34,10 +34,14 @@
 
     
     // Danh mục
-        function get_catagoryadmin(){
-            return pdo_query("SELECT * FROM danhmuc");
+        function get_catagoryadmin($keyword,$page=1){
+            $BatDau = ($page - 1) * 6;
+            return pdo_query("SELECT * FROM danhmuc WHERE TenDM LIKE'%$keyword%' LIMIT $BatDau,6");
         }
 
+        function catagory_adminPhanTrang(){
+            return pdo_query_value("SELECT COUNT(*) FROM danhmuc");
+        }
         // Thêm
         function add_catagory($TenDM,$SoThuTu,$UuTien,$HinhAnh){
             pdo_execute("INSERT INTO danhmuc (`TenDM`,`SoThuTu`,`UuTien`,`HinhAnh`) VALUES (?,?,?,?)",$TenDM,$SoThuTu,$UuTien,$HinhAnh);
@@ -59,10 +63,10 @@
 
     // Sản phẩm
         
-        function get_productadmin($page=1){//Mặc định nó sẽ gọi trang 1
+        function get_productadmin($keyword,$page=1){//Mặc định nó sẽ gọi trang 1
             
             $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
-            return pdo_query("SELECT sp.*,dm.TenDM FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM=dm.MaDM LIMIT $BatDau,6");
+            return pdo_query("SELECT sp.*,dm.TenDM FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM=dm.MaDM WHERE TenSP LIKE '%$keyword%' LIMIT $BatDau,6");
             //Limit 0,4 nghĩa là bắt đầu từ 0 lấy 4 quyển sách , và trong DB thì LIMIT lấy từ số 0 đầu tiên
         }
 
@@ -160,8 +164,12 @@
         }*/
 
     // Bài viết
-        function get_postadmin(){
-            return pdo_query("SELECT * FROM baiviet");
+        function get_postadmin($keyword,$page=1){
+            $BatDau = ($page - 1) * 3;
+            return pdo_query("SELECT * FROM baiviet WHERE TieuDe LIKE'%$keyword%' LIMIT $BatDau,3");
+        }
+        function post_adminPhanTrang(){
+            return pdo_query_value("SELECT COUNT(*) FROM baiviet");
         }
         // Thêm
         function add_post($TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM){
@@ -179,5 +187,15 @@
         // Xóa
         function delete_post($MaBV){
             pdo_execute("DELETE FROM baiviet WHERE MaBV = ?", $MaBV);
+        }
+
+
+    // Phản hồi
+        function phanhoi_getAll(){
+            return pdo_query("SELECT * FROM phanhoi");
+        }
+
+        function phanhoi_delete($MaPH){
+            pdo_execute("DELETE FROM phanhoi WHERE MaPH = ?",$MaPH);
         }
 ?>

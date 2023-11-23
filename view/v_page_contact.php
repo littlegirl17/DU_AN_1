@@ -64,7 +64,7 @@
                 <h4>Việt Nam</h4>
                 <ul>
                     <li>Số điện thoại +12-345-6789</li>
-                    <li>Địa chỉ: 16 Creek Ave. Farmingdale, NY</li>
+                    <li>Địa chỉ: Công viên phần mềm Quang</li>
                 </ul>
             </div>
         </div>
@@ -81,20 +81,27 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            
+        <?php if(isset($_SESSION['thongbao'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?=$_SESSION['thongbao']?>
+            </div>
+        <?php endif; unset($_SESSION['thongbao']); ?>
+            <form action="index.php?mod=page&act=contact" method="post">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
+                        <input type="text" name="HoTen" placeholder="Your name">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
+                        <input type="text" name="Email" placeholder="Your Email">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                        <button type="submit" class="site-btn">GỬI TIN NHẮN</button>
+                        <textarea placeholder="Your message" name="NoiDung"></textarea>
+                        <button type="submit" name="submit_phanhoi" class="site-btn">GỬI TIN NHẮN</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <!-- Contact Form End -->
+    

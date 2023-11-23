@@ -145,7 +145,7 @@
                                                 <h5><?=$item['TenSP']?></h5>
                                             </td>
                                             <td class="shoping__cart__price" id="GiaSP" >
-                                            <?=number_format($item['GiaSP'],"0",",",".")?>
+                                                <?=number_format($item['GiaSP'],"0",",",".")?> đ
                                             </td>
                                             <td class="shoping__cart__quantity">
                                                 <div class="quantity">
@@ -157,7 +157,7 @@
                                                 </div>
                                             </td>
                                             <td class="shoping__cart__total" >
-                                                <?=number_format($ThanhTien,"0",",",".")?>
+                                                <?=number_format($ThanhTien,"0",",",".")?> đ
                                             </td>
                                             <td class="shoping__cart__item__close">
                                                 <a href="<?=$linkdel?>">x</a>
@@ -209,8 +209,8 @@
                                     }
                                 ?>
                                     <ul>
-                                        <li>Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?></span></li>
-                                        <li>Tổng tiền <span><?=number_format($TongTien ,"0",",",".")?></span></li>
+                                        <li>Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></li>
+                                        <li>Tổng tiền <span><?=number_format($TongTien ,"0",",",".")?> đ</span></li>
                                     </ul>
                         
                             <a href="index.php?mod=product&act=checkout" class="primary-btn">TIẾN HÀNH KIỂM TRA</a>

@@ -2,9 +2,22 @@
     <h3 class="title-page">
         Sản phẩm
     </h3>
-    <div class="d-flex justify-content-end">
-        <a href="index.php?mod=admin&act=admin_add_product" class="btn btn-primary mb-2">Thêm sản phẩm  mới</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="blog__sidebar__search">
+                <form action="index.php?mod=admin&act=admin_product" method="post">
+                    <input type="text" name="keyword" placeholder="Search...">
+                    <button type="submit" name="search_product"><i class="fa-solid fa-magnifying-glass" style="color: #69cc05;"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+                <a href="index.php?mod=admin&act=admin_add_product" class="btn btn-primary mb-2">Thêm sản phẩm  mới</a>
+            </div>
+        </div>
     </div>
+    
     <section class="row">
         <div class="col-sm-12 col-md-12 col xl-12">
             <div class="card chart">

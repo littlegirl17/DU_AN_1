@@ -43,7 +43,9 @@
                         
                     }else{
                         $HinhAnh = 'ava_user.jpeg';
-                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$_POST['GioiTinh'],$_POST['SoDienThoai'],$HinhAnh);
+                        $GioiTinh = isset($_POST['GioiTinh']) ? intval($_POST['GioiTinh']) : 0;
+
+                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$GioiTinh,$_POST['SoDienThoai'],$HinhAnh);
                         $_SESSION['thongbao'] = "Đăng ký tài khoản thành công!";
                         $_SESSION['email'] = $_POST['Email'];
                     }

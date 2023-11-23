@@ -35,6 +35,10 @@
                 $view_name = "page_blog";
                 break;
             case 'contact':
+                if(isset($_POST['submit_phanhoi'])){
+                    phanhoi_add($_POST['HoTen'],$_POST['Email'],$_POST['NoiDung']);
+                    $_SESSION['thongbao'] = "Đã gửi phản hồi thành công";
+                }
                 $view_name = "page_contact";
                 break;
             default:

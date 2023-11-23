@@ -32,7 +32,21 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $danhmucall = get_catagoryadmin();
+
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+
+                $SoTrang = ceil(catagory_adminPhanTrang()/6);
+                $danhmucall = get_catagoryadmin($keyword,$page);
                 $view_name = "admin_catagory";
                 break;
             case 'admin_add_catagory':
@@ -107,6 +121,13 @@
                 }else{
                     $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
                 }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+
                 if(isset($_SESSION['user']) == false){
                     header("location: index.php?mod=user&act=login");
                     $_SESSION['canhbao'] = "Vui lòng đăng nhập!";
@@ -115,7 +136,7 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $sanphamall = get_productadmin($page);
+                $sanphamall = get_productadmin($keyword,$page);
                 $SoTrang = ceil(product_adminPage()/6);
                 $view_name = "admin_product";
 
@@ -130,7 +151,20 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $danhmucall = get_catagoryadmin();
+
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+
+                $danhmucall = get_catagoryadmin($keyword,$page);
                 if (isset($_POST['submit'])) {
                     $TenSP = isset($_POST['TenSP']) ? $_POST['TenSP'] : "";
                     $GiaSP = isset($_POST['GiaSP']) ? intval($_POST['GiaSP']) : "";
@@ -161,7 +195,19 @@
                 if(!($_SESSION['user']['Quyen'] >=1)){
                     header("location: index.php?mod=page&act=home");
                 }
-                $danhmucall = get_catagoryadmin();
+
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                } 
+                $danhmucall = get_catagoryadmin($keyword,$page);
 
                 $MaSP = $_GET['MaSP'];
                 $getproductId = get_productById($MaSP);
@@ -369,11 +415,36 @@
                 break;*/
         // Bài viết
             case 'admin_post':
-                $baivietall = get_postadmin();
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+                $SoTrang = ceil(post_adminPhanTrang()/3);
+                $danhmucall = get_catagoryadmin($keyword,$page);
+                $baivietall = get_postadmin($keyword,$page);
                 $view_name = "admin_post";
                 break;   
             case 'admin_add_post':
-                $danhmucall = get_catagoryadmin();
+
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                } 
+                $danhmucall = get_catagoryadmin($keyword,$page);
                 if (isset($_POST['submitblog']) && $_POST['submitblog']) {
                     // Kiểm tra sự tồn tại của các biến và xử lý dữ liệu nếu cần
                     $TieuDe = isset($_POST['TieuDe']) ? ($_POST['TieuDe']) : "";
@@ -404,7 +475,18 @@
                 break;
 
             case 'admin_edit_post':
-                $danhmucall = get_catagoryadmin();
+                if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                }
+
+                if(isset($_POST['search_product'])){
+                    $keyword = $_POST['keyword'];
+                }else{
+                    $keyword = "";
+                }
+                $danhmucall = get_catagoryadmin($keyword,$page);
                 $MaBV = $_GET['MaBV'];
                 $getpostId = get_postId($MaBV);
                 if (isset($_POST['submitupdateblog']) ) {
@@ -438,6 +520,19 @@
                     delete_post($MaBV);
                 }
                 header("location: index.php?mod=admin&act=admin_post");
+                break;
+            
+        // Phản hồi
+            case 'phanhoi':
+                
+                $phanhoiAll = phanhoi_getAll();
+                $view_name = "admin_phanhoi";
+                break;
+
+            case 'deletephanhoi':
+                $MaPH = $_GET['MaPH'];
+                phanhoi_delete($MaPH);
+                header("location: index.php?mod=admin&act=phanhoi");
                 break;
             default:
                 header("location:index.php?mod=page&act=home");

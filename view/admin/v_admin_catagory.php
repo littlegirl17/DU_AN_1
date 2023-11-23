@@ -2,9 +2,22 @@
     <h3 class="title-page">
         Danh mục
     </h3>
-    <div class="d-flex justify-content-end">
-        <a href="index.php?mod=admin&act=admin_add_catagory" class="btn btn-primary mb-2">Thêm danh mục mới</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="blog__sidebar__search">
+                <form action="index.php?mod=admin&act=admin_catagory" method="post">
+                    <input type="text" name="keyword" placeholder="Search...">
+                    <button type="submit" name="search_product"><i class="fa-solid fa-magnifying-glass" style="color: #69cc05;"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+                <a href="index.php?mod=admin&act=admin_add_catagory" class="btn btn-primary mb-2">Thêm danh mục mới</a>
+            </div>
+        </div>
     </div>
+    
     <section class="row">
         <div class="col-sm-12 col-md-12 col xl-12">
             <div class="card chart">
@@ -45,6 +58,25 @@
                 </table>
             </div>
         </div>
-        
     </section>
+
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_catagory&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                    <a class="page-link" href="index.php?mod=admin&act=admin_catagory&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=admin&act=admin_catagory&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div> 

@@ -56,30 +56,31 @@
         <form action="index.php?mod=user&act=register" method="post">
             <div class="form-input">
                 <div class="form__login">
-                    <input type="text" name="HoTen" id="" placeholder="Hãy nhập họ tên"><i class="fa-regular fa-user" style="color: #7FAD39;"></i>
+                    <input type="text" name="HoTen" id="HoTen" placeholder="Hãy nhập họ tên"><i class="fa-regular fa-user" style="color: #7FAD39;"></i>
                 </div>
                 <div class="form__login">
-                    <input type="text" name="UserName" id="" placeholder="Hãy nhập UserName"><i class="fa-solid fa-signature" style="color: #7FAD39;"></i>
+                    <input type="text" name="UserName" id="UserName" placeholder="Hãy nhập UserName"><i class="fa-solid fa-signature" style="color: #7FAD39;"></i>
                 </div>
                 <div class="form__login">
-                    <input type="text" name="Email" id="" placeholder="Hãy nhập Email"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
+                    <input type="text" name="Email" id="Email" placeholder="Hãy nhập Email"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
                 </div>
                 <div class="form__login">
-                    <input type="text" name="MatKhau" id="" placeholder="Hãy nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
+                    <input type="text" name="MatKhau" id="MatKhau" placeholder="Hãy nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
                 </div>
                 <div class="form__login">
-                    <input type="text" name="DiaChi" id="" placeholder="Hãy nhập Địa chỉ"><i class="fa-sharp fa-regular fa-location-dot" style="color: #7FAD39;"></i>
+                    <input type="text" name="DiaChi" id="DiaChi" placeholder="Hãy nhập Địa chỉ"><i class="fa-sharp fa-regular fa-location-dot" style="color: #7FAD39;"></i>
                 </div>
                 <div class="form__login">
-                    <input type="text" name="SoDienThoai" id="" placeholder="Hãy nhập số điện thoại"><i class="fa-solid fa-phone-flip" style="color: #7FAD39;"></i>
+                    <input type="text" name="SoDienThoai" id="SoDienThoai" placeholder="Hãy nhập số điện thoại"><i class="fa-solid fa-phone-flip" style="color: #7FAD39;"></i>
                 </div>
-                <select name="GioiTinh" id="" >
+                <select name="GioiTinh" id="GioiTinh" >
                     <option  >Giới tính</option>
                     <option value="0">Nam</option>
                     <option value="1">Nữ</option>
                 </select>
                 
-            <input type="submit" name="submit_register" value="Đăng ký" class="submit">
+            <input type="submit" name="submit_register" onclick="return kiemtra_dk()" value="Đăng ký" class="submit">
+            <div id="alert-register" class="baoloi_dangky" ></div>
             </div>
         </form>
 

@@ -245,4 +245,10 @@
     function danhmuc_getUuTien(){
         return pdo_query("SELECT sp.*, dm.TenDM FROM danhmuc dm INNER JOIN sanpham sp ON dm.MaDM=sp.MaDM WHERE UuTien = 1 ORDER BY SoThuTu ASC");
     }
+
+    // CONTACT 
+        //  add
+        function phanhoi_add($HoTen,$Email,$NoiDung){
+            pdo_execute("INSERT INTO phanhoi (`HoTen`,`Email`,`NoiDung`) VALUES (?,?,?)",$HoTen,$Email,$NoiDung);
+        }
 ?>

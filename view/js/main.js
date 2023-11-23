@@ -207,4 +207,117 @@
 
 
 
+// CHECK FORM ĐĂNG NHẬP
+function kiemtra_dn(){
+    var Email = document.getElementById("Email");
+    if(Email.value==""){
+        document.getElementById("alert-login").innerHTML="Email không được để trống";
+        Email.focus();
+        return false;
+    }else{
+        var regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; //TRUE
+        if(!regex_email.test(Email.value)){//Nếu giá trị username không phù hợp voi Biểu thức chính quy
+            document.getElementById("alert-login").innerHTML="Email không đúng định dạng";
+            Email.focus();
+            return false;
+        }
+    }
+
+    var MatKhau = document.getElementById("MatKhau");
+    if(MatKhau.value==""){
+        document.getElementById("alert-login").innerHTML="Mật khẩu không được để trống";
+        MatKhau.focus();
+        return false;
+    }
+}
+
+// CHECK FORM ĐĂNG KÝ
+function kiemtra_dk(){
+    //hoten 
+    var HoTen = document.getElementById("HoTen");
+    if(HoTen.value==""){
+        document.getElementById("alert-register").innerHTML="Họ tên không để trống";
+        HoTen.focus();
+        return false;
+    }else{
+        var regex_HoTen = /^[A-Za-z\s]+$/; //Biểu thức chính quy
+        if(!regex_HoTen.test(HoTen.value)){//Nếu giá trị HoTen không phù hợp voi Biểu thức chính quy //bạn cần sử dụng phương thức test() của biểu thức chính quy.
+            document.getElementById("alert-register").innerHTML="Họ tên không nhập các ký tư dặc biệt";
+            HoTen.focus();
+            return false;
+        }else{
+            if(HoTen.value.length > 50 ){
+                document.getElementById("alert-register").innerHTML="Họ tên không quá 50 ký tự";
+                HoTen.focus();
+                return false;
+            }
+        }
+    }
+    //UserName
+    if(UserName.value==""){
+        document.getElementById("alert-register").innerHTML="Bạn chưa nhập username";
+        UserName.focus();
+        return false;
+    }
+
+     //Email
+    if(Email.value==""){
+        document.getElementById("alert-register").innerHTML="Email không để trống";
+        Email.focus();
+        return false;
+    }else{
+        var regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; //TRUE
+        if(!regex_email.test(Email.value)){//Nếu giá trị Email không phù hợp voi Biểu thức chính quy
+            document.getElementById("alert-register").innerHTML="Email không đúng định dạng";
+            Email.focus();
+            return false;
+        }
+    }
+
+    //password
+    if(MatKhau.value==""){
+        document.getElementById("alert-register").innerHTML="Mật khẩu không để trống";
+        MatKhau.focus();
+        return false;
+    }else{
+        if(MatKhau.value.length>=10){
+            document.getElementById("alert-register").innerHTML="Mật khẩu không quá 10 ký tự";
+            MatKhau.focus();
+            return false;
+        }
+    }
+
+    //DiaChi
+    if(DiaChi.value==""){
+        document.getElementById("alert-register").innerHTML="Bạn chưa nhập địa chỉ";
+        DiaChi.focus();
+        return false;
+    }
+
+    //SoDienThoai
+    if(SoDienThoai.value==""){
+        document.getElementById("alert-register").innerHTML="Bạn chưa nhập số điện thoại";
+        SoDienThoai.focus();
+        return false;
+    }
+
+    //GioiTinh
+    var GioiTinh = document.getElementById("GioiTinh");
+    if(GioiTinh.value=== ""){
+        document.getElementById("alert-register").innerHTML="Bạn chưa chọn giới tinh";
+        GioiTinh.focus();
+        return false;
+    }
+   
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+setInterval(function(){
+    document.getElementById("alert-login").innerHTML="";
+},5000);
+
+setInterval(function(){
+    document.getElementById("alert-register").innerHTML="";
+},7000);
+});
 

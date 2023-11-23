@@ -68,15 +68,16 @@
                 <form action="">
                     <div class="form-input">
                         <div class="form__login">
-                            <input type="text" name="Email" id="" placeholder="Nhập email của bạn!"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
+                            <input type="text" name="Email" id="Email" placeholder="Nhập email của bạn!"><i class="fa-regular fa-envelope" style="color: #7FAD39;"></i>
                         </div>
                         <div class="form__login">
-                            <input type="password" name="MatKhau" id="" placeholder="Nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
+                            <input type="password" name="MatKhau" id="MatKhau" placeholder="Nhập mật khẩu"><i class="fa-solid fa-lock" style="color: #7FAD39;"></i>
                         </div>
-                    <input type="submit" name="Submit_login" value="Đăng nhập" class="submit">
+                        
+                    <input type="submit" name="Submit_login" onclick="return kiemtra_dn()" value="Đăng nhập" class="submit">
                     </div>
                 </form>
-                
+                <div id="alert-login" class="baoloi_dangky" ></div>
                 <div class="form-bot-1">
                     <a href="">Quên mật khẩu</a>
                 </div>

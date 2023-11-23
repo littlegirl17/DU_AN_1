@@ -19,8 +19,14 @@
                     $danhmuc_getbyid = danhmuc_getbyiddetail($MaDM,$page);
                 }else{
                     $MaDM = "";
+                    if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                        $page = $_GET['page'];
+                    }else{
+                        $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                    }
                     $getdanhmuc = danhmuc_getAll(); 
-                    $getdanhmucproduct = danhmucproduct_getAll(); 
+                    $getdanhmucproduct = danhmucproduct_getAll($page); 
+                    $SoTrang = ceil(catagoryall_phantrang() / 9);
                 }
 
                 
