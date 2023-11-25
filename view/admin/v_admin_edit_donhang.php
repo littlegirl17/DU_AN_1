@@ -42,7 +42,7 @@
             <label for="name">Phương thức thanh toán:</label>
             <select class="form-control" name="PhuongThucTT" class="admin__select">
                 <option value="1" <?=($getOrderDetails['PhuongThucTT'] == 1) ? "selected" : "" ?>>Trả tiền mặt khi nhận hàng</option>
-                <option value="2" <?=($getOrderDetails['PhuongThucTT'] == 2) ? "selected" : "" ?>>Chuyển khoản ngân hàng</option>
+                <option value="2" <?=($getOrderDetails['PhuongThucTT'] == 2) ? "selected" : "" ?>>Thanh toán bằng VNPAY</option>
                 <option value="3" <?=($getOrderDetails['PhuongThucTT'] == 3) ? "selected" : "" ?>>Thanh toan vi momo</option>
             </select>
         </div>

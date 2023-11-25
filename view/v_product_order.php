@@ -104,7 +104,7 @@
                                         $pttt = "Trả tiền mặt khi nhận hàng";
                                         break;
                                     case '2':
-                                        $pttt = ".Chuyển khoản ngân hàng";
+                                        $pttt = "Thanh toán bằng VNPAY";
                                         break;
                                     case '3':
                                         $pttt = "Thanh toan vi momo";
@@ -127,11 +127,21 @@
                                         $ttdh = "Đang xử lý";
                                         break;
                                     case '2':
-                                        $ttdh = "Đang giao hàng";
+                                        $ttdh = "Xác nhận đơn hàng";
                                         break;
                                     case '3':
+                                        $ttdh = "Đang giao hàng";
+                                        break;
+                                    case '4':
                                         $ttdh = "Đã giao";
                                         break;
+                                    case '5':
+                                        $ttdh = "Đã hủy";
+                                        break;
+                                    case '6':
+                                        $ttdh = "Giao hàng thất bại";
+                                        break;
+                                        
                                     default:
                                         $ttdh = "Đơn đặt hàng đang lỗi";
                                         break;

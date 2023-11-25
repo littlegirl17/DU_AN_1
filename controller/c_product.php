@@ -59,7 +59,7 @@
                         $i++;
                     }
                     if($flag == 0){
-                        $cart = [
+$cart = [
                             "MaSP"=>$MaSP,
                             "HinhAnh"=>$HinhAnh,
                             "GiaSP"=>$GiaSP,
@@ -118,13 +118,15 @@
                     // Nếu có sản phẩm trong giỏ hàng, tiếp tục xử lý đơn hàng
                     if (!isset($_SESSION['user'])) {
                         $_SESSION['canhbao'] = "Bạn cần đăng nhập trước khi mua hàng";
-                        header("location: index.php?mod=user&act=login");
+header("location: index.php?mod=user&act=login");
                         return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
                     }
                 }
                 // Tiếp tục xử lý thông tin đơn hàng và chuyển hướng đến trang thanh toán
                 $view_name = "product_checkout";
                 break;
+
+            
             case 'order':
                 require "mail/sendmail.php";
 
@@ -134,10 +136,8 @@
                     return; // Nếu không có return, các lệnh phía sau header vẫn có thể được thực hiện
                 }
 
-
-                if(isset($_POST['submit_checkout']) && ($_POST['submit_checkout'])){
-                    // LẤY DỮ LIỆU TỪ FORM
-                        // đoạn mã này là xác định liệu người dùng đã đăng nhập hay chưa
+                // LẤY DỮ LIỆU TỪ FORM
+                    // đoạn mã này là xác định liệu người dùng đã đăng nhập hay chưa
                         if(isset($_SESSION['user'])){
                             $MaTK = $_SESSION['user']['MaTK']; //nếu họ đã đăng nhập
                         }else{
@@ -156,13 +156,12 @@
                         if(isset($_POST['PhuongThucTT'])){
                             $PhuongThucTT = $_POST['PhuongThucTT']; //dữ liệu được gửi đi -> True
                         }else{
-                            $PhuongThucTT = ""; //nếu không có dữ liệu được gửi đi ->False -> rỗng
+                            $PhuongThucTT = 0; //nếu không có dữ liệu được gửi đi ->False -> rỗng
                         }
                         $MaDHRandom = "Organic".rand(0,999999);
-                    // XỬ LÝ DỮ LIỆU
-                        // Tạo đơn hàng và trả về một id đơn hàng
+                    // Tạo đơn hàng và trả về một id đơn hàng
                         $iddh = TaoDonHang($MaTK,$TongTien,$HoTen,$DiaChi,$SoDienThoai,$Email,$GhiChu,$PhuongThucTT,$MaDHRandom);
-                        // LƯU LẠI BẰNG SESSION
+                    // LƯU LẠI BẰNG SESSION
                         $_SESSION['iddh'] = $iddh;
 
                         if(isset($_SESSION['mygiohang']) && is_array($_SESSION['mygiohang'])){
@@ -174,6 +173,9 @@
                             //nghĩa là sau khi sản phẩm đó được đặt, và quay lại trang chủ thì sản phẩm đó phải biến mất trong giỏ hàng
                         }
 
+                        
+                
+                if(isset($_POST['submit_checkout']) && ($_POST['submit_checkout'])){
                     //Gửi Email
                         $TieuDe = "Đơn hàng bạn đặt đã thành công";
                         $NoiDung = "<div><p>Cảm ơn quý khách đã đặt hàng của chúng tôi mã đơn hàng của bạn là: ".$MaDHRandom."</p><div>";
@@ -201,12 +203,87 @@
                         $MailDatHang = $_SESSION['email'];
                         $mail = new Mailer();
                         $mail->DatHangEmail($TieuDe,$NoiDung,$MailDatHang);
+                    //Chuyển đến trang đơn hàng (Hóa đơn)
+                        header("location:index.php?mod=product&act=vieworder");
+                
+                } elseif (isset($_POST['payUrl'])){
+
+                    function execPostRequest($url, $data)
+                    {
+                        $ch = curl_init($url);
+                        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                                'Content-Type: application/json',
+                                'Content-Length: ' . strlen($data))
+                        );
+                        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+                        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                        //execute post
+                        $result = curl_exec($ch);
+                        //close connection
+                        curl_close($ch);
+                        return $result;
+                    }
+
+                    if(isset($_POST['payUrl'])){
+                        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                        $partnerCode = 'MOMOBKUN20180529';
+                        $accessKey = 'klm05TvNBzhg7h7j';
+                        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+
+                        $orderInfo = "Thanh toán qua MoMo";
+                        $amount = "10000";
+                        $orderId = rand(00,9999);
+                        $redirectUrl = "http://localhost:8080/PHP1/DuAn_1/Organic/index.php?mod=product&act=vieworder";
+                        $ipnUrl = "http://localhost:8080/PHP1/DuAn_1/Organic/index.php?mod=product&act=vieworder";
+                        $extraData = "";
+                        
+                        
+                            $partnerCode = $partnerCode;
+                            $accessKey = $accessKey;
+                            $serectkey = $secretKey;
+                            $orderId = $orderId; // Mã đơn hàng
+                            $orderInfo = $orderInfo;
+                            $amount = $amount;
+                            $ipnUrl = $ipnUrl;
+                            $redirectUrl = $redirectUrl;
+                            $extraData = $extraData;
+                        
+                            $requestId = time() . "";
+                            $requestType = "payWithATM";
+                            //$extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+                            //before sign HMAC SHA256 signature
+                            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+                            $signature = hash_hmac("sha256", $rawHash, $serectkey);
+                            $data = array('partnerCode' => $partnerCode,
+                                'partnerName' => "Test",
+                                "storeId" => "MomoTestStore",
+                                'requestId' => $requestId,
+                                'amount' => $amount,
+                                'orderId' => $orderId,
+                                'orderInfo' => $orderInfo,
+                                'redirectUrl' => $redirectUrl,
+                                'ipnUrl' => $ipnUrl,
+                                'lang' => 'vi',
+                                'extraData' => $extraData,
+                                'requestType' => $requestType,
+                                'signature' => $signature);
+                            $result = execPostRequest($endpoint, json_encode($data));
+                            $jsonResult = json_decode($result, true);  // decode json
+                        
+                            //Just a example, please check more in there
+                        
+                            header('Location: ' . $jsonResult['payUrl']);
+                        
+                    }
                 }
                 
+                
                 unset($_SESSION['mygiohang']);
-                header("location:index.php?mod=product&act=vieworder");
                 break;
-
+        
             case 'vieworder':
                 $viewdonhang = get_order($_SESSION['iddh']);
                 $viewsanphamorder = get_productOrder($_SESSION['iddh']);
@@ -214,18 +291,7 @@
                 $view_name = "product_order";
                 break;
 
-            // case 'voucher':
-            //     if(isset($_POST['submit_voucher']) && isset($_GET['id']) && $_GET['id'] == 1){
-            //         // lấy từ formm về
-            //         $TongTien = isset($_POST['TongTien']) ? $_POST['TongTien'] : 0;
-            //         $mavoucher = isset($_POST['mavoucher']) ? $_POST['mavoucher'] : '';
-            //         // Này là mã cho nên mình nhập bao nhiêu nó vẫn trừ 10
-            //         $GiaTriOfVoucher = 5;
-            //         $_SESSION['mygiohang'] = $GiaTriOfVoucher;
-            //     }
-            //     header("location:index.php?mod=product&act=viewcart");
-            //     exit();
-            //     break;
+            
             default:
                 header("location:index.php?mod=page&act=home");
                 break;

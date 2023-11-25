@@ -57,7 +57,7 @@
                                             echo '<p style="font-weight: 500;">Trả tiền mặt khi nhận hàng</p>';
                                             break;
                                         case '2':
-                                            echo '<p style="font-weight: 500;">Chuyển khoản ngân hàng</p>';
+                                            echo '<p style="font-weight: 500;">Thanh toán bằng VNPAY</p>';
                                             break;
                                         case '3':
                                             echo '<p style="font-weight: 500;">Thanh toan vi momo</p>';
@@ -73,10 +73,10 @@
                                 <?php
                                     switch ($order['TrangThai']) {
                                         case '0':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Đơn hàng mới</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #F08080;">Đơn hàng mới</p>';
                                             break;
                                         case '1':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e5dc30;">Đang xử lý</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #FFD700;">Đang xử lý</p>';
                                             break;
                                         case '2':
                                             echo '<p  style="text-align: center; color:#fff; padding:5px 5px; background-color: #21d2e2;">Xác nhận đơn hàng</p>';
@@ -88,10 +88,10 @@
                                             echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Đã giao</p>';
                                             break;
                                         case '5':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Đã hủy</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Đã hủy</p>';
                                             break;
                                         case '6':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Giao hàng thất bại</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #000000;">Giao hàng thất bại</p>';
                                             break;
                                         default:
                 
