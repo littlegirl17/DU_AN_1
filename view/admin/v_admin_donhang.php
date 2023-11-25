@@ -79,13 +79,22 @@
                                             echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e5dc30;">Đang xử lý</p>';
                                             break;
                                         case '2':
-                                            echo '<p  style="text-align: center; color:#fff; padding:5px 5px; background-color: #21d2e2;">Đang giao hàng</p>';
+                                            echo '<p  style="text-align: center; color:#fff; padding:5px 5px; background-color: #21d2e2;">Xác nhận đơn hàng</p>';
                                             break;
                                         case '3':
+                                            echo '<p  style="text-align: center; color:#fff; padding:5px 5px; background-color: #21d2e2;">Đang giao hàng</p>';
+                                            break;
+                                        case '4':
                                             echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Đã giao</p>';
                                             break;
+                                        case '5':
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Đã hủy</p>';
+                                            break;
+                                        case '6':
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Giao hàng thất bại</p>';
+                                            break;
                                         default:
-
+                
                                             break;
                                     }
                                 ?>

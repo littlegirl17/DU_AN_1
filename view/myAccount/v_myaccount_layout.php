@@ -127,6 +127,9 @@
                             <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-cart-shopping ico-side" style="color: #f5f5f5;"></i>Đơn hàng của tôi</a>
                         </li>
                         <li>
+                            <a href="index.php?mod=myaccount&act=orderdahuy"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>Đã hủy</a>
+                        </li>
+                        <li>
                             <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>   Lịch sự đặt hàng</a>
                         </li>
                         <li>

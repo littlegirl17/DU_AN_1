@@ -52,8 +52,11 @@
             <select class="form-control" name="TrangThai" id="" class="admin__select">
                 <option value="0" <?=($getOrderDetails['TrangThai'] == 0) ? "selected" : "" ?>>Đơn hàng mới</option>
                 <option value="1" <?=($getOrderDetails['TrangThai'] == 1) ? "selected" : "" ?> >Đang xử lý</option>
-                <option value="2" <?=($getOrderDetails['TrangThai'] == 2) ? "selected" : "" ?> >Đang giao hàng</option>
-                <option value="3" <?=($getOrderDetails['TrangThai'] == 3) ? "selected" : "" ?> >Đã giao</option>
+                <option value="2" <?=($getOrderDetails['TrangThai'] == 2) ? "selected" : "" ?> >Xác nhận đơn hàng</option>
+                <option value="3" <?=($getOrderDetails['TrangThai'] == 3) ? "selected" : "" ?> >Đang giao hàng</option>
+                <option value="4" <?=($getOrderDetails['TrangThai'] == 4) ? "selected" : "" ?> >Đã giao</option>
+                <option value="5" <?=($getOrderDetails['TrangThai'] == 5) ? "selected" : "" ?> >Đã hủy</option>
+                <option value="6" <?=($getOrderDetails['TrangThai'] == 6) ? "selected" : "" ?> >Giao hàng thất bại</option>
             </select>
         </div>
         

@@ -22,8 +22,8 @@
     }
 
     function get_productOrder($MaDH){
-        return pdo_query("SELECT * FROM chitietdonhang ctdh INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP WHERE MaDH = ?",$MaDH);
-
-    }
+        return pdo_query("SELECT * FROM chitietdonhang ctdh INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP INNER JOIN donhang dh ON ctdh.MaDH=dh.MaDH WHERE ctdh.MaDH = ? ",$MaDH);
+    } // dh.TrangThai != 5 : làm cho đơn hàng đã hủy không show ra trong đơn hàng của tôi
+    
     
 ?>
