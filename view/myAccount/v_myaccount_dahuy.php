@@ -17,9 +17,7 @@
     <tbody>
         <?php 
             $stt = 1;
-            $TongTien = 0;
             foreach($canceledOrders as $item):
-                $TongTien = $item['SoLuong']*$item['GiaSP'];
         ?>
         <tr>
             <th ><?=$stt?></th>

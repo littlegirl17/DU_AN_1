@@ -28,10 +28,6 @@
                     $getdanhmucproduct = danhmucproduct_getAll($page); 
                     $SoTrang = ceil(catagoryall_phantrang() / 9);
                 }
-
-                
-                
-                
                 
                 $view_name = "product_catagory";
                 break;

@@ -7,7 +7,7 @@
         <tr>
         <th scope="col">STT</th>
         <th scope="col">Mã đơn hàng</th>
-        <th scope="col">Người đặt</th>
+        <th scope="col">Họ tên</th>
         <th scope="col">Ngày đặt</th>
         <th scope="col">Trạng thái</th>
         <th scope="col">Thông tin</th>

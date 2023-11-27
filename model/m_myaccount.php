@@ -20,7 +20,7 @@
 
     function historyorder_myaccount($MaTK,$page=1){
         $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
-        return pdo_query("SELECT * FROM donhang WHERE MaTK = ? AND TrangThai = 4 LIMIT $BatDau,6 ",$MaTK);
+        return pdo_query("SELECT * FROM donhang WHERE MaTK = ? AND TrangThai = 4 ORDER BY MaDH DESC LIMIT $BatDau,6 ",$MaTK);
     }
     function history_myaccount($MaDH){
         
@@ -34,9 +34,15 @@
 
 
     //
-    function get_productOrdermyacc($MaDH){
-        return pdo_query("SELECT * FROM chitietdonhang ctdh INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP INNER JOIN donhang dh ON ctdh.MaDH=dh.MaDH WHERE ctdh.MaDH = ? AND dh.TrangThai != 5 AND dh.TrangThai !=4",$MaDH);
+    function get_productOrdermyacc(){
+        return pdo_query("SELECT * FROM donhang WHERE TrangThai != 5 AND TrangThai !=4 ORDER BY MaDH DESC");
     } // dh.TrangThai != 5 : làm cho đơn hàng đã hủy không show ra trong đơn hàng của tôi
+
+     // chi tiết đơn hàng trong myaccount
+    function myaccount_detailorder($MaDH){
+        return pdo_query("SELECT ctdh.*, dh.*, sp.* FROM chitietdonhang ctdh INNER JOIN donhang dh ON ctdh.MaDH = dh.MaDH INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP  WHERE ctdh.MaDH = ? ",$MaDH);
+    }
+
     
     function donhang_huy($MaDH){
         pdo_execute("UPDATE donhang SET TrangThai = 5 WHERE MaDH = ?",$MaDH);
@@ -47,7 +53,7 @@
     }
 
     function get_canceledOrders($MaTk){
-        return pdo_query("SELECT * FROM chitietdonhang ctdh INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP INNER JOIN donhang dh ON ctdh.MaDH=dh.MaDH WHERE dh.TrangThai = 5 AND dh.MaTK = ?",$MaTk);
+        return pdo_query("SELECT * FROM donhang WHERE TrangThai = 5 AND MaTK = ?",$MaTk);
     }
 
     function orderdahuydetail($MaDH){

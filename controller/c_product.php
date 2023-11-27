@@ -59,7 +59,7 @@
                         $i++;
                     }
                     if($flag == 0){
-$cart = [
+                        $cart = [
                             "MaSP"=>$MaSP,
                             "HinhAnh"=>$HinhAnh,
                             "GiaSP"=>$GiaSP,

@@ -130,7 +130,7 @@
                             <a href="index.php?mod=myaccount&act=orderdahuy"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>Đã hủy</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>   Lịch sự đặt hàng</a>
+                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>   Hoàn thành</a>
                         </li>
                         <li>
                             <a href="index.php"><i class="fa-solid fa-right-from-bracket ico-side"></i>  Thoát</a>

@@ -5,29 +5,29 @@
 <table class="table table-borderless ">
     <thead>
         <tr>
-        <th scope="col">STT</th>
-        <th scope="col">Tên</th>
-        <th scope="col">SL</th>
-        <th scope="col">Giá</th>
-        <th scope="col">Thành Tiền</th>
-        <th scope="col">Action</th>
-        <th>Trạng thái</th>
+            <th scope="col">STT</th>
+            <th scope="col">Mã</th>
+            <th scope="col">Họ tên</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Tổng tiền</th>
+            <th scope="col">Hành động</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Thông tin</th>
         </tr>
     </thead>
     <tbody>
         <?php 
         if(isset($_SESSION['iddh']) && ($_SESSION['iddh'])>0):
             $stt = 1;
-            $TongTien = 0;
+            
             foreach($viewsanphammyacc as $item):
-                $TongTien = $item['SoLuong']*$item['GiaSP'];
         ?>
         <tr>
             <th ><?=$stt?></th>
-            <td><img src="view/img/traicay/<?=$item['HinhAnh']?>" alt="" style="width:100px;"><?=$item['TenSP']?></td>
-            <td><?=number_format($item['GiaSP'],"0",",",".")?></td>
-            <td><?=$item['SoLuong']?></td>
-            <td><?=number_format($TongTien,"0",",",".")?></td>
+            <td><?=$item['MaDH']?></td>
+            <td><?=$item['HoTen']?></td>
+            <td><?=$item['NgayDat']?></td>
+            <td><?=number_format($item['TongTien'],"0",",",".")?></td>
             <?php if(isset($item['TrangThai']) && ($item['TrangThai']) == 0 OR ($item['TrangThai']) == 1): ?>
                 <td><a href="index.php?mod=myaccount&act=calldahuy&MaDH=<?=$item['MaDH']?>">Xác nhận hủy</a></td>
             <?php else: ?>
@@ -63,6 +63,7 @@
                     }
                 ?>
             </td>
+            <td><a href="index.php?mod=myaccount&act=order_accountdetail&MaDH=<?=$item['MaDH']?>">Xem chi tiết</a></td>
         </tr>
         <?php
                 $stt++;

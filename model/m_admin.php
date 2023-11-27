@@ -158,7 +158,7 @@
                     WHEN TrangThai = 3 THEN 'Đã giao'
                     WHEN TrangThai = 3 THEN 'Đã hủy'
                 END
-                LIKE '%$keyword%' OR HoTen LIKE '%$keyword%' LIMIT $BatDau,6");
+                LIKE '%$keyword%' OR HoTen LIKE '%$keyword%' ORDER BY MaDH DESC LIMIT $BatDau,6");
         } // CASE WHEN THEN END dùng trong tìm kiếm về trang thái đơn hàng
         
         //phân trang
