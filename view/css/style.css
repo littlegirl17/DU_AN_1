@@ -3257,9 +3257,12 @@ select {
 .myaccout{
 	
 	padding-top: 10px;
-	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;}
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;}
 .information__myaccount h5{
 	padding: 10px 0;
+}
+.information__myaccount__item{
+	box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 .update__user_myac{
 	display: flex;
@@ -3271,6 +3274,11 @@ select {
 .update__user_myac img{
 	margin-top: 20px;
 	
+}
+.myaccount_image{
+	display: grid;
+	justify-content: center;
+	align-items: center;
 }
 .myaccount_image img{
 	width: 150px;
@@ -3329,6 +3337,14 @@ select {
 .baoloi_dangky{
 	color: red;
 	text-align: center;
+}
+
+/*
+
+*/
+.submitmomo{
+	margin: 20px 0;
+	background-color: #D82D8B;
 }
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 

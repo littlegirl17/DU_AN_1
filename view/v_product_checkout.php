@@ -126,27 +126,14 @@
                             </div>
                             <div class="checkout__input_pttt">
 
-                                <!-- <p>Phương thức thanh toán*<span>*</span></p>
+                                <p>Phương thức thanh toán*<span>*</span></p>
                                 <select name="PhuongThucTT" id="paymentMethod">
                                     <option value="">Chọn phương thức thanh toán</option>
                                     <option value="1">Trả tiền mặt khi nhận hàng</option>
                                     <option value="2" >Thanh toán bằng VNPAY</option>
-                                    <option value="payUrl" >Thanh toán bằng MoMo</option>
-                                </select> -->
-                                <!--<p>Phương thức thanh toán*<span>*</span></p>
-                                <div class="checkout__radio__1">
-                                    <input type="radio" name="PhuongThucTT" id="" value="1">
-                                    <span>Trả tiền mặt khi nhận hàng</span>  
-                                </div>
-                                <div class="checkout__radio__1">
-                                    <input type="radio" name="PhuongThucTT" id="" value="2">
-                                    <span> <a href="index.php?mod=product&act=vnpay">Thanh toán bằng VNPAY</a></span>
-                                </div>
-                                <div class="checkout__radio__1" >
-                                    <input type="radio" name="PhuongThucTT" id="" value="3">
-                                    <span>Thanh toan vi momo</span>
-                                </div>
-                                -->
+                                    <option value="3" >Thanh toán bằng MoMo</option>
+                                </select>
+                                
                             </div>
                         </div>
 
@@ -176,8 +163,9 @@
 
                                 <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></div>
                                 <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></div>
-                                <input type="submit" name="payUrl"  class="site-btn" value="Thanh toán MoMo"> 
-                                <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng"> 
+                                <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng">                                 
+                                <!-- <input type="submit" name="payUrl"  class="site-btn submitmomo" value="Thanh toán MoMo">  -->
+
                             </div>
                         </div>
                     </div>
