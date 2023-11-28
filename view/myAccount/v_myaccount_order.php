@@ -4,9 +4,8 @@
 
 <table class="table table-borderless ">
     <thead>
-        <tr>
+        <tr class="listproduct_title_shadow">
             <th scope="col">STT</th>
-            <th scope="col">Mã</th>
             <th scope="col">Họ tên</th>
             <th scope="col">Ngày đặt</th>
             <th scope="col">Tổng tiền</th>
@@ -22,16 +21,15 @@
             
             foreach($viewsanphammyacc as $item):
         ?>
-        <tr>
+        <tr class="listproduct_shadow">
             <th ><?=$stt?></th>
-            <td><?=$item['MaDH']?></td>
             <td><?=$item['HoTen']?></td>
             <td><?=$item['NgayDat']?></td>
             <td><?=number_format($item['TongTien'],"0",",",".")?></td>
             <?php if(isset($item['TrangThai']) && ($item['TrangThai']) == 0 OR ($item['TrangThai']) == 1): ?>
-                <td><a href="index.php?mod=myaccount&act=calldahuy&MaDH=<?=$item['MaDH']?>">Xác nhận hủy</a></td>
+                <td><a href="index.php?mod=myaccount&act=calldahuy&MaDH=<?=$item['MaDH']?>" class="a_huy">Hủy đơn hàng</a></td>
             <?php else: ?>
-                <td onclick=" LoiHuyOrder()">Đã xác nhận</td>
+                <td onclick=" LoiHuyOrder()">Đã xác nhận <i class="fa-solid fa-check" style="color: #79db00;"></i></td>
             <?php endif; ?>
             <td>
                 <?php
@@ -63,7 +61,7 @@
                     }
                 ?>
             </td>
-            <td><a href="index.php?mod=myaccount&act=order_accountdetail&MaDH=<?=$item['MaDH']?>">Xem chi tiết</a></td>
+            <td><a href="index.php?mod=myaccount&act=order_accountdetail&MaDH=<?=$item['MaDH']?>" class="a_linkdetail">Xem chi tiết</a></td>
         </tr>
         <?php
                 $stt++;
@@ -72,7 +70,25 @@
         ?>
     </tbody>
 </table>
-
+    <div class="admin__pagein">
+        <ul class="pagination">
+            <li class="page-item <?= ($page <= 1) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=myaccount&act=order_account&page=<?=$page-1?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <?php for($i=1; $i < $SoTrang ; $i++): ?>
+                <li class="page-item <?= ($page==$i) ? 'active' : '' ?>">
+                    <a class="page-link" href="index.php?mod=myaccount&act=order_account&page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php endfor; ?>
+                <li class="page-item <?= ($page >= $SoTrang) ? "disabled" : ""?>">
+                <a class="page-link" href="index.php?mod=myaccount&act=order_account&page=<?=$page+1?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 <script>
     function LoiHuyOrder(){
         alert("Đơn hàng đã xác nhận, không thể hủy! " );

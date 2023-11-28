@@ -68,7 +68,7 @@
                                     }
                                 ?>
                             </td>
-                            <td><a href="index.php?mod=admin&act=donhang_detail&MaDH=<?=$order['MaDH']?>">Xem chi tiết</a></td>
+                            <td><a href="index.php?mod=admin&act=donhang_detail&MaDH=<?=$order['MaDH']?>" class="a_linkdetail">Xem chi tiết</a></td>
                             <td>
                                 <?php
                                     switch ($order['TrangThai']) {

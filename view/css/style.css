@@ -3254,6 +3254,15 @@ select {
 /*---------------------
     My account
 -----------------------*/
+.listproduct_title_shadow{
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.listproduct_shadow{
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.listproduct_shadow:hover{
+	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
 .myaccout{
 	
 	padding-top: 10px;
@@ -3264,27 +3273,17 @@ select {
 .information__myaccount__item{
 	box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
-.update__user_myac{
-	display: flex;
-}
-.update__user_myac input{
-	margin-top: 110px;
-	margin-left: 20px;
-}
-.update__user_myac img{
-	margin-top: 20px;
-	
-}
+
 .myaccount_image{
 	display: grid;
-	justify-content: center;
-	align-items: center;
+	
 }
 .myaccount_image img{
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
 	object-fit: cover;
+	margin: 20px 0px;
 }
 .admin__pagein{
     display: flex;
@@ -3329,6 +3328,19 @@ select {
 .back_myaccount a:hover{
 	text-decoration: underline;
 	color: #7FAD39;
+}
+/*
+	a
+*/
+.a_linkdetail:hover{
+	color: #7FAD39;
+	text-decoration: underline;
+}
+.a_huy{
+	color: rgb(146, 146, 146);
+}
+.a_huy:hover{
+	color: red;
 }
 
 /*

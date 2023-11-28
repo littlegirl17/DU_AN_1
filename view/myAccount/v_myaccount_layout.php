@@ -127,10 +127,10 @@
                             <a href="index.php?mod=myaccount&act=order_account"><i class="fa-solid fa-cart-shopping ico-side" style="color: #f5f5f5;"></i>Đơn hàng của tôi</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=orderdahuy"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>Đã hủy</a>
+                            <a href="index.php?mod=myaccount&act=orderdahuy"><i class="fa-solid fa-trash ico-side" style="color: #ffffff;"></i>Đã hủy</a>
                         </li>
                         <li>
-                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-clock-rotate-left ico-side" style="color: #fafafa;"></i>   Hoàn thành</a>
+                            <a href="index.php?mod=myaccount&act=history_account"><i class="fa-solid fa-check ico-sides" style="color: #ffffff;"></i>   Hoàn thành</a>
                         </li>
                         <li>
                             <a href="index.php"><i class="fa-solid fa-right-from-bracket ico-side"></i>  Thoát</a>

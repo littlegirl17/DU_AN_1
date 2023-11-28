@@ -7,10 +7,10 @@
     </div>
     <section class="row">
         <div class="col-sm-12 col-md-12 col xl-12">
-            <div class="card chart">
-                <table class="table  ">
+            <div class="">
+                <table class="table table-borderless  ">
                     <thead>
-                        <tr>
+                        <tr class="listproduct_title_shadow">
                         <th scope="col">STT</th>
                         <th scope="col">sản phẩm</th>
                         <th scope="col">Giá tiền </th>
@@ -26,7 +26,7 @@
                                 $TongTien = $item['SoLuong']*$item['GiaSP'];
 
                         ?>
-                        <tr>
+                        <tr class="listproduct_shadow">
                             <th ><?=$stt?></th>
                             <td><img src="view/img/traicay/<?=$item['HinhAnh']?>" alt="" style="width:100px;"><?=$item['TenSP']?></td>
                             <td><?=number_format($item['GiaSP'],"0",",",".")?>đ</td>

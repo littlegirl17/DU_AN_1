@@ -4,7 +4,7 @@
 </div>
 <table class="table table-borderless ">
     <thead>
-        <tr>
+        <tr class="listproduct_title_shadow">
         <th scope="col">STT</th>
         <th scope="col">Mã đơn hàng</th>
         <th scope="col">Họ tên</th>
@@ -19,7 +19,7 @@
             $stt = 1;
             foreach($viewhistoryorder as $item):
         ?>
-        <tr>
+        <tr class="listproduct_shadow">
             <th ><?=$stt?></th>
             <td><?=$item['MaDHRandom']?></td>
             <td><?=$item['HoTen']?></td>
@@ -54,7 +54,7 @@
                     }
                 ?>
             </td>
-            <td><a href="index.php?mod=myaccount&act=detail_account&MaDH=<?=$item['MaDH']?>" >Xem chi tiết</a></td>
+            <td><a href="index.php?mod=myaccount&act=detail_account&MaDH=<?=$item['MaDH']?>" class="a_linkdetail">Xem chi tiết</a></td>
         </tr>
         <?php
                 $stt++;

@@ -34,10 +34,15 @@
 
 
     //
-    function get_productOrdermyacc(){
-        return pdo_query("SELECT * FROM donhang WHERE TrangThai != 5 AND TrangThai !=4 ORDER BY MaDH DESC");
+    function get_productOrdermyacc($page=1){
+        $BatDau = ($page - 1) * 6;
+        return pdo_query("SELECT * FROM donhang WHERE TrangThai != 5 AND TrangThai !=4 ORDER BY MaDH DESC LIMIT $BatDau,6");
     } // dh.TrangThai != 5 : làm cho đơn hàng đã hủy không show ra trong đơn hàng của tôi
 
+    //phân trang
+    function ordermyaccount_Page(){
+        return pdo_query_value("SELECT COUNT(*) FROM donhang");
+    }
      // chi tiết đơn hàng trong myaccount
     function myaccount_detailorder($MaDH){
         return pdo_query("SELECT ctdh.*, dh.*, sp.* FROM chitietdonhang ctdh INNER JOIN donhang dh ON ctdh.MaDH = dh.MaDH INNER JOIN sanpham sp ON ctdh.MaSP = sp.MaSP  WHERE ctdh.MaDH = ? ",$MaDH);

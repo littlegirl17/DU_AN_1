@@ -133,7 +133,8 @@
                                     <option value="2" >Thanh toán bằng VNPAY</option>
                                     <option value="3" >Thanh toán bằng MoMo</option>
                                 </select>
-                                
+                                <!-- dùng để mở vnpay -->
+                                <input type="hidden" name="redirect" value="true">
                             </div>
                         </div>
 
@@ -163,7 +164,7 @@
 
                                 <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></div>
                                 <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></div>
-                                <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng">                                 
+                                <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng" onclick="return submitPay();">                                 
                                 <!-- <input type="submit" name="payUrl"  class="site-btn submitmomo" value="Thanh toán MoMo">  -->
 
                             </div>
@@ -174,3 +175,16 @@
         </div>
     </section>
     <!-- Checkout Section End -->
+
+    <script>
+        
+        function submitPay(){
+        var paymentMethod = document.querySelector("#paymentMethod").value;
+        if (paymentMethod === "") {
+            alert('Vui lòng chọn phương thức thanh toán trước khi đặt hàng.');
+            return false;
+        }
+    }
+
+        
+    </script>

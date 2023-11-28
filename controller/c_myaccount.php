@@ -78,9 +78,16 @@
             case 'order_account':
                 
                 if(isset($_SESSION['iddh']) && ($_SESSION['iddh']>0)){
-                    $viewsanphammyacc = get_productOrdermyacc();
+                    if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
+                        $page = $_GET['page'];
+                    }else{
+                        $page = 1;//nếu chưa truyền thì mặc định cho ns bằng 1
+                    }
+                    $viewsanphammyacc = get_productOrdermyacc($page);
+                    $SoTrang = ceil(ordermyaccount_Page()/6);
                 }else{
                     $viewsanphammyacc = "";
+                    $SoTrang = ceil(ordermyaccount_Page()/6);
                 }
                 
                 $view_name = "myaccount_order";

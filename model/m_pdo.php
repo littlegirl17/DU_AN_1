@@ -18,18 +18,23 @@ function pdo_get_connection(){
  * @throws PDOException lỗi thực thi câu lệnh
  */
 function pdo_execute($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+    $sql_args = array_slice(func_get_args(), 1); 
+    try{  // Mã cần thử nghiệm
+        $conn = pdo_get_connection(); // kết nối đến cơ sở dữ liệu
+        $stmt = $conn->prepare($sql); //chuẩn bị
+        $stmt->execute($sql_args); //thực thi câu lệnh SQL
     }
-    catch(PDOException $e){
+    catch(PDOException $e){ // Xử lý nếu try sai 
         throw $e;
     }
-    finally{
-        unset($conn);
+    finally{ // Mã luôn được thực thi
+        unset($conn); // đảm bảo rằng kết nối đến cơ sở dữ liệu sẽ được đóng, ngay cả khi có lỗi xảy ra.
     }
+    /*
+    func_get_args() để lấy danh sách tất cả các tham số được truyền vào hàm
+    array_slice(..., 1) được sử dụng để tạo một mảng mới bắt đầu từ phần tử thứ hai của mảng trả về bởi func_get_args(). Nói cách khác, nó loại bỏ phần tử đầu tiên của mảng, tức là $sql, và giữ lại các phần tử còn lại.
+
+    */
 }
 /**
  * Get the last inserted ID using PDO
@@ -38,15 +43,15 @@ function pdo_execute($sql){
 function pdo_last_insert_id($sql) {
     $sql_args = array_slice(func_get_args(), 1);
     try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        return $conn->lastInsertId();
+        $conn = pdo_get_connection(); // Mở kết nối đến cơ sở dữ liệu
+        $stmt = $conn->prepare($sql); // Chuẩn bị câu lệnh SQL
+        $stmt->execute($sql_args); // Thực thi câu lệnh SQL với các giá trị tham số
+        return $conn->lastInsertId(); // Trả về ID của bản ghi vừa được chèn
     }
-    catch(PDOException $e){
+    catch(PDOException $e){ // Xử lý lỗi nếu có
         throw $e;
     }
-    finally{
+    finally{ // Đảm bảo đóng kết nối sau khi thực hiện câu lệnh SQL
         unset($conn);
     }
 }
@@ -60,11 +65,11 @@ function pdo_last_insert_id($sql) {
 function pdo_query($sql){
     $sql_args = array_slice(func_get_args(), 1);
     try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll();
-        return $rows;
+        $conn = pdo_get_connection(); // Mở kết nối đến cơ sở dữ liệu
+        $stmt = $conn->prepare($sql); // Chuẩn bị câu lệnh SQL
+        $stmt->execute($sql_args); // Thực thi câu lệnh SQL với các giá trị tham số
+        $rows = $stmt->fetchAll(); // Lấy tất cả các hàng kết quả và đặt chúng vào một mảng
+        return $rows; // Trả về mảng chứa dữ liệu từ câu lệnh SQL
     }
     catch(PDOException $e){
         throw $e;
@@ -86,8 +91,8 @@ function pdo_query_one($sql){
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); // Lấy một hàng kết quả và đặt chúng vào một mảng liên kết
+        return $row; // Trả về mảng liên kết chứa dữ liệu từ câu lệnh SQL
     }
     catch(PDOException $e){
         throw $e;
@@ -109,8 +114,8 @@ function pdo_query_value($sql){
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return array_values($row)[0];
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); // Lấy một hàng kết quả và đặt chúng vào một mảng liên kết
+        return array_values($row)[0]; // Lấy giá trị đầu tiên của mảng liên kết và trả về nó
     }
     catch(PDOException $e){
         throw $e;
