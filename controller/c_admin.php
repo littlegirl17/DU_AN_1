@@ -165,19 +165,32 @@
             // add user
             case 'admin_add_user':
                 
-                $userall = get_useradmin();
+                $userall = get_useradmin($keyword,$page);
                 if (isset($_POST['submit']) && ($_POST['submit'])) {
-                    $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
-                    $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
-                    $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
-                    $MatKhau = isset($_POST['MatKhau']) ? md5($_POST['MatKhau']) : ""; 
-                    $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
-                    $GioiTinh = isset($_POST['GioiTinh']) ? intval($_POST['GioiTinh']) : 0;                    
-                    $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
-                    $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
-                    $HinhAnh = 'ava_user.jpeg';
-                    add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$HinhAnh);    
-                    header("location: index.php?mod=admin&act=admin_user");
+                    $checkEAdmin = user_checkEmailadmin($_POST['Email']);
+                    $checkSDTAdmin = user_checksdtadmin($_POST['SoDienThoai']);
+
+                    if($checkEAdmin == TRUE || $checkSDTAdmin  == TRUE){
+                        if($checkEAdmin){
+                            $_SESSION['canhbaoEmail'] = "Email đã tồn tại, vui lòng nhập email khác";
+                        }
+                        if($checkSDTAdmin){
+                            $_SESSION['canhbaoSDT'] = "Số điện thoại đã tồn tại, vui lòng nhập Số điện thoại khác";
+                        }
+                    }else{
+                        $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
+                        $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
+                        $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
+                        $MatKhau = "123456"; 
+                        $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
+                        $GioiTinh = isset($_POST['GioiTinh']) ? intval($_POST['GioiTinh']) : 0;                    
+                        $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
+                        $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
+                        $HinhAnh = 'ava_user.jpeg';
+                        add_user($HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$HinhAnh);    
+                        header("location: index.php?mod=admin&act=admin_user");
+                    }
+                
                 }
                 $view_name = "admin_add_user";
                 break;
@@ -188,21 +201,30 @@
                 $MaTK = $_GET['MaTK'];
                 $getuserById = get_userById($MaTK);
                 if (isset($_POST['submit']) && ($_POST['submit'] > 0)) {
-                    $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
-                    $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
-                    $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
-                    $MatKhau = isset($_POST['MatKhau']) ? md5($_POST['MatKhau']) : "";
-                    $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
-                    $GioiTinh = isset($_POST['GioiTinh']) ? $_POST['GioiTinh'] : "";
-                    $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
-                    $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
-                    update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$_FILES['HinhAnh']['name']);
-                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
-                        $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
-                        $uploadPath = "view/img/avatar/" . $_FILES['HinhAnh']['name'];
-                        move_uploaded_file($tmpFilePath, $uploadPath);
+                    $checkSDTAdmin = user_checksdtadmin($_POST['SoDienThoai']);
+
+                    if(($checkSDTAdmin  && $checkSDTAdmin['MaTK'] != $MaTK) || ($checkEAdmin  && $checkEAdmin['MaTK'] != $MaTK)){ 
+                        if($checkSDTAdmin){
+                            $_SESSION['canhbaoSDT'] = "Số điện thoại đã tồn tại, vui lòng nhập Số điện thoại khác";
+                        }
+                    }else{
+                        $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
+                        $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
+                        $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
+                        $MatKhau = isset($_POST['MatKhau']) ? md5($_POST['MatKhau']) : "";
+                        $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
+                        $GioiTinh = isset($_POST['GioiTinh']) ? $_POST['GioiTinh'] : "";
+                        $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
+                        $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
+                        update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$_FILES['HinhAnh']['name']);
+                        if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
+                            $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
+                            $uploadPath = "view/img/avatar/" . $_FILES['HinhAnh']['name'];
+                            move_uploaded_file($tmpFilePath, $uploadPath);
+                        }
+                        header("location: index.php?mod=admin&act=admin_user");
                     }
-                    header("location: index.php?mod=admin&act=admin_user");
+                    
                 }
             
                 $view_name = "admin_edit_user";
@@ -330,10 +352,10 @@
                     $TieuDe = isset($_POST['TieuDe']) ? ($_POST['TieuDe']) : "";
                     $MoTa = isset($_POST['MoTa']) ? ($_POST['MoTa']) : "";
                     $MoTaNgan = isset($_POST['MoTaNgan']) ? ($_POST['MoTaNgan']) : "";
-                    //$NgayViet = isset($_POST['NgayViet']) ? intval($_POST['NgayViet']) : "";
+                    $NgayViet = isset($_POST['NgayViet']) ? date('Y-m-d H:i:s', strtotime($_POST['NgayViet'])) : null;
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
     
-                    add_post($TieuDe,$_FILES['HinhAnh']['name'], $_FILES['HinhAnhDetail']['name'], $MoTaNgan, $MoTa,$MaDM);
+                    add_post($TieuDe,$_FILES['HinhAnh']['name'], $_FILES['HinhAnhDetail']['name'], $MoTaNgan, $MoTa,$NgayViet,$MaDM);
     
                     // Kiểm tra và di chuyển tệp đính kèm
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {

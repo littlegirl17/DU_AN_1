@@ -5,20 +5,21 @@
             Thêm  sản phẩm mới
         </h3>
         <div class="d-flex justify-content-end">
-    <input type="submit" class="btn btn-primary mb-2" name="submit" value="Lưu">
+    <input type="submit" class="btn btn-primary mb-2" name="submit" value="Lưu" onclick="return sanpham_checkadd()">
 </div>
 
 <section class="row">
     <div class="col-sm-12 col-md-12 col xl-12">
-        <div class="card chart">       
+        <div class="card chart"> 
+            
             <div class="form-group">
                 <label for="TenSP">Tên sản phẩm:</label>
-                <input type="text" class="form-control" name="TenSP" placeholder="Nhập tên sản phẩm">
+                <input type="text" class="form-control" name="TenSP" id="TenSP" placeholder="Nhập tên sản phẩm">
             </div>
 
             <div class="form-group">
                 <label for="GiaSP">Giá sản phẩm:</label>
-                <input type="text" class="form-control" name="GiaSP" placeholder="Nhập giá sản phẩm">
+                <input type="text" class="form-control" name="GiaSP" id="GiaSP" placeholder="Nhập giá sản phẩm">
             </div>
 
             <div class="form-group">
@@ -43,12 +44,13 @@
             <div class="form-group">
                 <label for="HinhAnh" class="label_admin">Hình ảnh:
                 <div class="custom-file">
-                    <input type="file" name="HinhAnh">
+                    <input type="file" name="HinhAnh" id="HinhAnh">
                 </div>
             </label>
             </div>
 
-            <select name="MaDM" class="admin__select">
+            <select name="MaDM" id="MaDM" class="admin__select">
+                <option value="0">Chọn danh mục của sản phẩm</option>
                 <?php foreach($danhmucall as $dm): ?>
                     <option value="<?=$dm['MaDM']?>"><?=$dm['TenDM']?></option>
                 <?php endforeach; ?>
@@ -57,8 +59,38 @@
         </div>
     </div>
 </section>
-
     </div> 
 </form>
 
+<script>
+    function sanpham_checkadd(){
+        var TenSP = document.getElementById("TenSP");
+        if(TenSP.value==""){
+            alert("Vui lòng nhập tên sản phẩm trước khi lưu!");
+            TenSP.focus();
+            return false;
+        }
+
+        var GiaSP = document.getElementById("GiaSP");
+        if(GiaSP.value==""){
+            alert("Vui lòng nhập giá sản phẩm trước khi lưu!");
+            GiaSP.focus();
+            return false;
+        }
+
+        var HinhAnh = document.getElementById("HinhAnh");
+        if(HinhAnh.value==0){
+            alert("Vui lòng chọn ảnh của sản phẩm trước khi lưu!");
+            HinhAnh.focus();
+            return false;
+        }
+
+        var MaDM = document.getElementById("MaDM");
+        if(MaDM.value==0){
+            alert("Vui lòng chọn danh mục của sản phẩm trước khi lưu!");
+            MaDM.focus();
+            return false;
+        }
+    }
+</script>
     

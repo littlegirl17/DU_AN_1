@@ -66,7 +66,7 @@
         function get_productadmin($keyword,$page=1){//Mặc định nó sẽ gọi trang 1
             
             $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
-            return pdo_query("SELECT sp.*,dm.TenDM FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM=dm.MaDM WHERE TenSP LIKE '%$keyword%' LIMIT $BatDau,6");
+            return pdo_query("SELECT sp.*,dm.TenDM FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM=dm.MaDM WHERE TenSP LIKE '%$keyword%'ORDER BY MaSP DESC LIMIT $BatDau,6 ");
             //Limit 0,4 nghĩa là bắt đầu từ 0 lấy 4 quyển sách , và trong DB thì LIMIT lấy từ số 0 đầu tiên
         }
 
@@ -103,6 +103,16 @@
                 WHEN Quyen = 1 THEN 'admin'
                 END
                 LIKE '%$keyword%' OR HoTen LIKE '%$keyword%' LIMIT $BatDau,6");
+        }
+
+        //check trùng email
+        function user_checkEmailadmin($Email){
+            return pdo_query_one("SELECT * FROM taikhoan WHERE Email = ?", $Email);
+        }
+
+        //check trùng sdt
+        function user_checksdtadmin($SoDienThoai){
+            return pdo_query_one("SELECT * FROM taikhoan WHERE SoDienThoai = ?", $SoDienThoai);
         }
 
         function user_adminPhanTrang(){
@@ -189,14 +199,14 @@
     // Bài viết
         function get_postadmin($keyword,$page=1){
             $BatDau = ($page - 1) * 3;
-            return pdo_query("SELECT * FROM baiviet WHERE TieuDe LIKE'%$keyword%' LIMIT $BatDau,3");
+            return pdo_query("SELECT * FROM baiviet WHERE TieuDe LIKE'%$keyword%' ORDER BY MaBV DESC LIMIT $BatDau,3");
         }
         function post_adminPhanTrang(){
             return pdo_query_value("SELECT COUNT(*) FROM baiviet");
         }
         // Thêm
-        function add_post($TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM){
-            pdo_execute("INSERT INTO baiviet (`TieuDe`, `HinhAnh`, `HinhAnhDetail`, `MoTaNgan`, `MoTa`, `MaDM`) VALUES (?, ?, ?, ?, ?, ?) ", $TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $MaDM);
+        function add_post($TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa, $NgayViet, $MaDM){
+            pdo_execute("INSERT INTO baiviet (`TieuDe`, `HinhAnh`, `HinhAnhDetail`, `MoTaNgan`, `MoTa`,`NgayViet`, `MaDM`) VALUES (?, ?, ?, ?, ?, ?, ?) ", $TieuDe, $HinhAnh, $HinhAnhDetail, $MoTaNgan, $MoTa,$NgayViet, $MaDM);
         }
         // Sửa
         function get_postId($MaBV){

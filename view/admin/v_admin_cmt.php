@@ -30,7 +30,7 @@
                             <td><?=$comment['NgayBL']?></td>
                             <td>
                             <td>
-                                <a href="index.php?mod=admin&act=admin_delete_cmt&MaBL=<?=$comment['MaBL']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                <a href="index.php?mod=admin&act=admin_delete_cmt&MaBL=<?=$comment['MaBL']?>" class="btn btn-danger" onclick="delete_cmt(<?=$comment['MaBL']?>),event"><i class="fa-solid fa-trash"></i> Xóa</a>
                             </td>
                             </td>
                         </tr>
@@ -64,3 +64,12 @@
         </ul>
     </div>
 </div> 
+<script>
+    function delete_cmt(MaBL){
+        var kq = confirm("Bạn có chắc chắn muốn xóa bình luận này không");
+        if(kq){
+            window.location = 'index.php?mod=admin&act=admin_delete_cmt&MaBL='+MaBL;
+        }
+        event.preventDefault();//sử dụng nó để ngăn chặn hành động mặc định
+    }
+</script>

@@ -1,9 +1,9 @@
 
 <div class="back_myaccount" style="text-align: right;">
-    <a href="index.php?mod=myaccount&act=history_account">Quay lại lịch sử</a>
+    <a href="index.php?mod=myaccount&act=history_account">Quay lại </a>
 </div>
 <div class="title_myacount">
-    <h4>Chi tiết lịch sử</h4>
+    <h4>Chi tiết đơn hàng đã giao</h4>
 </div>
 <table class="table table-borderless ">
     <thead>

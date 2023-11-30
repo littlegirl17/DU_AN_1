@@ -47,7 +47,7 @@
                             <td><?=$item['SoThuTu']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                <a href="index.php?mod=admin&act=admin_delete_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-danger" onclick="delete_catagory(<?=$item['MaDM']?>, event)"><i class="fa-solid fa-trash"></i> Xóa</a>
                             </td>
                         </tr>
                         <?php 
@@ -80,3 +80,13 @@
         </ul>
     </div>
 </div> 
+
+<script>
+    function delete_catagory(MaDM){ //Tham so MATK nay duoc lay tu $ds['MaTk]
+        var kq = confirm("Bạn có chắc chắn muốn xóa danh mục này không?"); //Form duoc hien ra , neu nguoi ta bam XOA
+        if(kq){//Neu bam CHON OK la ket qua dung thif no se chuyen den cai case nay va xoa, bien MaTk duoc lay tu o tren Tham so truyen vao
+            window.location = 'index.php?mod=admin&act=admin_delete_catagory&MaDM='+MaDM;
+        }
+        event.preventDefault();
+    }
+</script>

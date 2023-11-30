@@ -94,7 +94,7 @@
                         <form action="index.php?mod=product&act=addtocart" method="post">
                             <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
                             <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                            <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                            <input type="hidden" name="GiaSP" value="'.$item['GiaGiam'].'">
                             <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
                             <input type="hidden" name="SoLuong" value="1">
                             <div class="intro">

@@ -6,6 +6,14 @@
         <div class="d-flex justify-content-end">
         <input type="submit" class="btn btn-primary mb-2" name="submit" value="Lưu">
         </div>
+
+        <?php if(isset($_SESSION['canhbaoSDT'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <?=$_SESSION['canhbaoSDT']?>
+            </div>
+        <?php endif; unset($_SESSION['canhbaoSDT']); ?>
+        
+
         <section class="row">
             <div class="col-sm-12 col-md-12 col xl-12">
                 <div class="card chart">

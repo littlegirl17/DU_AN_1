@@ -1,6 +1,6 @@
 
 <div class="title_myacount">
-    <h4>Lịch sử đặt hàng</h4>
+    <h4>Đơn hàng giao thành công</h4>
 </div>
 <table class="table table-borderless ">
     <thead>

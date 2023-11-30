@@ -55,7 +55,7 @@
                             <td><?=$product['LuotXem']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_product&MaSP=<?=$product['MaSP']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_product&MaSP=<?=$product['MaSP']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                <a href="index.php?mod=admin&act=admin_delete_product&MaSP=<?=$product['MaSP']?>" class="btn btn-danger" onclick="delete_product(<?=$product['MaSP']?>,event)"><i class="fa-solid fa-trash"></i> Xóa</a>
                             </td>
                         </tr>
                         <?php 
@@ -88,3 +88,14 @@
         </ul>
     </div>
 </div> 
+
+<script>
+    function delete_product(MaSP){
+        var kq = confirm("Bạn có chắc chắn muốn xóa sản phẩm này không");
+        if(kq){
+            window.location = 'index.php?mod=admin&act=admin_delete_product&MaSP='+MaSP;
+        }
+        event.preventDefault();//sử dụng nó để ngăn chặn hành động mặc định
+    }
+</script>
+

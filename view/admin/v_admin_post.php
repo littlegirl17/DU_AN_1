@@ -53,7 +53,7 @@
                             <td><?=$post['MaDM']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_post&MaBV=<?=$post['MaBV']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_post&MaBV=<?=$post['MaBV']?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                <a href="index.php?mod=admin&act=admin_delete_post&MaBV=<?=$post['MaBV']?>" class="btn btn-danger" onclick="delete_post(<?=$post['MaBV']?>),event"><i class="fa-solid fa-trash"></i> Xóa</a>
                             </td>
                         </tr>
                         <?php 
@@ -86,3 +86,12 @@
         </ul>
     </div>
 </div> 
+<script>
+    function delete_post(MaBV){
+        var kq = confirm("Bạn có chắc chắn muốn xóa bài viết này không");
+        if(kq){
+            window.location = 'index.php?mod=admin&act=admin_delete_post&MaBV='+MaBV;
+        }
+        event.preventDefault();//sử dụng nó để ngăn chặn hành động mặc định
+    }
+</script>
