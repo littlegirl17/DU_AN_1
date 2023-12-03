@@ -69,12 +69,19 @@
                 if(isset($_POST['submit']) && ($_POST['submit']>0)){
                     $SoThuTu = isset($_POST['SoThuTu']) ? intval($_POST['SoThuTu']) : ""; //intval()để chuyển đổi giá trị $_POST['SoThuTu']thành số nguyên. 
                     $UuTien = isset($_POST['UuTien']) ? intval($_POST['UuTien']) : "";
-                    update_catagory($MaDM,$_POST['TenDM'],$SoThuTu,$UuTien,$_FILES['HinhAnh']['name']);
-                    if(isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error']==0){
+                    // kiểm tra xem tệp hình ảnh có tồn tại trong $_FILESmảng hay không
+                    if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];//Dòng này lấy đường dẫn tạm thời của tệp tải lên
-                        $uploadPath = "view/img/categories/".$_FILES['HinhAnh']['name'];//Dòng này xác định đường dẫn và tên tệp mục tiêu
-                        move_uploaded_file($tmpFilePath,$uploadPath);//Dòng này sử dụng hàm move_uploaded_file để di chuyển tệp từ vị trí tạm thời (được lưu trong $tmpfile) vào vị trí mục tiêu (được lưu trong $upload).
+                        $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];//Dòng này xác định đường dẫn và tên tệp mục tiêu
+                        move_uploaded_file($tmpFilePath, $uploadPath);//Dòng này sử dụng hàm move_uploaded_file để di chuyển tệp từ vị trí tạm thời (được lưu trong $tmpfile) vào vị trí mục tiêu (được lưu trong $upload).
+                        $imageName = $_FILES['HinhAnh']['name'];
+                    }else{
+                        //Nếu không,lấy tên hình ảnh hiện có từ cơ sở dữ liệu cho sản phẩm đang được chỉnh sửa.
+                        $imageName = $getcataId['HinhAnh'];
                     }
+                    
+                    update_catagory($MaDM,$_POST['TenDM'],$SoThuTu,$UuTien, $imageName);
+                    
                     header("location: index.php?mod=admin&act=admin_catagory");
                 }
                 
@@ -133,13 +140,17 @@
                     $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
                     $GiaGiam = isset($_POST['GiaGiam']) ? intval($_POST['GiaGiam']) : 0;
-                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $_FILES['HinhAnh']['name'], $MaDM, $GiaGiam);
+                    // kiểm tra xem tệp hình ảnh có tồn tại trong $_FILESmảng hay không
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
                         $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];
                         move_uploaded_file($tmpFilePath, $uploadPath);
+                        $imageName = $_FILES['HinhAnh']['name'];
+                    }else{
+                        //Nếu không,lấy tên hình ảnh hiện có từ cơ sở dữ liệu cho sản phẩm đang được chỉnh sửa.
+                        $imageName = $getproductId['HinhAnh'];
                     }
-
+                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $imageName, $MaDM, $GiaGiam);
                     header("location: index.php?mod=admin&act=admin_product");
                 }
                 $view_name = "admin_edit_product";
@@ -216,12 +227,7 @@
                         $GioiTinh = isset($_POST['GioiTinh']) ? $_POST['GioiTinh'] : "";
                         $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
                         $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
-                        update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$_FILES['HinhAnh']['name']);
-                        if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
-                            $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
-                            $uploadPath = "view/img/avatar/" . $_FILES['HinhAnh']['name'];
-                            move_uploaded_file($tmpFilePath, $uploadPath);
-                        }
+                        update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);
                         header("location: index.php?mod=admin&act=admin_user");
                     }
                     
@@ -388,19 +394,26 @@
                     $MoTaNgan = isset($_POST['MoTaNgan']) ? ($_POST['MoTaNgan']) : "";
                     //$NgayViet = isset($_POST['NgayViet']) ? intval($_POST['NgayViet']) : "";
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
-                    update_post($MaBV, $TieuDe, $_FILES['HinhAnh']['name'], $_FILES['HinhAnhDetail']['name'], $MoTaNgan, $MoTa,  $MaDM);
-    
+                    // kiểm tra xem tệp hình ảnh có tồn tại trong $_FILESmảng hay không
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
                         $uploadPath = "view/img/traicay/" . $_FILES['HinhAnh']['name'];
                         move_uploaded_file($tmpFilePath, $uploadPath);
+                        $imageName = $_FILES['HinhAnh']['name'];
+                    }else{
+                        //Nếu không,lấy tên hình ảnh hiện có từ cơ sở dữ liệu cho sản phẩm đang được chỉnh sửa.
+                        $imageName = $getpostId['HinhAnh'];
                     }
+
                     if (isset($_FILES['HinhAnhDetail']) && $_FILES['HinhAnhDetail']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnhDetail']['tmp_name'];
                         $uploadPath = "view/img/baiviet/" . $_FILES['HinhAnhDetail']['name'];
                         move_uploaded_file($tmpFilePath, $uploadPath);
+                        $imageNameDetail = $_FILES['HinhAnhDetail']['name'];
+                    }else{
+                        $imageNameDetail = $getpostId['HinhAnhDetail'];
                     }
-    
+                    update_post($MaBV, $TieuDe, $imageName, $imageNameDetail, $MoTaNgan, $MoTa,  $MaDM); 
                     header("location: index.php?mod=admin&act=admin_post");
                 }
                 $view_name = "admin_edit_post";

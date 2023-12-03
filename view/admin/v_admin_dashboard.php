@@ -3,10 +3,10 @@
                     Dashboards
                 </h3>
                 <section class="statistics row">
-                    <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="products.html">
-                            <div class="card mb-3 widget-chart">
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                    <div class="col-sm-12 col-md-6 col-xl-2 ">
+                        <a href="index.php?mod=admin&act=admin_product" >
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e04848 ;color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold " >
                                     <h5>
                                         Tổng sản phẩm
                                     </h5>
@@ -16,10 +16,10 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="user.html">
-                            <div class="card mb-3 widget-chart">
+                        <a href="index.php?mod=admin&act=admin_user">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#3ab4e4 ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
 
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng thành viên
                                     </h5>
@@ -29,9 +29,9 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="caterogies.html">
-                            <div class="card mb-3 widget-chart">
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                        <a href="index.php?mod=admin&act=admin_post">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e4d63a ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng bài viết
                                     </h5>
@@ -41,11 +41,11 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="#">
-                            <div class="card mb-3 widget-chart">
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                        <a href="index.php?mod=admin&act=admin_catagory">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#B0E048 ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
-                                        Tổng doanh mục
+                                        Tổng danh mục
                                     </h5>
                                 </div>
                                 <span class="widget-numbers"><?=$countCatagory?></span>
@@ -53,9 +53,9 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="#">
-                            <div class="card mb-3 widget-chart">
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                        <a href="index.php?mod=admin&act=admin_donhang">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e508aa ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng đơn hàng
                                     </h5>
@@ -65,11 +65,23 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
-                        <a href="#">
-                            <div class="card mb-3 widget-chart">
-                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                        <a href="index.php?mod=admin&act=admin_cmt">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:# ;color: #; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng bình luận
+                                    </h5>
+                                </div>
+                                <span class="widget-numbers"><?=$countCmt?></span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-2">
+                        <a href="index.php?mod=admin&act=phanhoi">
+                            <div class="card mb-3 widget-chart " style="border: none;background-color:#000 ;color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
+                                    <h5>
+                                        Tổng phản hồi
                                     </h5>
                                 </div>
                                 <span class="widget-numbers"><?=$countCmt?></span>

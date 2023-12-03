@@ -209,7 +209,7 @@
                                     }
                                 ?>
                                     <ul>
-                                        <li>Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></li>
+                                        <li>Thành tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></li>
                                         <li>Tổng tiền <span><?=number_format($TongTien ,"0",",",".")?> đ</span></li>
                                     </ul>
                         

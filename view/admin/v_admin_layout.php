@@ -30,14 +30,26 @@
                 <ul>
                     <?php if(isset($_SESSION['user'])): ?>
                         <div class="box_infor">
-                            <div class="">
+                            <div class="box_infor__img">
                                 <img src="view/img/avatar/<?=$_SESSION['user']['HinhAnh']?>" alt="">
                             </div>
-                            <div class="">
-                                <p ><?=$_SESSION['user']['HoTen']?></p>
+                            <div class="box_infor__p">
+                                <div class="box_infor_p_item">
+                                    <p>Admin:</p>
+                                </div>
+                                <div class="box_infor_p_item">
+                                    <p ><?=$_SESSION['user']['HoTen']?></p>
+                                </div>
+                                
                             </div>
                         </div>
                     <?php endif; ?>
+                    <li>
+                        <div id="change-darkmode">
+                            <i class="fa-solid fa-sun"  ></i>
+                            <i class="fa-solid fa-moon"  ></i>
+                        </div>
+                    </li>
                     <li>
                         <a href="index.php?mod=admin&act=dashboard"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
@@ -65,6 +77,7 @@
                     <li>
                         <a href="index.php?mod=page&act=home"><i class="fa-solid fa-right-from-bracket ico-side" style="color: #ffffff;"></i>Thoát</a>
                     </li>
+                    
                 </ul>
             </nav>
 
@@ -80,3 +93,21 @@
 <script src="view/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
+<script>
+    //
+    document.querySelector('#change-darkmode').addEventListener('click',function(){
+        document.querySelector('body').classList.toggle('darkmode');
+        var isDarkMode = document.querySelector('body').classList.contains('darkmode'); //contain la co chua, la no co chua darkmode //kiểm tra xem darkmodelớp đó có trong danh sách lớp của body phần tử được chọn hay không.
+        localStorage.setItem('darkmode', isDarkMode); //setItem được sử dụng để lưu trữ dữ liệu trong bộ nhớ cục bộ của trình duyệt web.
+    })
+    //Nếu giá trị là 'true', điều đó có nghĩa là người dùng đã kích hoạt chế độ tối trước đó
+    if(localStorage.getItem('darkmode')=='true'){//getItem('darkmode'): Phương thức này lấy giá trị
+        document.querySelector('body').classList.add('darkmode'); //add hãy thêm tên lớp CSS 'darkmode'vào <body>phần tử // thêm darkmode vào phần tử body
+    }
+</script>
+<!-- 
+    classList để quản lý các class của phần tử đó
+    classList.toggle là một phương thức của classList được sử dụng để thêm hoặc xóa một class từ danh sách các class của phần tử.
+    Nếu class đã tồn tại, toggle sẽ xóa nó khỏi danh sách class. Nếu class chưa tồn tại, nó sẽ được thêm vào. 
+
+-->

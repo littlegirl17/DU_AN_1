@@ -162,7 +162,7 @@
                                     <?php endforeach; ?>
                                 </ul>
 
-                                <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($ThanhTien,"0",",",".")?> đ</span></div>
+                                <div class="checkout__order__subtotal">Thành tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></div>
                                 <div class="checkout__order__total">Tổng tiền <span><?=number_format($TongTien,"0",",",".")?> đ</span></div>
                                 <input type="submit" name="submit_checkout" class="site-btn" value="Đặt hàng" onclick="return submitPay();">                                 
                                 <!-- <input type="submit" name="payUrl"  class="site-btn submitmomo" value="Thanh toán MoMo">  -->

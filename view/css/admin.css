@@ -9,6 +9,17 @@
 body{
     background-color: #e6e6e6;
 }
+body.darkmode{
+    background-color: midnightblue;
+    color: white;
+}
+body.darkmode .fa-moon{  /*ẩn biểu tượng mặt trăng khi ở chế độ tối*/
+    display: none;
+}
+body:not(.darkmode) .fa-sun{ /*ẩn biểu tượng mặt trời khi không ở chế độ tối.*/
+    display: none;
+}
+
 .site-logo{
     padding-left: 30px;
 }
@@ -69,14 +80,24 @@ nav ul {
 }
 .box_infor{
     display: flex;
-    background-color: #fff;
+    background-color: #B0E048;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-nav ul img{
-    width: 50px;
+.box_infor__img{
+    padding: 7px 5px;
 }
-nav ul p {
-    color: #000000;
-    padding-left: 20px;
+.box_infor__img img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.box_infor__p{
+    padding: 7px  10px;
+}
+.box_infor_p_item p {
+    margin: 0 0;
+    color: #ffffff;
     transition: ease-in-out .2s all;
 }
 nav ul li {
@@ -114,7 +135,8 @@ nav ul li:hover {
 }
 .main-content .statistics a{
     text-decoration: none;
-}
+} 
+
 .widget-chart {
     text-align: center;
     padding: 1rem;

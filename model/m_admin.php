@@ -131,8 +131,8 @@
         }
 
         // Cập nhật
-        function update_user($MaTK,$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh) {
-            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ?, HinhAnh = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HinhAnh, $MaTK);
+        function update_user($MaTK,$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
+            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $MaTK);
         }
             
         // Xóa

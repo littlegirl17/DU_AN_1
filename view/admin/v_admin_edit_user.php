@@ -57,13 +57,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputFile" class="label_admin">Ảnh Sản phẩm
-                            <div class="custom-file">
-                                <input type="file" name="HinhAnh">
-                                <img src="view/img/avatar/<?=$getuserById['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;">
-                            </div></label>
-                        </div>
+                        
                 </div>
             </div>
         </section>
