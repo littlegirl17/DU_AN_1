@@ -192,9 +192,9 @@
                     <div class="col-lg-9">
                         <div class="hero__search">
                             <div class="hero__search__form">
-                                <form action="" method="post">
-                                    <input type="text" name="keyword" placeholder="What do yo u need?">
-                                    <button type="submit" name="submit_home" class="site-btn">SEARCH</button>
+                                <form action="" method="post" >
+                                    <input type="text" name="keyword" id="live_search" placeholder="What do yo u need?">
+                                    <button type="submit" name="submit_home" id="searchBtn" class="site-btn">SEARCH</button>
                                 </form>
                             </div>
                             <div class="hero__search__phone">
@@ -221,10 +221,10 @@
         </section>
     <?php endif; ?>
     <!-- Hero Section End -->
-
     <?php
         include_once 'view/v_'.$view_name.'.php';
     ?>
+    
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -296,7 +296,6 @@
 
     <!-- Js Plugins -->
     <script src="view/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="view/js/jquery-3.3.1.min.js"></script>
     <script src="view/js/bootstrap.min.js"></script>
     <script src="view/js/jquery.nice-select.min.js"></script>
     <script src="view/js/jquery-ui.min.js"></script>
@@ -306,8 +305,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="view/js/main.js"></script>
 
-
-
 </body>
 
 </html>
+

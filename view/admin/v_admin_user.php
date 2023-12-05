@@ -56,7 +56,7 @@
                                 <?php
                                     switch ($user['GioiTinh']) {
                                         case '0':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">Nam</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #ede74b;">Nam</p>';
                                             break;
                                         case '1':
                                             echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Nữ</p>';

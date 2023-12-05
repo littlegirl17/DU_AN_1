@@ -1,6 +1,6 @@
     
     <!-- Categories Section Begin -->
-    <section class="categories">
+    <section class="categories" >
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
@@ -16,9 +16,17 @@
         </div>
     </section>
     <!-- Categories Section End -->
-
+    <section class="featured spad" id="searchSession">
+        <div class="container">
+           
+            <div class="row featured__filter" id="searchresult">
+                
+            </div>
+        </div>
+    </section>
+    
     <!--Sản phẩm mới Section Begin -->
-    <section class="featured spad">
+    <section class="featured spad" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -28,7 +36,7 @@
                     
                 </div>
             </div>
-            <div class="row featured__filter">
+            <div class="row featured__filter" >
                 <?php 
                     $html_product_new = showsp_home($getproNew);
                 ?>
@@ -75,7 +83,7 @@
         </div>
     </section>
     <!-- Sản phẩm khuyến mãi Section End -->
-
+    
     <!--Sản phẩm mua nhiều Section Begin -->
     <section class="featured spad">
         <div class="container">
@@ -232,3 +240,4 @@
         </div>
     </section>
     <!-- Blog Section End -->
+

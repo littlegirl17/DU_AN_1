@@ -7,6 +7,27 @@
     Created: Colorlib
 ---------------------------------------------------------  */
 
+    $(document).ready(function(){
+        $("#live_search").keyup(function(event){
+            event.preventDefault();
+            var input = $(this).val();
+            //alert(input);
+            if(input != ""){
+                $.ajax({
+                    url:"view/v_searchAjax.php",
+                    method:"POST",
+                    data:{input:input},
+                    success:function(data){
+                        $("#searchresult").html(data);
+                        $("#searchresult").css("display", "flex");
+                    }
+                });
+            }else{
+                $("#searchresult").css("display", "none")
+            }
+        });
+    });
+
 'use strict';
 
 (function ($) {
@@ -322,3 +343,5 @@ setInterval(function(){
 });
 
 
+
+    

@@ -43,7 +43,21 @@
                             <td><?=$item['MaDM']?></td>
                             <td><?=$item['TenDM']?></td>
                             <td><img src="view/img/categories/<?=$item['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;"></td>
-                            <td><?=$item['UuTien']?></td>
+                            <td>
+                                <?php
+                                    switch ($item['UuTien']) {
+                                        case '0':
+                                            echo 'Ẩn';
+                                            break;
+                                        case '1':
+                                            echo 'Hiện';
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                ?>
+                            </td>
                             <td><?=$item['SoThuTu']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
