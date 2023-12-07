@@ -48,14 +48,29 @@
                             <td><?=$product['TenSP']?></td>
                             <td><?=number_format($product['GiaSP'],"0",",",".")?></td>
                             <td><?=number_format($product['GiaGiam'],"0",",",".")?></td>
-                            <td><?=$product['TieuDe']?></td>
-                            <td><?=$product['MoTa']?></td>
+                            <td class="limited-width"><?=$product['TieuDe']?></td>
+                            <td class="limited-width"><?=$product['MoTa']?></td>
                             <td><img src="view/img/traicay/<?=$product['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;"></td>
                             <td><?=$product['TenDM']?></td>
                             <td><?=$product['LuotXem']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_product&MaSP=<?=$product['MaSP']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_product&MaSP=<?=$product['MaSP']?>" class="btn btn-danger" onclick="delete_product(<?=$product['MaSP']?>,event)"><i class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
+                            <td >
+                                <?php
+                                    switch ($product['StatusProduct']) {
+                                        case '0':
+                                            echo '<p class="statusproduct_1">Còn hàng</p>';
+                                            break;
+                                        case '1':
+                                            echo '<p class="statusproduct_2">Hết hàng</p>';
+                                            break;
+                                        
+                                        default:
+                                            
+                                            break;
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <?php 
@@ -89,13 +104,5 @@
     </div>
 </div> 
 
-<script>
-    function delete_product(MaSP){
-        var kq = confirm("Bạn có chắc chắn muốn xóa sản phẩm này không");
-        if(kq){
-            window.location = 'index.php?mod=admin&act=admin_delete_product&MaSP='+MaSP;
-        }
-        event.preventDefault();//sử dụng nó để ngăn chặn hành động mặc định
-    }
-</script>
+
 

@@ -57,6 +57,14 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="HoatDong">Trạng thái hoạt động của tài khoản</label>
+                            <select class="admin__select" name="HoatDong" >
+                                <option value="0"  <?=($getuserById['HoatDong'] == 0) ? 'selected' : ''?>>Hoạt động</option>
+                                <option value="1" <?=($getuserById['HoatDong'] == 1) ? 'selected' : ''?>>Vô hiệu hóa</option>
+                            </select>
+                        </div>
+
                         
                 </div>
             </div>

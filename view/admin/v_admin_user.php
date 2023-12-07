@@ -36,7 +36,7 @@
                             <th>Quyền</th>
                             <th>Ngày tạo</th>
                             <th>Hành động</th>
-                            
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,10 +56,10 @@
                                 <?php
                                     switch ($user['GioiTinh']) {
                                         case '0':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #ede74b;">Nam</p>';
+                                            echo '<p class="GioiTinhproduct"><i class="fa-solid fa-mars"></i></p>';
                                             break;
                                         case '1':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Nữ</p>';
+                                            echo '<p class="GioiTinhproduct"><i class="fa-solid fa-venus"></i></p>';
                                             break;
                                         
                                         default:
@@ -73,10 +73,10 @@
                                 <?php
                                     switch ($user['Quyen']) {
                                         case '0':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;">User</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #00982d;border-radius: 10px;">User</p>';
                                             break;
                                         case '1':
-                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;">Admin</p>';
+                                            echo '<p style="text-align: center; color:#fff; padding:5px 5px; background-color: #e22121;border-radius: 10px;">Admin</p>';
                                             break;
                                         
                                         default:
@@ -89,7 +89,22 @@
                         
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_user&MaTK=<?=$user['MaTK']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_user&MaTK=<?=$user['MaTK']?>" class="btn btn-danger" onclick="delete_user(<?=$user['MaTK']?>),event"><i class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
+                            <td>
+                                <?php
+                                    switch ($user['HoatDong']) {
+                                        case '0':
+                                            echo '<p class="statusproduct_1"><i class="fa-solid fa-toggle-on" style="green"></i></p>';
+                                            break;
+                                        case '1':
+                                            echo '<p class="statusproduct_1"><i class="fa-solid fa-eye-slash"></i></p>';
+                                            break;
+                                        
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <?php 

@@ -16,11 +16,9 @@
         </div>
     </section>
     <!-- Categories Section End -->
-    <section class="featured spad" id="searchSession">
+    <section class="" >
         <div class="container">
-           
             <div class="row featured__filter" id="searchresult">
-                
             </div>
         </div>
     </section>
@@ -224,7 +222,7 @@
     </section>
     <!-- Sản phẩm danh mục Section End -->
     
-<!-- Blog Section Begin -->
+    <!-- Blog Section Begin -->
     <section class="from-blog spad">
         <div class="container">
             <div class="row">

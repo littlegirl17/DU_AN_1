@@ -1720,6 +1720,15 @@ ol {
 /*---------------------
   Shop Details
 -----------------------*/
+.soldout_detail{
+	width: 150px;
+	padding: 15px 15px;
+	background-color: red;
+	color: white;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	text-align: center;
+
+}
 
 .product-details {
 	padding-top: 80px;

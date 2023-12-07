@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label for="name">Giá Giảm:</label>
-        <input type="text" class="form-control" name="Discount" value="<?=$getproductId['GiaGiam']?>" >
+        <input type="text" class="form-control" name="GiaGiam" value="<?=$getproductId['GiaGiam']?>" >
     </div>
     <div class="form-group">
         <label for="name">Tiêu đề:</label>
@@ -36,10 +36,19 @@
         </div></label>
     </div>
 
+    <h4 style="padding-top: 20px;">Chọn danh mục cho sản phẩm</h4>
     <select name="MaDM" class="admin__select" >
+        <option value="Chọn danh mục cho sản phẩm"></option>
         <?php foreach($danhmucall as $dm): ?>
             <option value="<?=$dm['MaDM']?>" <?=($dm['MaDM'] == $getproductId['MaDM']) ? "selected" : "" ?>><?=$dm['TenDM']?></option>
         <?php endforeach; ?>
+    </select>
+
+    <h4 style="padding-top: 20px;">Cập nhật trạng thái sản phẩm</h4>
+    <select name="StatusProduct" class="admin__select" id="">
+        <option value="">Chọn trạng thái đơn hàng</option>
+        <option value="0" <?= ($getproductId['StatusProduct'] == 0) ? "selected" : "" ?>>Còn hàng</option>
+        <option value="1" <?= ($getproductId['StatusProduct'] == 1) ? "selected" : "" ?> >Hết hàng</option>
     </select>
 </form>
 

@@ -75,7 +75,7 @@
                         <a href="index.php?mod=admin&act=phanhoi"><i class="fa-solid fa-comments ico-side" style="color: #ffffff;"></i>Phản hồi khách hàng</a>
                     </li>
                     <li>
-                        <a href="index.php?mod=page&act=home"><i class="fa-solid fa-right-from-bracket ico-side" style="color: #ffffff;"></i>Thoát</a>
+                        <a href="index.php?mod=admin&act=logoutadmin"><i class="fa-solid fa-right-from-bracket ico-side" style="color: #ffffff;"></i>Thoát</a>
                     </li>
                     
                 </ul>

@@ -24,13 +24,20 @@
     function showsp_home($dssp){
         $page_home = "";
         foreach($dssp as $item){
-
+            $price = "";
+            $StatusProduct = "";
             if($item['GiaSP'] >=1){
                 $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
             }else{
                 $price = "<h5>Đang cập nhật</h5>";
             }
+            if($item['StatusProduct'] >=1){
+                $StatusProduct = '<h5>Hết hàng</h5>';
+            }else{
+                $StatusProduct = "";
+            }
 
+            
             echo '
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="featured__item">
@@ -39,20 +46,31 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
-                            '.$price.'
+            ';
+                        if(empty($StatusProduct)){
+                            echo $price;
+                            echo ' 
+                                <form action="index.php?mod=product&act=addtocart" method="post">
+                                    <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                                    <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                                    <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                                    <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                                    <input type="hidden" name="SoLuong" value="1">
+                                    <div class="intro">
+                                        <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                    </div>
+                                </form> 
+                            ';
+
+                        }else{
+                            echo $StatusProduct;
+                        }
+
+            echo '
                         </div>
-                        <form action="index.php?mod=product&act=addtocart" method="post">
-                            <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
-                            <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                            <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
-                            <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
-                            <input type="hidden" name="SoLuong" value="1">
-                            <div class="intro">
-                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
-                            </div>
-                        </form> 
                     </div>
-                </div>';
+                </div>
+            ';
             
         }
 
@@ -62,6 +80,8 @@
     function showsp_home_sale($dssp){
         $page_home = "";
         foreach($dssp as $item){
+            $price = "";
+            $StatusProduct = "";
 
             if($item['GiaSP'] >=1){
                 $price = '<h5 style="text-decoration:line-through;color: #919191;font-weight: 400;">'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
@@ -75,17 +95,16 @@
                 $GiaGiamSP = "";
             }
 
-            // if($item['Discount'] >= 1){
-            //     $GiamGia = ceil((($item['GiaSP'] - $item['GiaGiam'])/$item['GiaSP'])*100);
-            //     $GiamGia = '<div class="product__discount__percent_home">'.$item['Discount'].'%</div>';
-            // }else{
-            //     $GiamGia = "";
-            // }
+            if($item['StatusProduct'] >=1){
+                $StatusProduct = '<h5>Hết hàng</h5>';
+            }else{
+                $StatusProduct = "";
+            }
             
             $GiamGia = ceil((($item['GiaSP'] - $item['GiaGiam'])/$item['GiaSP'])*100);
             $GiamGia = '<div class="product__discount__percent_home">'.$GiamGia.'%</div>';
             
-            echo '
+                echo '
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/'.$item['HinhAnh'].'">
@@ -93,20 +112,31 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
-                            '.$price.''.$GiaGiamSP.'
-                        </div>
-                        <form action="index.php?mod=product&act=addtocart" method="post">
-                            <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
-                            <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                            <input type="hidden" name="GiaSP" value="'.$item['GiaGiam'].'">
-                            <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
-                            <input type="hidden" name="SoLuong" value="1">
-                            <div class="intro">
-                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                ';
+                        if(empty($StatusProduct)){
+                            echo $price . $GiaGiamSP;
+                            echo ' 
+                                <form action="index.php?mod=product&act=addtocart" method="post">
+                                    <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                                    <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                                    <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                                    <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                                    <input type="hidden" name="SoLuong" value="1">
+                                    <div class="intro">
+                                        <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                    </div>
+                                </form> 
+                            ';
+
+                        }else{
+                            echo $StatusProduct;
+                        }
+
+                echo '
                             </div>
-                        </form> 
+                        </div>
                     </div>
-                </div>';
+                ';
             
         }
 

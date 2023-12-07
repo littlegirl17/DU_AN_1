@@ -8,19 +8,29 @@
                 if(isset($_POST['Submit_login'])){
                     $kq = user_getLogin($_POST['Email'],$_POST['MatKhau']);
                     if($kq){
-                        $_SESSION['user'] = $kq;
-                        $_SESSION['email'] = $_POST['Email'];
-                        if($_SESSION['user']['Quyen'] >=1 ){
-                            header("location: index.php?mod=admin&act=dashboard");
+                        if($kq['HoatDong'] == 0){
+                            $_SESSION['user'] = $kq;
+                            $_SESSION['email'] = $_POST['Email'];
+                            if($_SESSION['user']['Quyen'] >=1 ){
+                                header("location: index.php?mod=admin&act=dashboard");
+                            }else{
+                                header("location: index.php?mod=page&act=home");
+                            }
                         }else{
-                            header("location: index.php?mod=page&act=home");
+                            header("location: index.php?mod=user&act=trangloi");
+                            exit(); // Kết thúc script để ngăn chặn việc thực thi code tiếp theo
                         }
+
                         
                     }else{
                         $_SESSION['loi'] = "Email hoặc Password đã sai!";
                     }
                 }
                 $view_name = "user_login";
+                break;
+            case 'trangloi':
+                $_SESSION['loi'] = "Tài khoản của bạn đã bị vô hiệu hóa";
+                $view_name = "trangloi";
                 break;
             case 'logout':
                 if(isset($_SESSION['user'])){
@@ -45,7 +55,7 @@
                         $HinhAnh = 'ava_user.jpeg';
                         $GioiTinh = isset($_POST['GioiTinh']) ? intval($_POST['GioiTinh']) : 0;
 
-                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],md5($_POST['MatKhau']),$_POST['DiaChi'],$GioiTinh,$_POST['SoDienThoai'],$HinhAnh);
+                        user_register($_POST['HoTen'],$_POST['UserName'],$_POST['Email'],$_POST['MatKhau'],$_POST['DiaChi'],$GioiTinh,$_POST['SoDienThoai'],$HinhAnh);
                         $_SESSION['thongbao'] = "Đăng ký tài khoản thành công!";
                         $_SESSION['email'] = $_POST['Email'];
                     }

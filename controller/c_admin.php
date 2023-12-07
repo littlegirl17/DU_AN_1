@@ -140,6 +140,7 @@
                     $MoTa = isset($_POST['MoTa']) ? $_POST['MoTa'] : "";
                     $MaDM = isset($_POST['MaDM']) ? intval($_POST['MaDM']) : "";
                     $GiaGiam = isset($_POST['GiaGiam']) ? intval($_POST['GiaGiam']) : 0;
+                    $StatusProduct = isset($_POST['StatusProduct']) ? intval($_POST['StatusProduct']) : 0;
                     // kiểm tra xem tệp hình ảnh có tồn tại trong $_FILESmảng hay không
                     if (isset($_FILES['HinhAnh']) && $_FILES['HinhAnh']['error'] == 0) {
                         $tmpFilePath = $_FILES['HinhAnh']['tmp_name'];
@@ -150,7 +151,7 @@
                         //Nếu không,lấy tên hình ảnh hiện có từ cơ sở dữ liệu cho sản phẩm đang được chỉnh sửa.
                         $imageName = $getproductId['HinhAnh'];
                     }
-                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $imageName, $MaDM, $GiaGiam);
+                    update_product($MaSP, $_POST['TenSP'],$GiaSP, $TieuDe, $MoTa, $imageName, $MaDM, $GiaGiam,$StatusProduct);
                     header("location: index.php?mod=admin&act=admin_product");
                 }
                 $view_name = "admin_edit_product";
@@ -222,12 +223,13 @@
                         $HoTen = isset($_POST['HoTen']) ? $_POST['HoTen'] : "";
                         $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : "";
                         $Email = isset($_POST['Email']) ? $_POST['Email'] : "";
-                        $MatKhau = isset($_POST['MatKhau']) ? md5($_POST['MatKhau']) : "";
+                        $MatKhau = isset($_POST['MatKhau']) ? ($_POST['MatKhau']) : "";
                         $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : "";
                         $GioiTinh = isset($_POST['GioiTinh']) ? $_POST['GioiTinh'] : "";
                         $SoDienThoai = isset($_POST['SoDienThoai']) ? $_POST['SoDienThoai'] : "";
                         $Quyen = isset($_POST['Quyen']) ? $_POST['Quyen'] : "";
-                        update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen);
+                        $HoatDong = isset($_POST['HoatDong']) ? intval($_POST['HoatDong']) : 0;                    
+                        update_user($MaTK, $HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$HoatDong);
                         header("location: index.php?mod=admin&act=admin_user");
                     }
                     
@@ -443,6 +445,13 @@
                 $MaPH = $_GET['MaPH'];
                 phanhoi_delete($MaPH);
                 header("location: index.php?mod=admin&act=phanhoi");
+                break;
+
+            case 'logoutadmin':
+                if(isset($_SESSION['user'])){
+                    unset($_SESSION['user']);
+                }
+                header("location: index.php?mod=user&act=login");
                 break;
             default:
                 header("location:index.php?mod=page&act=home");

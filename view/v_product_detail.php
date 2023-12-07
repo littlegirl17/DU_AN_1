@@ -106,26 +106,30 @@
                         </div>
                         <div class="product__details__price"><?=number_format($detail_product['GiaSP'],"0",",",".")?></div>
                         <p><?=$detail_product['TieuDe']?></p>
-                        <div class="product_detail_three">
+                        <?php if(empty($detail_product['StatusProduct']) ): ?>
+                            <div class="product_detail_three">
 
-                            <form action="index.php?mod=product&act=addtocart" method="post">
-                                <div class="product__details__quantity">
-                                    <div class="quantity">
-                                    <div class="pro-qty">
-                                        <span class="dec qtybtn" onclick="decrementQuantity()">-</span>
-                                        <input type="text" name="SoLuong" id="quantityInput" value="1" readonly>
-                                        <span class="inc qtybtn" onclick="incrementQuantity()">+</span>
+                                <form action="index.php?mod=product&act=addtocart" method="post">
+                                    <div class="product__details__quantity">
+                                        <div class="quantity">
+                                        <div class="pro-qty">
+                                            <span class="dec qtybtn" onclick="decrementQuantity()">-</span>
+                                            <input type="text" name="SoLuong" id="quantityInput" value="1" readonly>
+                                            <span class="inc qtybtn" onclick="incrementQuantity()">+</span>
+                                        </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
-                                <input type="hidden" name="HinhAnh" value="<?=$detail_product['HinhAnh']?>">
-                                <input type="hidden" name="GiaSP" value="<?=$detail_product['GiaSP']?>">
-                                <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
-                                <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
-                            </form>
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        </div>
+                                    <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
+                                    <input type="hidden" name="HinhAnh" value="<?=$detail_product['HinhAnh']?>">
+                                    <input type="hidden" name="GiaSP" value="<?=$detail_product['GiaSP']?>">
+                                    <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
+                                    <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
+                                </form>
+                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            </div>
+                        <?php else: ?>
+                            <h4 class="soldout_detail">Hết hàng</h4>
+                        <?php endif; ?>
                         <ul>
                             <li><b>Số lượt xem</b> <span><?=$detail_product['LuotXem']?></span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -238,6 +242,12 @@
                             $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
                         }else{
                             $price = "<h5>Đang cập nhật</h5>";
+                        }
+
+                        if($item['StatusProduct'] >=1){
+                            $StatusProduct = '<h5>Hết hàng</h5>';
+                        }else{
+                            $StatusProduct = "";
                         }
 
                         echo '

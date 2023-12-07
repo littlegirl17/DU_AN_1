@@ -204,16 +204,24 @@
                                 $mail->DatHangEmail($TieuDe,$NoiDung,$MailDatHang);
                                 //Chuyển đến trang đơn hàng (Hóa đơn)
                                 header("location:index.php?mod=product&act=vieworder");
+                                unset($_SESSION['mygiohang']);
                         } elseif ($PhuongThucTT == 2) {
                             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                             $vnp_Returnurl = "http://localhost:8080/PHP1/DuAn_1/Organic/index.php?mod=product&act=vieworder";
                             $vnp_TmnCode = "9KKE7C2Q";//Mã website tại VNPAY 
                             $vnp_HashSecret = "BWUHEEXHJGAUKSTBVRWFMQXIFHFEVPAC"; //Chuỗi bí mật
 
+                            $ThanhTien = 0;
+                            $TongTien = 0;
+                            foreach($_SESSION['mygiohang'] as $item){
+                                $ThanhTien = $item['SoLuong'] * $item['GiaSP'];
+                                $TongTien += $ThanhTien;
+                            }
+                            unset($_SESSION['mygiohang']);
                             $vnp_TxnRef = rand(00,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
                             $vnp_OrderInfo = 'Noi dung thanh toan';
                             $vnp_OrderType = 'billpayment';
-                            $vnp_Amount = 10000 * 100;
+                            $vnp_Amount = $TongTien * 100;
                             $vnp_Locale = 'vn';
                             $vnp_BankCode = 'NCB';
                             $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -307,7 +315,7 @@
                                 } else {
                                     echo json_encode($returnData);
                                 }
-
+                            
                         } elseif ($PhuongThucTT == 3) {
                             function execPostRequest($url, $data)
                             {
@@ -382,11 +390,13 @@
                                     //Just a example, please check more in there
                                 
                                     header('Location: ' . $jsonResult['payUrl']);
-                            
+                                    unset($_SESSION['mygiohang']);
                         }
                     }
                 
-                    unset($_SESSION['mygiohang']);
+                    
+                    //Chuyển đến trang đơn hàng (Hóa đơn)
+                    
                 break;
         
             case 'vieworder':

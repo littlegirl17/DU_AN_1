@@ -18,35 +18,56 @@
                             </div>
                         ';
                         foreach($result as $item){
-
+                            $price = "";
+                            $StatusProduct = "";
                             if($item['GiaSP'] >=1){
                                 $price = '<h5>'.number_format($item['GiaSP'],"0",",",".").' đ</h5>';
                             }else{
                                 $price = "<h5>Đang cập nhật</h5>";
                             }
-                
+
+                            if($item['StatusProduct'] >=1){
+                                $StatusProduct = '<h5>Hết hàng</h5>';
+                            }else{
+                                $StatusProduct = "";
+                            }
+
+                            
+            
                             echo '
-                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="featured__item">
-                                        <div class="featured__item__pic set-bg">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="featured__item">
+                                    <div class="featured__item__pic set-bg" >
                                         <img src="view/img/traicay/'.$item['HinhAnh'].'" alt="">
-                                        </div>
-                                        <div class="featured__item__text">
-                                            <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
-                                            '.$price.'
-                                        </div>
-                                        <form action="index.php?mod=product&act=addtocart" method="post">
-                                            <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
-                                            <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                                            <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
-                                            <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
-                                            <input type="hidden" name="SoLuong" value="1">
-                                            <div class="intro">
-                                                <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
-                                            </div>
-                                        </form> 
+                                        
                                     </div>
-                                </div>';
+                                    <div class="featured__item__text">
+                                        <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
+                            ';
+                                    if(empty($StatusProduct)){
+                                        echo $price ;
+                                        echo ' 
+                                            <form action="index.php?mod=product&act=addtocart" method="post">
+                                                <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                                                <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                                                <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                                                <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                                                <input type="hidden" name="SoLuong" value="1">
+                                                <div class="intro">
+                                                    <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                                </div>
+                                            </form> 
+                                        ';
+
+                                    }else{
+                                        echo $StatusProduct;
+                                    }
+
+                            echo '
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
                             
                         }
                 }else {

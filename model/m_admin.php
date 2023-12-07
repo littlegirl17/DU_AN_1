@@ -62,7 +62,9 @@
 
 
     // Sản phẩm
-        
+        function update_Statusproduct($MaSP, $status){
+            pdo_execute("UPDATE sanpham SET status = ? WHERE MaSP = ?", $status,$MaSP);
+        }
         function get_productadmin($keyword,$page=1){//Mặc định nó sẽ gọi trang 1
             
             $BatDau = ($page - 1) * 6;//tính toán vị trí bắt đầu : ví dụ bạn ở trang 2 ($page=2) //thì sản phẩm sẽ bắt đầu từ sản phẩm số 6
@@ -85,8 +87,8 @@
         }
 
         // Cập nhật
-        function update_product($MaSP,$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam){
-            pdo_execute("UPDATE sanpham SET TenSP = ?, GiaSP = ?, TieuDe = ?, MoTa = ?, HinhAnh = ?, MaDM = ?, GiaGiam = ? WHERE MaSP = ?",$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam, $MaSP);
+        function update_product($MaSP,$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam,$StatusProduct){
+            pdo_execute("UPDATE sanpham SET TenSP = ?, GiaSP = ?, TieuDe = ?, MoTa = ?, HinhAnh = ?, MaDM = ?, GiaGiam = ?, StatusProduct = ? WHERE MaSP = ?",$TenSP, $GiaSP, $TieuDe, $MoTa, $HinhAnh, $MaDM, $GiaGiam,$StatusProduct, $MaSP);
         }
 
         // Xóa
@@ -131,8 +133,8 @@
         }
 
         // Cập nhật
-        function update_user($MaTK,$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen) {
-            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $MaTK);
+        function update_user($MaTK,$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen,$HoatDong) {
+            pdo_execute("UPDATE TaiKhoan SET HoTen = ?, UserName = ?, Email = ?, MatKhau = ?, DiaChi = ?, GioiTinh = ?, SoDienThoai = ?, Quyen = ?, HoatDong = ? WHERE MaTK = ?",$HoTen, $UserName, $Email, $MatKhau, $DiaChi, $GioiTinh, $SoDienThoai, $Quyen, $HoatDong, $MaTK);
         }
             
         // Xóa
