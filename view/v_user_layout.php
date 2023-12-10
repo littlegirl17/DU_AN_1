@@ -42,7 +42,6 @@
             <ul>
                 <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -131,9 +130,10 @@
                 <div class="col-lg-3">
                         <div class="header_cart_ri">
 
-                            
+                        
                             <div class="header__cart">
                                 <ul>
+                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
                                 </ul>
                             </div>
@@ -219,6 +219,7 @@
                 </div>
             </div>
         </section>
+        
     <?php endif; ?>
     <!-- Hero Section End -->
     <?php

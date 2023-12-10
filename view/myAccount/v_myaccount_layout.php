@@ -99,7 +99,7 @@
     <!-- Humberger End -->
 
     <!-- Header Section Begin -->
-    <header class="header" style="background-color: #7FAD39;">
+    <header class="header" style="background: linear-gradient(to right,#176B87, #64CCC5,  #7ED7C1);">
         
         <div class="container">
             <div class="row">
@@ -147,9 +147,6 @@
                         </li>
                         <li>
                             <a href="index.php?mod=myaccount&act=update_myaccount"><i class="fa-solid fa-pen-to-square ico-side" style="color: #ffffff;"></i>Cập nhật tài khoản</a>
-                        </li>
-                        <li>
-                            <a href="index.php?mod=myaccount&act=forget_pasword"><i class="fa-solid fa-unlock ico-side" style="color: #ffffff;"></i>Quên mật khẩu</a>
                         </li>
                         <li>
                             <a href="index.php?mod=myaccount&act=doi_password"><i class="fa-solid fa-key ico-side" style="color: #ffffff;"></i> Đổi mật khẩu</a>

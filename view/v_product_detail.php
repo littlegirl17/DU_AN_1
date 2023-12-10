@@ -119,13 +119,20 @@
                                         </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
+                                    <input type="hidden"  name="MaSP" value="<?=$detail_product['MaSP']?>">
                                     <input type="hidden" name="HinhAnh" value="<?=$detail_product['HinhAnh']?>">
                                     <input type="hidden" name="GiaSP" value="<?=$detail_product['GiaSP']?>">
                                     <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
                                     <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
                                 </form>
-                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                                <form id="loveform" action="index.php?mod=product&act=detail" method="post">
+                                    <input type="hidden" name="MaTK" value="<?=$_SESSION['user']['MaTK']?>">
+                                    <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
+                                    <input type="hidden" name="YeuThich" value="1">
+                                    <button type="submit" id="loveButton" class="heart-icon" name="submitYeuThich" <?= isset($_SESSION['wishlist_active'][$detail_product['MaSP']]) ? $_SESSION['wishlist_active'][$detail_product['MaSP']] : '' ?> onclick="addlove()"> 
+                                        <span class="icon_heart_alt"></span>
+                                    </button>
+                                </form>
                             </div>
                         <?php else: ?>
                             <h4 class="soldout_detail">Hết hàng</h4>
@@ -210,7 +217,7 @@
             <?php endforeach; ?>
             <!-- Nếu nó tồn tại session['user'] thì mình mới cho nó quyền ĐƯỢC BÌNH LUẬN -->
             <?php if(isset($_SESSION['user'])):?>
-                <form action="index.php?mod=product&act=binhluan" method="POST"> <!-- vi minh lam doc loc -->
+                <form  action="index.php?mod=product&act=binhluan" method="POST"> <!-- vi minh lam doc loc -->
                     <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
                     <div class="form-detail">
                         <label for="">Nhận xét của bạn</label><br>
@@ -292,5 +299,12 @@
                 //thì giá trị đó sẽ được giảm đi 1 -> làm cho sản phẩm không bao giờ nhỏ hơn 1 đucợ
                 quantityInput.value = parseInt(quantityInput.value) - 1;
             }
+        }
+
+        function addlove(){
+            var loveButton = document.getElementById("loveButton");
+            loveButton.classList.toggle('wishlist-active');
+
+            document.getElementById("loveform").submit();
         }
     </script>

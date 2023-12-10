@@ -2,7 +2,7 @@
     include_once 'model/m_pdo.php';
 
     function danhmuc_getAll(){
-        return pdo_query("SELECT * FROM danhmuc ORDER BY MaDM DESC");
+        return pdo_query("SELECT * FROM danhmuc WHERE TrangThai = 0 ORDER BY MaDM DESC");
     }
 
     function danhmuc_getbyiddetail($MaDM,$page=1){

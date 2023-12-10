@@ -52,8 +52,8 @@
                         <div class="form-group">
                             <label for="quyen">Quyền (1 admin | 0 user):</label>
                             <select class="admin__select" name="Quyen" >
-                                <option value="0"  <?=($getuserById['GioiTinh'] == 0) ? 'selected' : ''?>>User</option>
-                                <option value="1" <?=($getuserById['GioiTinh'] == 1) ? 'selected' : ''?>>Admin</option>
+                                <option value="0"  <?=($getuserById['Quyen'] == 0) ? 'selected' : ''?>>User</option>
+                                <option value="1" <?=($getuserById['Quyen'] == 1) ? 'selected' : ''?>>Admin</option>
                             </select>
                         </div>
 

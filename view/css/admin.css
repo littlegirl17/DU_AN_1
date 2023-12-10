@@ -10,7 +10,7 @@ body{
     background-color: #e6e6e6;
 }
 body.darkmode{
-    background-color: midnightblue;
+    background-color: #181823;
     color: white;
 }
 body.darkmode .fa-moon{  /*ẩn biểu tượng mặt trăng khi ở chế độ tối*/
@@ -307,5 +307,23 @@ nav ul li:hover {
     background-color: #fff;
     border-radius: 10px;
     color: #000;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.statuscatagory_1{
+    width: 50px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px 8px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.statuscatagory_2{
+    width: 50px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px 8px;
+    background-color: #ff0000;
+    color: #ffffff;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

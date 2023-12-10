@@ -79,8 +79,8 @@
                         //Nếu không,lấy tên hình ảnh hiện có từ cơ sở dữ liệu cho sản phẩm đang được chỉnh sửa.
                         $imageName = $getcataId['HinhAnh'];
                     }
-                    
-                    update_catagory($MaDM,$_POST['TenDM'],$SoThuTu,$UuTien, $imageName);
+                    $TrangThai = isset($_POST['TrangThai']) ? intval($_POST['TrangThai']) : 0;
+                    update_catagory($MaDM,$_POST['TenDM'],$SoThuTu,$UuTien, $imageName,$TrangThai);
                     
                     header("location: index.php?mod=admin&act=admin_catagory");
                 }

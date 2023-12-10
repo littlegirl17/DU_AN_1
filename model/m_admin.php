@@ -52,8 +52,8 @@
             return pdo_query_one("SELECT * FROM danhmuc WHERE MaDM = ?",$MaDM);
         }
         
-        function update_catagory($MaDM,$TenDM,$SoThuTu,$UuTien,$HinhAnh){
-            pdo_execute("UPDATE danhmuc SET TenDM = ?,SoThuTu = ?,UuTien = ?, HinhAnh = ? WHERE MaDM = ? ",$TenDM,$SoThuTu,$UuTien,$HinhAnh,$MaDM);
+        function update_catagory($MaDM,$TenDM,$SoThuTu,$UuTien,$HinhAnh,$TrangThai){
+            pdo_execute("UPDATE danhmuc SET TenDM = ?,SoThuTu = ?,UuTien = ?, HinhAnh = ?, TrangThai = ? WHERE MaDM = ? ",$TenDM,$SoThuTu,$UuTien,$HinhAnh, $TrangThai,$MaDM);
         }
         // Xóa
         function delete_catagory($MaDM){
@@ -147,7 +147,7 @@
         // Cmt 
         function get_cmtadmin($page=1){
             $BatDau = ($page - 1) * 6;
-            return pdo_query("SELECT * FROM binhluan LIMIT $BatDau,6");
+            return pdo_query("SELECT * FROM binhluan bl INNER JOIN taikhoan tk ON bl.MaTK = tk.MaTK INNER JOIN sanpham sp ON bl.MaSP = sp.MaSP LIMIT $BatDau,6");
         }
         //phân trang
         function binhluan_adminPage(){

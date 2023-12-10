@@ -21,4 +21,16 @@
         return pdo_query("SELECT * FROM binhluan bl INNER JOIN taikhoan tk ON bl.MaTK = tk.MaTK WHERE bl.MaSP=?",$MaSP);
     }
 
+    function product_detaillove($MaSP, $MaTK, $YeuThich){
+        return pdo_query_one("SELECT * FROM yeuthich WHERE MaSP=? AND MaTK=? AND YeuThich=?", $MaSP, $MaTK, $YeuThich);
+    }
+
+    function product_addToWishlist($MaSP, $MaTK,$YeuThich){
+        pdo_execute("INSERT INTO yeuthich (`MaSP`,`MaTK`,`YeuThich`) VALUES (?,?,?)",$MaSP,$MaTK,$YeuThich);
+    }
+
+    function product_removeFromWishlist($MaSP, $MaTK, $YeuThich) {
+        pdo_execute("DELETE FROM yeuthich WHERE MaSP=? AND MaTK=? AND YeuThich=?", $MaSP, $MaTK, $YeuThich);
+    }
+//
 ?>

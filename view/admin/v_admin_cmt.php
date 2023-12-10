@@ -8,24 +8,25 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>STT</th>
+                            
                             <th>Mã Bình Luận</th>
-                            <th>Mã Sản Phẩm</th>
-                            <th>Mã Tài Khoản</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Họ tên</th>
                             <th>Nội Dung</th>
                             <th>Ngày Bình Luận</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                            $stt = 1; 
+                            
                             foreach($cmtall as $comment):
                         ?>
                         <tr>
-                            <td><?=$stt?></td>
                             <td><?=$comment['MaBL']?></td>
-                            <td><?=$comment['MaSP']?></td>
-                            <td><?=$comment['MaTK']?></td>
+                            <td><?=$comment['TenSP']?></td>
+                            <td><img src="view/img/traicay/<?=$comment['HinhAnh']?>" style="width:80px; height:80px; object-fit:cover;" alt=""></td>
+                            <td><?=$comment['HoTen']?></td>
                             <td><?=$comment['NoiDung']?></td>
                             <td><?=$comment['NgayBL']?></td>
                             <td>
@@ -35,7 +36,7 @@
                             </td>
                         </tr>
                         <?php 
-                            $stt++; 
+                            
                             endforeach; 
                         ?>
                     </tbody>

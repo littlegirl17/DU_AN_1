@@ -5,7 +5,7 @@
                 <section class="statistics row">
                     <div class="col-sm-12 col-md-6 col-xl-2 ">
                         <a href="index.php?mod=admin&act=admin_product" >
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e04848 ;color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#B31312, #EA906C,  #ECF4D6);color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold " >
                                     <h5>
                                         Tổng sản phẩm
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=admin_user">
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#3ab4e4 ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#176B87, #5FBDFF,  #3081D0);color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
 
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=admin_post">
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e4d63a ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#E9B824, #F3B664,  #F1EB90);color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng bài viết
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=admin_catagory">
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#B0E048 ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#508D69, #9ADE7B,  #EEF296);color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng danh mục
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=admin_donhang">
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#e508aa ;color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#DB6B97, #DB6B97,  #F7C8E0);color: #fff; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng đơn hàng
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=phanhoi">
-                            <div class="card mb-3 widget-chart " style="border: none;background-color:#000 ;color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <div class="card mb-3 widget-chart " style="border: none;background: linear-gradient(to right,#FCF5ED, #092635,  #092635);color: #fff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
                                     <h5>
                                         Tổng phản hồi
@@ -113,30 +113,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-6">
                         <div class="card chart">
-                            <form action="#" method="post">
-                                <div class="input-group mb-3">
-                                    <input type="date" class="form-control" placeholder="Username"
-                                        aria-label="Username">
-                                    <span class="input-group-text">Đến ngày</span>
-                                    <input type="date" class="form-control" placeholder="Server" aria-label="Server">
-                                    <button type="button" class="btn btn-primary">Xem</button>
-                                </div>
-                            </form>
-                            <p>Tổng doanh thu: <span>...</span></p>
-                            <table class="revenue table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Doanh thu</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>...</td>
-                                        <td>....</td>
-                                        <td>......</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            
                         </div>
                     </div>
                     

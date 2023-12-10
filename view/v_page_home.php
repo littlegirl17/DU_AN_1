@@ -1,13 +1,15 @@
     
+    
     <!-- Categories Section Begin -->
     <section class="categories" >
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-                    <?php foreach($getdanhmuc as $dm): ?>
+                    <?php foreach($getdanhmuc as $item): ?>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="view/img/categories/<?=$dm['HinhAnh']?>">
-                            <h5><a href="#"><?=$dm['TenDM']?></a></h5>
+                        <div class="categories__item set-bg" data-setbg="view/img/categories/<?=$item['HinhAnh']?>">
+                        <img src="" alt="">
+                            <h5><a href="#"><?=$item['TenDM']?></a></h5>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -15,6 +17,7 @@
             </div>
         </div>
     </section>
+    
     <!-- Categories Section End -->
     <section class="" >
         <div class="container">

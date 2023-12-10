@@ -31,6 +31,7 @@
                             <th>Uư tiên</th>
                             <th>Số thứ tự</th>
                             <th>Hành động</th>
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +62,21 @@
                             <td><?=$item['SoThuTu']?></td>
                             <td>
                                 <a href="index.php?mod=admin&act=admin_edit_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                <a href="index.php?mod=admin&act=admin_delete_catagory&MaDM=<?=$item['MaDM']?>" class="btn btn-danger" onclick="delete_catagory(<?=$item['MaDM']?>, event)"><i class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
+                            <td>
+                                <?php
+                                    switch ($item['TrangThai']) {
+                                        case '0':
+                                            echo '<p class="statuscatagory_1">Hiện</p>';
+                                            break;
+                                        case '1':
+                                            echo '<p class="statuscatagory_2">Ẩn</p>';
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <?php 

@@ -20,9 +20,33 @@
                 $detail_product = product_detailbyid($_GET['MaSP']);
                 $loadcomment = get_byproductcomment($_GET['MaSP']);
                 $lienquan_product = product_lienquanRanDom($detail_product['MaDM']);
+                
+                if (isset($_POST['submitYeuThich'])) {
+                    $MaSP = $_POST['MaSP'];
+                    $MaTK = $_POST['MaTK'];
+                    $YeuThich = $_POST['YeuThich'];
+                
+                    $isInWishlist = product_detaillove($MaSP, $MaTK, $YeuThich);
+
+                    if (!$isInWishlist) {
+                        // Sản phẩm chưa có trong danh sách yêu thích, thêm vào
+                        product_addToWishlist($MaSP, $MaTK, $YeuThich);
+                        $_SESSION['wishlist_active'][$MaSP] = 'wishlist-active';
+                    } 
+
+                    if ($isInWishlist && $isInWishlist['MaSP'] == $MaSP) {
+                        // Sản phẩm đã có trong danh sách yêu thích với sản phẩm khác, xóa nó trước
+                        product_removeFromWishlist($MaSP, $MaTK, $YeuThich);
+                        unset($_SESSION['wishlist_active'][$isInWishlist['MaSP']]);
+                    }
+                    
+                    // Thêm sản phẩm vào danh sách yêu thích
+                    header("location: index.php?mod=product&act=detail&MaSP=".$MaSP);
+                    
+                }
+                
                 $view_name = "product_detail";
                 break;
-            
             case 'viewcart':
                 $view_name = "product_cart";
                 break;

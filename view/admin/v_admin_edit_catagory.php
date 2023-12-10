@@ -29,6 +29,13 @@
                                 <img  src="view/img/categories/<?=$getcataId['HinhAnh']?>" alt="" style="width:80px; height:80px; object-fit:cover;">
                             </div></label>
                         </div>
+                        <div class="form-group">
+                            <label for="TrangThai">Trạng thái hoạt động của tài khoản</label>
+                            <select class="admin__select" name="TrangThai" >
+                                <option value="0"  <?=($getcataId['TrangThai'] == 0) ? 'selected' : ''?>>Hiện danh mục</option>
+                                <option value="1" <?=($getcataId['TrangThai'] == 1) ? 'selected' : ''?>>Ẩn danh mục</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
             </div>
