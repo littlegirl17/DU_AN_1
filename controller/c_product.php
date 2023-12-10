@@ -1,8 +1,5 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_page.php';
-    include_once 'model/m_product.php';
-    include_once 'model/m_order.php';
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
@@ -21,6 +18,8 @@
                 $loadcomment = get_byproductcomment($_GET['MaSP']);
                 $lienquan_product = product_lienquanRanDom($detail_product['MaDM']);
                 
+                
+
                 if (isset($_POST['submitYeuThich'])) {
                     $MaSP = $_POST['MaSP'];
                     $MaTK = $_POST['MaTK'];
@@ -32,7 +31,7 @@
                         // Sản phẩm chưa có trong danh sách yêu thích, thêm vào
                         product_addToWishlist($MaSP, $MaTK, $YeuThich);
                         $_SESSION['wishlist_active'][$MaSP] = 'wishlist-active';
-                    } 
+                    }
 
                     if ($isInWishlist && $isInWishlist['MaSP'] == $MaSP) {
                         // Sản phẩm đã có trong danh sách yêu thích với sản phẩm khác, xóa nó trước
@@ -46,6 +45,22 @@
                 }
                 
                 $view_name = "product_detail";
+                break;
+            case 'yeuthich':
+                
+                $getyeuthich = product_yeuthich();
+                $view_name = "product_yeuthich";
+                break;
+            case 'yeuthichdelete':
+                if(isset($_GET['MaSP'])){
+                    $MaSP = $_GET['MaSP'];
+                    product_deleteyeuthich($MaSP);
+                    header("location: index.php?mod=product&act=yeuthich");
+                }else{
+                    $MaSP = "";
+                    
+                }
+                
                 break;
             case 'viewcart':
                 $view_name = "product_cart";

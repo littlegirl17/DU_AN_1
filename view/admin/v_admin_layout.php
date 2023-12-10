@@ -69,6 +69,9 @@
                         <a href="index.php?mod=admin&act=admin_donhang"><i class="fa-solid fa-cart-shopping ico-side" style="color: #f2f2f2;"></i>Quản lí đơn hàng</a>
                     </li>
                     <li>
+                        <a href="index.php?mod=admin&act=adminlove"><i class="fa-solid fa-heart ico-side" style="color: #f2f2f2;"></i>Sản phẩm yêu thích</a>
+                    </li>
+                    <li>
                         <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-comments ico-side" style="color: #ffffff;"></i>Quản lí bình luận</a>
                     </li>
                     <li>

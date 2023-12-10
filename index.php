@@ -1,7 +1,8 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_catagory.php';
+    
     $getdanhmuc = danhmuc_getAll();
+    $countlove = product_Countyeuthich();
     if(isset($_GET['mod']) && ($_GET['mod']!="")){
         switch ($_GET['mod']) {
             case 'catagory':

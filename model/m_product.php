@@ -29,8 +29,22 @@
         pdo_execute("INSERT INTO yeuthich (`MaSP`,`MaTK`,`YeuThich`) VALUES (?,?,?)",$MaSP,$MaTK,$YeuThich);
     }
 
+    //detail
     function product_removeFromWishlist($MaSP, $MaTK, $YeuThich) {
         pdo_execute("DELETE FROM yeuthich WHERE MaSP=? AND MaTK=? AND YeuThich=?", $MaSP, $MaTK, $YeuThich);
+    }
+
+    function product_yeuthich(){
+        return pdo_query("SELECT * FROM yeuthich yt INNER JOIN sanpham sp ON yt.MaSP=sp.MaSP ORDER BY MaYT DESC");
+    }
+
+    function product_Countyeuthich(){
+        $countlove = pdo_query("SELECT * FROM yeuthich yt INNER JOIN sanpham sp ON yt.MaSP=sp.MaSP ORDER BY MaYT DESC");
+        return count($countlove);
+    }
+
+    function product_deleteyeuthich($MaSP) {
+        pdo_execute("DELETE FROM yeuthich WHERE MaSP=? ", $MaSP);
     }
 //
 ?>

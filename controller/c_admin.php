@@ -1,6 +1,5 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_admin.php';
 
     // Là admin và có đăng nhập mới vào admin
         if(isset($_SESSION['user']) == false){
@@ -10,8 +9,9 @@
         }
     //ADMIN >= 1 mới vào admin
         if(!($_SESSION['user']['Quyen'] >=1)){
-            header("location: index.php?mod=page&act=home");
+            header("location: index.php?mod=admin&act=dashboard");
         }
+        
     // Phân trang
         if(isset($_GET['page']) && ($_GET['page']>=1)){ //Nếu truyền rồi
             $page = $_GET['page'];
@@ -35,6 +35,8 @@
                 $countBlog = dashboard_countBlog();
                 $countOrder = dashboard_countOrder();
                 $countCmt = dashboard_countComment();
+                $countfeedback = dashboard_countFeedback();
+                $countlove = dashboard_countLove();
                 $thongkeggchart = dashboard_googlechart();
                 $view_name = "admin_dashboard";
                 break;
@@ -453,12 +455,18 @@
                 }
                 header("location: index.php?mod=user&act=login");
                 break;
-            default:
-                header("location:index.php?mod=page&act=home");
+        // Yêu thích
+            case 'adminlove':
+                $admingetyeuthich = admin_yeuthich();
+                $view_name = "admin_love";
                 break;
-        }
+            default:
+                header("location:index.php?mod=admin&act=dashboard");
+                break;
+        
+            }
         include_once 'view/admin/v_admin_layout.php';
     }else{
-        header("location:index.php?mod=page&act=home");
+        header("location:index.php?mod=admin&act=dashboard");
     }
 ?>

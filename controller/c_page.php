@@ -1,7 +1,6 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_page.php';
-    include_once 'model/m_order.php';
+
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {

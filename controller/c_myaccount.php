@@ -1,7 +1,6 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_myaccount.php';
-    include_once 'model/m_order.php';
+
     //
     if(isset($_SESSION['user']) == false){
         header("location: index.php?mod=user&act=login");

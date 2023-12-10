@@ -1,6 +1,5 @@
 <?php
     include_once 'config.php';
-    include_once 'model/m_user.php';
 
     if(isset($_GET['act']) && ($_GET['act']!="")){
         switch ($_GET['act']) {
@@ -13,7 +12,7 @@
                             $_SESSION['email'] = $_POST['Email'];
                             if($_SESSION['user']['Quyen'] >=1 ){
                                 header("location: index.php?mod=admin&act=dashboard");
-                            }else{
+                            }elseif ($_SESSION['user']['Quyen'] ==0){
                                 header("location: index.php?mod=page&act=home");
                             }
                         }else{

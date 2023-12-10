@@ -133,7 +133,7 @@
                         
                             <div class="header__cart">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                                    <li><a href="index.php?mod=product&act=yeuthich"><i class="fa fa-heart"></i> <span><?= $countlove?></span></a></li>
                                     <li><a href="index.php?mod=product&act=viewcart"><i class="fa fa-shopping-bag"></i> <span><?=COUNT($_SESSION['mygiohang'])?></span></a></li>
                                 </ul>
                             </div>

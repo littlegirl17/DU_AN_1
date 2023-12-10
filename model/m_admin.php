@@ -26,6 +26,14 @@
             return pdo_query_value("SELECT COUNT(*) FROM binhluan ");
         } //trả về một giá trị duy nhất
 
+        function dashboard_countFeedback(){
+            return pdo_query_value("SELECT COUNT(*) FROM phanhoi ");
+        } //trả về một giá trị duy nhất
+
+        function dashboard_countLove(){
+            return pdo_query_value("SELECT COUNT(*) FROM yeuthich ");
+        } //trả về một giá trị duy nhất
+
 
         //Thống kê
         function dashboard_googlechart(){
@@ -237,5 +245,10 @@
 
         function phanhoi_delete($MaPH){
             pdo_execute("DELETE FROM phanhoi WHERE MaPH = ?",$MaPH);
+        }
+
+    // Yêu thích
+        function admin_yeuthich(){
+            return pdo_query("SELECT * FROM yeuthich yt INNER JOIN sanpham sp ON yt.MaSP=sp.MaSP INNER JOIN taikhoan tk ON yt.MaTK=tk.MaTK ORDER BY MaYT DESC");
         }
 ?>

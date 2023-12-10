@@ -125,6 +125,7 @@
                                     <input type="hidden" name="TenSP" value="<?=$detail_product['TenSP']?>">
                                     <input type="submit" value="Thêm vào giỏ hàng" name="submitaddtocart" class="primary-btn">
                                 </form>
+                                <?php if(isset($_SESSION['user']['MaTK'])): ?>
                                 <form id="loveform" action="index.php?mod=product&act=detail" method="post">
                                     <input type="hidden" name="MaTK" value="<?=$_SESSION['user']['MaTK']?>">
                                     <input type="hidden" name="MaSP" value="<?=$detail_product['MaSP']?>">
@@ -133,12 +134,15 @@
                                         <span class="icon_heart_alt"></span>
                                     </button>
                                 </form>
+                                
+                                    
+                                <?php endif; ?>
                             </div>
                         <?php else: ?>
                             <h4 class="soldout_detail">Hết hàng</h4>
                         <?php endif; ?>
                         <ul>
-                            <li><b>Số lượt xem</b> <span><?=$detail_product['LuotXem']?></span></li>
+                            <li><b>Số lượt xem</b> <span><?=$detail_product['LuotXem']?> Lượt xem</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                             <li><b>Share on</b>
