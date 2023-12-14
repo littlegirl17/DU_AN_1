@@ -46,7 +46,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                
                 <li><a href="#">Danh mục</a>
                     <ul class="header__menu__dropdown">
                         <?php foreach($getdanhmuc as $dm):?>
@@ -114,7 +114,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.php?mod=page&act=home">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            
                             <li><a href="#">Danh mục</a>
                                 <ul class="header__menu__dropdown">
                                     <?php foreach($getdanhmuc as $dm):?>
@@ -202,8 +202,8 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="hero__search__phone__text">
-                                    <h5>+65 11.188.888</h5>
-                                    <span>support 24/7 time</span>
+                                    <h5>+035 312 3771</h5>
+                                    <span>Hỗ trợ khách hàng</span>
                                 </div>
                             </div>
                         </div>
