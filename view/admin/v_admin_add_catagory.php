@@ -26,6 +26,7 @@
                             <label for="exampleInputFile" class="label_admin" >Ảnh danh mục
                             <div class="custom-file">
                                 <input type="file" name="HinhAnh" id="HinhAnh" >
+                                <div id="preview"></div>
                             </div></label>
                         </div>
                 </div>

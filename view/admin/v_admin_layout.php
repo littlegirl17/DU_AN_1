@@ -74,9 +74,9 @@
                     <li>
                         <a href="index.php?mod=admin&act=admin_cmt"><i class="fa-solid fa-comments ico-side" style="color: #ffffff;"></i>Quản lí bình luận</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?mod=admin&act=phanhoi"><i class="fa-solid fa-comments ico-side" style="color: #ffffff;"></i>Phản hồi khách hàng</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="index.php?mod=admin&act=logoutadmin"><i class="fa-solid fa-right-from-bracket ico-side" style="color: #ffffff;"></i>Thoát</a>
                     </li>
@@ -94,8 +94,23 @@
     
 </body>
 <script src="view/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </html>
+<script>
+    function imagePreview(fileInput) {
+    if (fileInput.files && fileInput.files[0]) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (event) {
+            $('#preview').html('<img src="'+event.target.result+'" width="300" height="auto"/>');
+        };
+        fileReader.readAsDataURL(fileInput.files[0]);
+    }
+}
+$("#HinhAnh").change(function () {
+    imagePreview(this);
+});
+    
+</script>
 <script>
     //
     document.querySelector('#change-darkmode').addEventListener('click',function(){

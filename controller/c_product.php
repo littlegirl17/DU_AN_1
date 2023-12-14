@@ -89,8 +89,9 @@
                     
                     $i=0; // i để định vị mình đang ở cái sản phẩm nào mà check // i có nghĩa là: ở phần tử thứ i mình cập nhật lại cái số lượng
                     foreach($_SESSION['mygiohang'] as $item){
+                        //Ở đây, $item['TenSP'] là tên sản phẩm của mỗi mục trong giỏ hàng, và $TenSP là tên sản phẩm mà người dùng muốn thêm vào giỏ hàng thông qua form gửi dữ liệu. 
                         if($item['TenSP'] == $TenSP){
-                            $SoLuongNew =  intval($SoLuong) + intval($item['SoLuong']);
+                            $SoLuongNew =  intval($SoLuong) + intval($item['SoLuong']);//$SoLuong được sử dụng để đại diện cho số lượng sản phẩm mà người dùng muốn thêm vào giỏ hàng. //$item['soluong']: Đây có thể là số lượng của sản phẩm hiện tại trong giỏ hàng.
                             $_SESSION['mygiohang'][$i]['SoLuong'] = $SoLuongNew;
                             $flag = 1; // và gán lại biến tạm = 1
                             break; // sau khi check xong thì thoát luôn
@@ -166,6 +167,7 @@
                 break;
 
             
+            //chuyển đến tran checkout
             case 'order':
                 require "mail/sendmail.php";
 
@@ -205,8 +207,9 @@
 
                         if(isset($_SESSION['mygiohang']) && is_array($_SESSION['mygiohang'])){
                             foreach($_SESSION['mygiohang'] as $item){
-                                //Thêm nó vào chi tiêt đơn hàng 
+                                
                                 order_soluong($iddh,$item['MaSP']);
+                                //Thêm nó vào chi tiêt đơn hàng 
                                 addOrder($iddh,$item['MaSP'],$item['GiaSP'],$item['SoLuong']); //$iddh là để nó biết lấy theo cái mã iddh nào
                             }
                             //nghĩa là sau khi sản phẩm đó được đặt, và quay lại trang chủ thì sản phẩm đó phải biến mất trong giỏ hàng

@@ -76,7 +76,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-xl-2">
+                    <!-- <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=phanhoi">
                             <div class="card mb-3 widget-chart " style="border: none;;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10  font-weight-bold">
@@ -87,7 +87,7 @@
                                 <span class="widget-numbers"><?=$countfeedback?></span>
                             </div>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="col-sm-12 col-md-6 col-xl-2">
                         <a href="index.php?mod=admin&act=adminlove">
                             <div class="card mb-3 widget-chart " style="border: none;;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">

@@ -285,4 +285,24 @@
         function phanhoi_add($HoTen,$Email,$NoiDung){
             pdo_execute("INSERT INTO phanhoi (`HoTen`,`Email`,`NoiDung`) VALUES (?,?,?)",$HoTen,$Email,$NoiDung);
         }
+
+    //
+    function danhmucpage_getAll(){
+        return pdo_query("SELECT * FROM danhmuc ORDER BY MaDM DESC");
+    }
+
+    function danhsach_slidedanhmuc($dsdm){
+        $page_home = "";
+        foreach($dsdm as $item){
+            echo '<div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="">
+                        <img src="../view/img/categories/'. $item['HinhAnh'].'" alt="">
+                            <h5><a href="#">'.$item['TenDM'].'</a></h5>
+                        </div>
+                    </div>
+                </div>';
+        }
+        return $page_home;
+    }
 ?>

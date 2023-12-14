@@ -35,7 +35,7 @@
                 $countBlog = dashboard_countBlog();
                 $countOrder = dashboard_countOrder();
                 $countCmt = dashboard_countComment();
-                $countfeedback = dashboard_countFeedback();
+                //$countfeedback = dashboard_countFeedback();
                 $countlove = dashboard_countLove();
                 $thongkeggchart = dashboard_googlechart();
                 $view_name = "admin_dashboard";

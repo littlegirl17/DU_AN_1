@@ -207,13 +207,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="hero__item set-bg" data-setbg="view/img/hero/banner.png">
-                            <!--<div class="hero__text">
-                                <span>FRUIT FRESH</span>
-                                <h2>Vegetable <br />100% Organic</h2>
-                                <p>Free Pickup and Delivery Available</p>
-                                <a href="#" class="primary-btn">SHOP NOW</a> 
-                            </div>-->
+                        <div class="hero__item set-bg" >
+                        <div id="carouselExample" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="view/img/hero/banner.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="view/img/hero/banner2.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="view/img/hero/banner3.png" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>

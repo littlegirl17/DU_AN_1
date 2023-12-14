@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea placeholder="Your message" name="NoiDung"></textarea>
-                        <button type="submit" name="submit_phanhoi" class="site-btn">GỬI TIN NHẮN</button>
+                        <button type="submit" name="" class="site-btn">GỬI TIN NHẮN</button>
                     </div>
                 </div>
             </form>

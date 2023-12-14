@@ -11,6 +11,7 @@
                     $keyword = "";
                 }
                 $getdanhmuc = danhmuc_getAll(); 
+                $getdanhmucpage = danhmucpage_getAll();
                 $getproNew = page_productNew($keyword);
                 
                 $getDiscount = page_productDiscount();
