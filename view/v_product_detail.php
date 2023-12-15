@@ -7,7 +7,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>All danh mục</span>
                         </div>
                         <ul>
                             <li><a href="#">Fresh Meat</a></li>
@@ -29,7 +29,7 @@
                         <div class="hero__search__form">
                             <form action="#">
                                 <div class="hero__search__categories">
-                                    All Categories
+                                    All danh mục
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
@@ -41,8 +41,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                                    <h5>+035 312 3771</h5>
+                                    <span>Hỗ trợ khách hàng</span>
                             </div>
                         </div>
                     </div>
@@ -58,11 +58,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
+                        <h2>Chi tiết sản phẩm</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="index.php?mod=page&act=home">Home</a>
+                            <span><?=$detail_product['TenSP']?></span>
                         </div>
                     </div>
                 </div>
@@ -78,8 +77,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="view/img/traicay/<?=$detail_product['HinhAnh']?>" alt="">
+                            <img class="product__details__pic__item--large" src="view/img/traicay/<?=$detail_product['HinhAnh']?>" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="view/img/traicay/<?=$detail_product['HinhAnh']?>"
@@ -260,29 +258,41 @@
                         }else{
                             $StatusProduct = "";
                         }
-
+            
+                        
                         echo '
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="featured__item">
                                     <div class="featured__item__pic set-bg" data-setbg="view/img/traicay/'.$item['HinhAnh'].'">
-                                    
+                                        
                                     </div>
                                     <div class="featured__item__text">
                                         <h6><a href="index.php?mod=product&act=detail&MaSP='.$item['MaSP'].'">'.$item['TenSP'].'</a></h6>
-                                        '.$price.'
+                        ';
+                                    if(empty($StatusProduct)){
+                                        echo $price;
+                                        echo ' 
+                                            <form action="index.php?mod=product&act=addtocart" method="post">
+                                                <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
+                                                <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
+                                                <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
+                                                <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
+                                                <input type="hidden" name="SoLuong" value="1">
+                                                <div class="intro">
+                                                    <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
+                                                </div>
+                                            </form> 
+                                        ';
+            
+                                    }else{
+                                        echo $StatusProduct;
+                                    }
+            
+                        echo '
                                     </div>
-                                    <form action="index.php?mod=product&act=addtocart" method="post">
-                                        <input type="hidden" name="MaSP" value="'.$item['MaSP'].'">
-                                        <input type="hidden" name="HinhAnh" value="'.$item['HinhAnh'].'">
-                                        <input type="hidden" name="GiaSP" value="'.$item['GiaSP'].'">
-                                        <input type="hidden" name="TenSP" value="'.$item['TenSP'].'">
-                                        <input type="hidden" name="SoLuong" value="1">
-                                        <div class="intro">
-                                            <input type="submit" value="Thêm vào giỏ " name="submitaddtocart">
-                                        </div>
-                                    </form> 
                                 </div>
-                            </div>';
+                            </div>
+                        ';
 
                         }
                     ?>

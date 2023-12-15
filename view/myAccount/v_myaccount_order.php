@@ -8,7 +8,7 @@
             <th scope="col">STT</th>
             <th scope="col">Họ tên</th>
             <th scope="col">Ngày đặt</th>
-            <th scope="col">Tổng tiền</th>
+            <th scope="col">PTTT</th>
             <th scope="col">Hành động</th>
             <th scope="col">Trạng thái</th>
             <th scope="col">Thông tin</th>
@@ -25,9 +25,26 @@
             <th ><?=$stt?></th>
             <td><?=$item['HoTen']?></td>
             <td><?=$item['NgayDat']?></td>
-            <td><?=number_format($item['TongTien'],"0",",",".")?></td>
+            <td>
+                <?php
+                    switch ($item['PhuongThucTT']) {
+                        case '1':
+                            echo '<p >Trả tiền mặt khi nhận hàng</p>';
+                            break;
+                        case '2':
+                            echo '<p >Thanh toán bằng VNPAY</p>';
+                            break;
+                        case '3':
+                            echo '<p >Thanh toán ví momo</p>';
+                            break;
+                        default:
+
+                            break;
+                    }
+                ?>
+            </td>
             <?php if(isset($item['TrangThai']) && ($item['TrangThai']) == 0 OR ($item['TrangThai']) == 1): ?>
-                <td><a href="index.php?mod=myaccount&act=calldahuy&MaDH=<?=$item['MaDH']?>" class="a_huy">Hủy đơn hàng</a></td>
+                <td><a href="index.php?mod=myaccount&act=calldahuy&MaDH=<?=$item['MaDH']?>" class="a_huy" onclick="delete_donhang(<?=$item['MaDH']?>),event">Hủy đơn hàng</a></td>
             <?php else: ?>
                 <td onclick=" LoiHuyOrder()">Đã xác nhận <i class="fa-solid fa-check" style="color: #79db00;"></i></td>
             <?php endif; ?>
@@ -92,5 +109,12 @@
 <script>
     function LoiHuyOrder(){
         alert("Đơn hàng đã xác nhận, không thể hủy! " );
+    }
+    function delete_donhang(MaDH){ //Tham so MATK nay duoc lay tu $ds['MaTk]
+        var kq = confirm("Bạn có chắc chắn muốn hủy đơn hàng này không?"); //Form duoc hien ra , neu nguoi ta bam XOA
+        if(kq){//Neu bam CHON OK la ket qua dung thif no se chuyen den cai case nay va xoa, bien MaTk duoc lay tu o tren Tham so truyen vao
+            window.location = 'index.php?mod=myaccount&act=calldahuy&MaDH='+MaDH;
+        }
+        event.preventDefault();
     }
 </script>

@@ -147,7 +147,7 @@
                 }else{
                     $_SESSION['mygiohang'] = [];
                 }
-                header("location: index.php?mod=product&act=viewcart");
+                header("location: index.php?mod=page&act=home");
                 break;
 
             case 'checkout':

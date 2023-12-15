@@ -67,8 +67,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> Organic@gamil.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> 0rganic@gamil.com</li>
             </ul>
         </div>
     </div>
@@ -82,8 +81,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> organic@gmail.com</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -122,8 +121,8 @@
                                     <?php endforeach; ?>
                                 </ul>
                             </li>
-                            <li><a href="index.php?mod=page&act=bloghome">Blog</a></li>
-                            <li><a href="index.php?mod=page&act=contact">Contact</a></li>
+                            <li><a href="index.php?mod=page&act=bloghome">Bài viết</a></li>
+                            <li><a href="index.php?mod=page&act=contact">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -194,7 +193,7 @@
                             <div class="hero__search__form">
                                 <form action="" method="post" >
                                     <input type="text" name="keyword" id="live_search" placeholder="What do yo u need?">
-                                    <button type="submit" name="submit_home" id="searchBtn" class="site-btn">SEARCH</button>
+                                    <button type="submit" name="submit_home" id="searchBtn" class="site-btn">Tìm kiếm</button>
                                 </form>
                             </div>
                             <div class="hero__search__phone">
@@ -300,7 +299,7 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Thien Nhien Organic <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
                         <div class="footer__copyright__payment"><img src="view/img/payment-item.png" alt=""></div>
                     </div>

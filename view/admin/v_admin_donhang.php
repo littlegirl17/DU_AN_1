@@ -60,7 +60,7 @@
                                             echo '<p style="font-weight: 500;">Thanh toán bằng VNPAY</p>';
                                             break;
                                         case '3':
-                                            echo '<p style="font-weight: 500;">Thanh toan vi momo</p>';
+                                            echo '<p style="font-weight: 500;">Thanh toán ví momo</p>';
                                             break;
                                         default:
 

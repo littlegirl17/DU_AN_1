@@ -116,39 +116,7 @@
                             ?>
                             <h6 class="infor__order__item__pttt"><?=$pttt?></h6>
                         </div>
-                        <div class="infor__order__item">
-                            <P><strong>Trạng thái đơn hàng:</strong></P> 
-                            <?php 
-                                switch ($item['TrangThai']) {
-                                    case '0':
-                                        $ttdh = "Đơn hàng mới";
-                                        break;
-                                    case '1':
-                                        $ttdh = "Đang xử lý";
-                                        break;
-                                    case '2':
-                                        $ttdh = "Xác nhận đơn hàng";
-                                        break;
-                                    case '3':
-                                        $ttdh = "Đang giao hàng";
-                                        break;
-                                    case '4':
-                                        $ttdh = "Đã giao";
-                                        break;
-                                    case '5':
-                                        $ttdh = "Đã hủy";
-                                        break;
-                                    case '6':
-                                        $ttdh = "Giao hàng thất bại";
-                                        break;
-                                        
-                                    default:
-                                        $ttdh = "Đơn đặt hàng đang lỗi";
-                                        break;
-                                }
-                            ?>
-                            <h6><?=$ttdh?></h6>
-                        </div>
+                        
                         
                     </div>
                     <?php

@@ -332,6 +332,10 @@ document.getElementById("alert-register").innerHTML="";
 },7000);
 });
 
+// Activate the carousel with a specified interval
+$('.carousel').carousel({
+    interval: 2000 // Time in milliseconds, e.g., 2000 for 2 seconds
+});
 
 
 

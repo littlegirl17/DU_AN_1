@@ -68,7 +68,7 @@
                             $_SESSION['loi'] = "Mật khẩu mới và xác nhận mật khẩu không khớp";
                         }
                     }else{
-                        $_SESSION['loi'] = "Mật khẩu bạn nhập chưa đúng";
+                        $_SESSION['loi'] = "Số điện thoại hoặc mật khẩu bạn nhập chưa đúng";
                     }
                 }
                 $view_name = "myaccount_doipass";
